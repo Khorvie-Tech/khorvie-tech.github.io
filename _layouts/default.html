@@ -1,44 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: compress
+---
+<!doctype html>
+<html class="no-js" lang="{% if site.language == nil %}en{% else %}{{ site.language }}{% endif %}">
 <head>
-  <meta charset="UTF-8">
-  <title>{{ page.title }} - {{ site.name }}</title>
-
-  <!-- Link to main stylesheet -->
-  <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
+	{% include _head.html %}
 </head>
-<body>
+<body id="top-of-page" class="{{ layout.format }}">
+	{% unless page.skip_boilerplate %}
+	{% include _navigation.html %}
+	{% endunless %}
 
-  <!-- Masthead container for header and navigation -->
-  <div class="wrapper-masthead">
-    <div class="container">
+	{% include _masthead.html %}
+	{{ content }}
 
-      <!-- Main header section -->
-      <header class="masthead clearfix">
-        
-        <!-- Site title and description -->
-        <div class="site-info">
-          <h1 class="site-name">
-            <a href="{{ site.baseurl }}/">{{ site.name }}</a> <!-- Clickable site name -->
-            </h1>
-            <p class="site-description">
-              Brought to you by
-              <a href="{{ site.youtube_url }}" target="_blank" rel="noopener noreferrer">Khorvie Tech</a>.
-            </p>
+	{% unless page.skip_boilerplate %}
+	{% include _footer.html %}
+	{% endunless %}
 
-        </div>
-
-        <!-- Navigation bar -->
-        <nav class="site-nav">
-          <a href="{{ site.baseurl }}/">Home</a>          <!-- Link to homepage -->
-          <a href="{{ site.baseurl }}/search">Search</a>  <!-- Optional search page -->
-          <a href="{{ site.baseurl }}/about">About</a>    <!-- Link to About page -->
-         
-        </nav>
-
-      </header>
-    </div>
-  </div>
-
-  <!-- Page-specific content will be injected here -->
-  <main class="container page-content">
+	{% include _footer_scripts.html %}
+</body>
+</html>
