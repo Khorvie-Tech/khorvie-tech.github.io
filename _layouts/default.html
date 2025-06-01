@@ -1,22 +1,40 @@
-<div class="wrapper-masthead">
-  <div class="container">
-    <header class="masthead clearfix">
-      
-      <!-- title + description -->
-      <div class="site-info">
-        <h1 class="site-name">
-          <a href="{{ site.baseurl }}/">{{ site.name }}</a>
-        </h1>
-        <p class="site-description">{{ site.description }}</p>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }} - {{ site.name }}</title>
 
-      <!-- nav links -->
-      <nav>
-        <a href="{{ site.baseurl }}/">Home</a>
-        <a href="{{ site.baseurl }}/about">About</a>
-        <a href="{{ site.baseurl }}/search">Search</a>
-      </nav>
+  <!-- Link to main stylesheet -->
+  <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
+</head>
+<body>
 
-    </header>
+  <!-- Masthead container for header and navigation -->
+  <div class="wrapper-masthead">
+    <div class="container">
+
+      <!-- Main header section -->
+      <header class="masthead clearfix">
+        
+        <!-- Site title and description -->
+        <div class="site-info">
+          <h1 class="site-name">
+            <a href="{{ site.baseurl }}/">{{ site.name }}</a> <!-- Clickable site name -->
+          </h1>
+          <p class="site-description">{{ site.description }}</p> <!-- Optional subtitle -->
+        </div>
+
+        <!-- Navigation bar -->
+        <nav class="site-nav">
+          <a href="{{ site.baseurl }}/">Home</a>          <!-- Link to homepage -->
+          <a href="{{ site.baseurl }}/about">About</a>    <!-- Link to About page -->
+          <a href="{{ site.baseurl }}/blog">Blog</a>      <!-- Link to blog listing page -->
+          <a href="{{ site.baseurl }}/search">Search</a>  <!-- Optional search page -->
+        </nav>
+
+      </header>
+    </div>
   </div>
-</div>
+
+  <!-- Page-specific content will be injected here -->
+  <main class="container page-content">
