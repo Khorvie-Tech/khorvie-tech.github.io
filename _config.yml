@@ -1,7 +1,7 @@
 #
 # This file contains configuration flags to customize your site
 #
-
+theme: jekyll-theme-cayman
 # Name of your site (displayed in the header)
 name: Synergy Library
 
