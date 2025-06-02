@@ -2,18 +2,18 @@
   url: "/"
   side: left
 
-- title: Products
-  url: "/shop/"
-  side: left
-
-- title: Library
-  url: "/library/"
-  side: left
-
+#- title: Products
+#  url: "/shop/"
+#  side: left
+#
+#- title: Library
+#  url: "/library/"
+#  side: left
+#
   - title: "About"
   url: "/info/"
   side: left
 
-- title: "Search"
-  url: "/search/"
-  side: right
+#- title: "Search"
+#  url: "/search/"
+ # side: right
