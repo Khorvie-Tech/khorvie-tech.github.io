@@ -1,5 +1,9 @@
-# - menu_name: "Services"
+ - menu_name: "Quick Links"
 
-# - name: "Contact"
-#  url: "/contact/"
- # title: "Contact"
+ - name: "Homepage"
+   url: "/"
+   title: "Homepage"
+
+ - name: "About"
+   url: "/info/"
+   title: "About"
