@@ -13,3 +13,7 @@
 - title: "Search"
   url: "/search/"
   side: right
+
+  - title: "About"
+  url: "/info/"
+  side: left
