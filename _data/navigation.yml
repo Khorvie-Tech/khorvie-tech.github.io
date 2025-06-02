@@ -11,8 +11,8 @@
 #  side: left
 #
 - title: "About"
-url: "/info/"
-side: left
+  url: "/info/"
+  side: left
 
 #- title: "Search"
 #  url: "/search/"
