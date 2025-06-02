@@ -10,9 +10,9 @@
 #  url: "/library/"
 #  side: left
 #
-#  - title: "About"
- # url: "/info/"
-#  side: left
+- title: "About"
+url: "/info/"
+side: left
 
 #- title: "Search"
 #  url: "/search/"
