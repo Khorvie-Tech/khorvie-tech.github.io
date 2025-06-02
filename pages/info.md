@@ -9,4 +9,4 @@ header:
 ---
 ...so that no one has to struggle as I did
 
-*Synergy Library* is a treasure trove of pc optimization knowledge that continues to expand more and more as time goes on. Only the best and verified information makes it into my posts ensuring the content you're reading is tried true and tested.
+*Synergy Library* is a treasure trove of pc optimization knowledge that continues to expand more and more as time goes on. Only the best and verified information makes it into my posts ensuring the content you're reading is tried, true and tested.
