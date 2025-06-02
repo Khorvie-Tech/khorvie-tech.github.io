@@ -10,10 +10,10 @@
   url: "/library/"
   side: left
 
-- title: "Search"
-  url: "/search/"
-  side: right
-
   - title: "About"
   url: "/info/"
   side: left
+
+- title: "Search"
+  url: "/search/"
+  side: right
