@@ -9,4 +9,4 @@ permalink: "/contact/"
 If you need to reach out to me, I suggest you use [Discord][1]. Join the server and @ me @khorvietech
 
 
- [1]: [https://discord.gg/QueGKynWnE]
+ [1]: https://discord.gg/QueGKynWnE
