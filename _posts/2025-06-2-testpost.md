@@ -4,9 +4,9 @@ title: "My Post Title"
 date: 2025-06-01
 permalink: /testpostss/
 ---
-<div style="padding: 0 2rem;">
-Xan is a character from my another story. Remember the time when I told you about my favorite story? Xan belongs there. Surprisingly, Xan is not a human   being. Or an animal. Xan is a three-leaved plant that is hardly four inches tall. Legends have it that Xan is the first plant to ever breathe.
-<!--more-->
+<div style="padding: 0 10%;">
+   {{ page.title }}
+Xan is a character from my another story. Remember the time when I told you about my favorite story? Xan belongs there. Surprisingly, Xan is not a human   being. Or an animal. Xan is a three-leaved plant that is hardly four inches tall. Legends have it that Xan is the first plant to ever breathe <!--more-->
 The leaves were purple when it first sprouted and through its life, it changed to green to yellow to red to orange to currently golden. The property   that is most unsettling among all is that it can grant any wish, given the seeker’s desire must be a desperate one. Once the protagonist in my other story asked Xan, “But what is a desperate desire?”
 
 To that, Xan replied, “Imagine you are swimming in an ocean. And suddenly you feel something touching your feet under the water. And before you realize, you find yourself pulled down into the ocean by something. You try to escape but the grip on your leg is tighter than what you can manage underwater. Within minutes you find yourself to be out of breath and there comes a time when you’d want nothing but some air. You’d not think of your job, or your friends, or your future. You’d be imagining just some air. You’d be desiring to breathe. You’d be desperate. That’s a desperate desire. If what you want is not a desperate desire, I know you can do without it, and therefore, I tend not to grant the wish.”
