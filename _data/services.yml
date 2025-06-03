@@ -4,7 +4,7 @@
    url: "/"
    title: "Homepage"
 
-- name: "Library"
+ - name: "Library"
    url: "/library"
    title: "Library"
    
