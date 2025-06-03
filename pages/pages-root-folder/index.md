@@ -4,8 +4,8 @@
 # inserted automagically in the webpage. To make
 # this work, you have to use › layout: frontpage
 #
-layout: frontpage
-show_logo: true
+ layout: frontpage
+ show_logo: true
 - widget1:
   title: "Getting started"
   url: '/library'
