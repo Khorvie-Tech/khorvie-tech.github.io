@@ -1,7 +1,7 @@
-- name: YouTube
-  url: http://www.youtube.com/@khorvietech
-  class: icon-youtube
-  title: "Check out my Videos"
+#- name: YouTube
+ # url: http://www.youtube.com/@khorvietech
+ # class: icon-youtube
+ # title: "Check out my Videos"
 
 # - name: Twitter
 #  url: http://twitter.com/phlow
