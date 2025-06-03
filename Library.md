@@ -9,6 +9,7 @@ permalink: /library/
     <article>
       <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
       <p>{{ post.excerpt }}</p>
+      <a href="{{ post.url }}">Read more</a>
     </article>
   {% endfor %}
 </div>
