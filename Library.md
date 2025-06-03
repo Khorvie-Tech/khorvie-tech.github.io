@@ -4,7 +4,7 @@ title: Library
 permalink: /library/
 ---
 
-<div style="padding: 0 2rem;">
+<div style="padding: 0 10%;">
   <div class="posts">
     {% for post in site.posts %}
       <article>
