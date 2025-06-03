@@ -7,7 +7,8 @@ permalink: /library/
 <input type="text" id="search-box" placeholder="Search posts..." style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;">
 
 <div class="posts" id="search-results">
-  {% for post in site.posts %}
+  {% assign limited_posts = site.posts | slice: 0, 10 %}
+  {% for post in limited_posts %}
     <article>
       <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
       <p>{{ post.excerpt }}</p>
@@ -34,3 +35,4 @@ permalink: /library/
     });
   });
 </script>
+`
