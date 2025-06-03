@@ -1,0 +1,14 @@
+- title: Latest Post
+  text: Dive into my newest article on Jekyll tweaks and performance.
+  url: /latest/
+  image: /assets/img/favicon-32x32.png
+
+- title: About Me
+  text: I break down systems, optimize workflows, and build useful tools.
+  url: /about/
+  image: /assets/img/favicon-32x32.png
+
+- title: Contact
+  text: Need help or want to collab? Reach out here.
+  url: /contact/
+  image: /assets/img/favicon-32x32.png
