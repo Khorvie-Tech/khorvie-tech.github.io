@@ -60,7 +60,8 @@ gems:
 #
 paginate: 5                      # Paginates all X entries
 paginate_path: "/library/page:num"   # Pagination path › Important for blog page in /blog/ to work
-
+plugins:
+    - jekyll-paginate
 
 # Theme works best with Kramdown (using the table of contents function)
 markdown: kramdown
