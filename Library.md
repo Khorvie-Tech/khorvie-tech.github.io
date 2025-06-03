@@ -3,6 +3,9 @@ layout: page
 title: Library
 permalink: /library/
 ---
+{% for post in site.posts %}
+  <h2>{{ post.title }}</h2>
+{% endfor %}
 
 <input type="text" id="search-box" placeholder="Search posts..." style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;">
 
