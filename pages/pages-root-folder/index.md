@@ -33,10 +33,10 @@ widget3:
 # To change colors see sass/_01_settings_colors.scss
 #
 # note to khorvie; remove these for a cool looking popup
-# callforaction:
-#  url: https://tinyletter.com/feeling-responsive
-#  text: Inform me about new updates and features ›
-#  style: alert
+ callforaction:
+  url: https://tinyletter.com/feeling-responsive
+  text: Inform me about new updates and features ›
+  style: alert
  permalink: /index.html
 #
 # This is a nasty hack to make the navigation highlight
