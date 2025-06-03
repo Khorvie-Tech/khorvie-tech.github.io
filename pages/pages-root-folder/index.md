@@ -6,8 +6,6 @@
 #
 layout: frontpage
 show_logo: true
-header:
-  image_fullwidth: header_unsplash_12.jpg
 widget1:
   title: "Getting started"
   url: '/library'
