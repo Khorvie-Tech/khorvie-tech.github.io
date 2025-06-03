@@ -6,13 +6,16 @@ layout: compress
 <head>
 	{% include _head.html %}
 </head>
-<body id="top-of-page" class="{{ layout.format }}">
+<body id="top-of-page" class="{{ layout.format }}" style="min-height: 100vh; display: flex; flex-direction: column;">
 	{% unless page.skip_boilerplate %}
 	{% include _navigation.html %}
 	{% endunless %}
 
 	{% include _masthead.html %}
-	{{ content }}
+
+	<main style="flex: 1;">
+		{{ content }}
+	</main>
 
 	{% unless page.skip_boilerplate %}
 	{% include _footer.html %}
