@@ -1,6 +1,27 @@
-<div class="row t60">
-  {% for widget in site.data.widgets %}
-    {% include _frontpage-widget.html widget=widget %}
-  {% endfor %}
-</div>
+<div class="medium-4 columns frontpage-widget">
+  {% assign widget_url = include.widget.url %}
+  {% if widget_url contains 'http' %}
+    {% assign final_url = widget_url %}
+  {% else %}
+    {% assign final_url = site.url | append: site.baseurl | append: widget_url %}
+  {% endif %}
 
+  <a href="{{ final_url }}">
+    {% if include.widget.image %}
+      {% assign widget_image = include.widget.image %}
+      {% if widget_image contains 'http' %}
+        <img src="{{ widget_image }}" alt="{{ include.widget.title | escape }}" />
+      {% else %}
+        <img src="{{ site.url | append: site.baseurl | append: widget_image }}" alt="{{ include.widget.title | escape }}" />
+      {% endif %}
+    {% endif %}
+  </a>
+
+  <h2 class="font-size-h3 t10">{{ include.widget.title }}</h2>
+  <p>{{ include.widget.text }}</p>
+  <p>
+    <a class="button tiny radius" href="{{ final_url }}">
+      {{ site.data.language.more | default: 'More ›' }}
+    </a>
+  </p>
+</div>
