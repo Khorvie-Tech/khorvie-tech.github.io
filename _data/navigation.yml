@@ -6,9 +6,9 @@
 #  url: "/shop/"
 #  side: left
 #
-#- title: Library
-#  url: "/library/"
-#  side: left
+- title: Library
+  url: "/library/"
+  side: left
 #
 - title: "About"
   url: "/info/"
