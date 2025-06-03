@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "My Post Title"
-date: 2025-06-01
 permalink: /testpostss/
 ---
 <div style="padding: 0 10%;">
