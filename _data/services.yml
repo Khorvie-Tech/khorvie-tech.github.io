@@ -11,3 +11,8 @@
  - name: "About"
    url: "/info"
    title: "About"
+
+ - name: "YouTube"
+   url: https://www.youtube.com/@khorvietech
+   class: icon-youtube
+   title: "Check out my Videos"
