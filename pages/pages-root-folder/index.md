@@ -5,6 +5,7 @@
 # this work, you have to use › layout: frontpage
 #
 layout: frontpage
+show_logo: true
 header:
   image_fullwidth: header_unsplash_12.jpg
 widget1:
