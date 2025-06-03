@@ -6,7 +6,7 @@
 #
 layout: frontpage
 show_logo: true
-widget1:
+- widget1:
   title: "Getting started"
   url: '/library'
   image:
