@@ -11,7 +11,7 @@
   url: '/library'
   image:
   text: 'On this website you'll find some of the most reliable and straightforward knowledge about PC optimizations. Only verified and true information makes it into our articles. Click More right below to get started with searching through our library of information!'
-widget2:
+- widget2:
   title: "Products Coming Soon!"
   url: '/shop'
   text: 'Synergy will soon offer a variety of tools such as a customized iso that can optimize your machine straight from the moment you install Windows along with soon to provide an optimization tool to easily apply a variety of optimizations that will work on any machine.'
