@@ -1,6 +1,6 @@
 ---
 layout: page
 title: Products
-permalink: /shop
+permalink: /shop/
 ---
 
