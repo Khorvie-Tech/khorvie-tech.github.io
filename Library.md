@@ -18,19 +18,19 @@ permalink: /library/
 
 <script>
   const searchBox = document.getElementById('search-box');
-  const posts = [...document.querySelectorAll('#search-results article')];
+  const posts = Array.from(document.querySelectorAll('#search-results article'));
 
-  searchBox.addEventListener('input', function () {
-    const term = this.value.toLowerCase();
+  searchBox.addEventListener('input', () => {
+    const term = searchBox.value.toLowerCase();
+
+    if(term === '') {
+      posts.forEach(post => post.style.display = 'block');
+      return;
+    }
 
     posts.forEach(post => {
       const text = post.textContent.toLowerCase();
       post.style.display = text.includes(term) ? 'block' : 'none';
     });
-
-    // If empty input, show all
-    if(term === '') {
-      posts.forEach(post => post.style.display = 'block');
-    }
   });
 </script>
