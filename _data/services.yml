@@ -4,6 +4,10 @@
    url: "/"
    title: "Homepage"
 
+- name: "Library"
+   url: "/library"
+   title: "Library"
+   
  - name: "About"
-   url: "/info/"
+   url: "/info"
    title: "About"
