@@ -1,0 +1,17 @@
+---
+layout: null
+permalink: /search.json
+---
+
+[
+  {% assign posts = site.posts | sort: 'date' | reverse %}
+  {% for post in posts %}
+  {
+    "title": {{ post.title | jsonify }},
+    "url": {{ post.url | jsonify }},
+    "excerpt": {{ post.excerpt | strip_html | strip_newlines | jsonify }},
+    "content": {{ post.content | strip_html | strip_newlines | jsonify }},
+    "date": {{ post.date | date_to_xmlschema | jsonify }}
+  }{% if forloop.last == false %},{% endif %}
+  {% endfor %}
+]
