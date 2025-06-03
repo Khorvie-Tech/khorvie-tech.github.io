@@ -2,9 +2,9 @@
   url: "/"
   side: left
 
-#- title: Products
-#  url: "/shop/"
-#  side: left
+- title: Products
+  url: "/shop/"
+  side: left
 #
 - title: Library
   url: "/library/"
