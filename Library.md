@@ -1,11 +1,7 @@
----
 layout: page
 title: Library
 permalink: /library/
 ---
-{% for post in site.posts %}
-  <h2>{{ post.title }}</h2>
-{% endfor %}
 
 <input type="text" id="search-box" placeholder="Search posts..." style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;">
 
@@ -40,5 +36,19 @@ permalink: /library/
 
   function renderPosts(posts) {
     searchResults.innerHTML = '';
+    if (posts.length === 0) {
+      searchResults.innerHTML = '<p>No posts found.</p>';
+      return;
+    }
     posts.forEach(post => {
       const html = `
+        <article>
+          <h2><a href="${post.url}">${post.title}</a></h2>
+          <p>${post.excerpt}</p>
+          <a href="${post.url}">Read more</a>
+        </article>
+      `;
+      searchResults.insertAdjacentHTML('beforeend', html);
+    });
+  }
+</script>
