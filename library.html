@@ -6,44 +6,53 @@ permalink: /library/
 
 <input type="text" id="search-box" placeholder="Search posts..." style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;">
 
-<div class="posts" id="search-results">
-  {% assign all_posts = site.posts %}
-  {% for post in all_posts %}
-    <article style="display: none;">
-      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-      <p>{{ post.excerpt }}</p>
-      <a href="{{ post.url }}">Read more</a>
-    </article>
-  {% endfor %}
-</div>
-
-<button id="load-more" style="margin-top: 1rem;">Show More</button>
+<div class="posts" id="search-results"></div>
 
 <script>
-  const searchBox = document.getElementById('search-box');
-  const posts = Array.from(document.querySelectorAll('#search-results article'));
-  const loadMoreBtn = document.getElementById('load-more');
-  let visibleCount = 0;
-  const batchSize = 10;
+  let postsData = [];
 
-  function showNextBatch() {
-    const nextBatch = posts.slice(visibleCount, visibleCount + batchSize);
-    nextBatch.forEach(p => p.style.display = 'block');
-    visibleCount += batchSize;
-    if (visibleCount >= posts.length) loadMoreBtn.style.display = 'none';
-  }
+  // Fetch all posts from search.json
+  fetch('/search.json')
+    .then(res => res.json())
+    .then(data => {
+      postsData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+      renderPosts(postsData.slice(0, 10)); // Show first 10 posts initially
+    });
+
+  const searchBox = document.getElementById('search-box');
+  const searchResults = document.getElementById('search-results');
 
   searchBox.addEventListener('input', () => {
-    const term = searchBox.value.toLowerCase();
-    posts.forEach(post => {
-      const match = post.textContent.toLowerCase().includes(term);
-      post.style.display = match ? 'block' : 'none';
-    });
-    loadMoreBtn.style.display = term === '' && visibleCount < posts.length ? 'block' : 'none';
+    const term = searchBox.value.toLowerCase().trim();
+    if (!term) {
+      renderPosts(postsData.slice(0, 10)); // Reset to first 10 posts if empty
+      return;
+    }
+
+    // Filter posts by title, excerpt, or content
+    const filtered = postsData.filter(post =>
+      post.title.toLowerCase().includes(term) ||
+      post.excerpt.toLowerCase().includes(term) ||
+      post.content.toLowerCase().includes(term)
+    );
+
+    renderPosts(filtered);
   });
 
-  loadMoreBtn.addEventListener('click', showNextBatch);
-
-  // Initial load
-  showNextBatch();
+  function renderPosts(posts) {
+    searchResults.innerHTML = '';
+    if (posts.length === 0) {
+      searchResults.innerHTML = '<p>No posts found.</p>';
+      return;
+    }
+    posts.forEach(post => {
+      searchResults.insertAdjacentHTML('beforeend', `
+        <article>
+          <h2><a href="${post.url}">${post.title}</a></h2>
+          <p>${post.excerpt}</p>
+          <a href="${post.url}">Read more</a>
+        </article>
+      `);
+    });
+  }
 </script>
