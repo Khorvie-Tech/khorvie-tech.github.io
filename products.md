@@ -1,5 +1,7 @@
 ---
 layout: page
+header:
+  image_fullwidth: header_unsplash_12.jpg
 title: Products
 permalink: /shop/
 ---
