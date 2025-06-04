@@ -14,8 +14,7 @@ This setting essentially affects how thread scheduling works, especially when th
 # Casual Breakdown:
 
 It's a registry setting in Windows that controls how your computer splits attention between:
-The app you're using right now (foreground)
-Stuff running in the background (like updates, services)
+The app you're using right now (foreground); and stuff running in the background (like updates, services)
 
 ### Why It Matters?
 
@@ -42,34 +41,35 @@ for Background services is 18hex/24dec
 ### Khorvie Recommendation:
 2a is generally more stable for system latency and frames but 1a has the potential on some systems to do this but much better. Try and test 2a for yourself for roughly 30 minutes then do the same with 1a, using capframex for benchmarks would be ideal but if you're unwilling then just go by feel.
 
-# The Rock Breakdown:
-
-### Bit Structure:
-
-Win32PrioritySeparation is a REG_DWORD that uses the lowest 6 bits (bits 0–5) to control CPU scheduling behavior. The most important bits are:
-
-Bits 0–1: Foreground boost level (0 = none, 1 = medium, 2 = high)
-Bit 2: Quantum type (0 = variable, 1 = fixed)
-Bit 3: Quantum length (0 = short, 1 = long)
-Bits 4–5: Reserved/unused by most Windows versions
-
-This means valid values range from 0 to 63 (0x00 to 0x3F in hex), and commonly used values like 0x1A, 0x2A, 0x18, and 0x26 are all valid and meaningful.
-
-### Scheduling Impact:
-Short quantum = faster context switches, more responsive but more overhead
-Long quantum = less switching, better throughput but can make UIs laggy
-Foreground boost = dynamic priority boosts for active app threads
-Variable quantum = adjusts time slice length based on thread priority; foreground apps may get longer quanta, improving responsiveness under load
-Fixed quantum = all threads get equal time slices regardless of priority; more consistent but less responsive to active app needs
-
-Windows uses this to modify base scheduling behavior, not override thread priorities.
-
 | Decimal | Hex  | Binary | Quantum Length | Quantum Type | Foreground Boost | Outcome                                                                 |
 | ------- | ---- | ------ | -------------- | ------------ | ---------------- | ----------------------------------------------------------------------- |
 | 24      | 0x18 | 011000 | Long           | Fixed        | None             |   **Default for Background Services**; balanced, equal CPU distribution |
 | 26      | 0x1A | 011010 | Long           | Fixed        | High             |   Custom; long slices, but boosted active apps                         |
 | 38      | 0x26 | 100110 | Short          | Fixed        | High             |   **Default for Programs**; snappy UI, responsive foreground apps       |
 | 42      | 0x2A | 101010 | Short          | Fixed        | High             |   Custom; ultra-responsive, aggressive boost to frontmost app          |
+
+
+# The Rock Breakdown:
+
+### Bit Structure:
+
+Win32PrioritySeparation is a REG_DWORD that uses the lowest 6 bits (bits 0–5) to control CPU scheduling behavior. The most important bits are:
+
+- Bits 0–1: Foreground boost level (0 = none, 1 = medium, 2 = high)
+- Bit 2: Quantum type (0 = variable, 1 = fixed)
+- Bit 3: Quantum length (0 = short, 1 = long)
+- Bits 4–5: Reserved/unused by most Windows versions
+
+This means valid values range from 0 to 63 (0x00 to 0x3F in hex), and commonly used values like 0x1A, 0x2A, 0x18, and 0x26 are all valid and meaningful.
+
+### Scheduling Impact:
+- Short quantum = faster context switches, more responsive but more overhead
+- Long quantum = less switching, better throughput but can make UIs laggy
+- Foreground boost = dynamic priority boosts for active app threads
+- Variable quantum = adjusts time slice length based on thread priority; foreground apps may get longer quanta, improving responsiveness under load
+- Fixed quantum = all threads get equal time slices regardless of priority; more consistent but less responsive to active app needs
+- 
+Windows uses this to modify base scheduling behavior, not override thread priorities.
 
 ### Deep Usage Notes:
 - Used by kernel scheduler to scale quantum ranges (e.g., 20ms vs 120ms)
