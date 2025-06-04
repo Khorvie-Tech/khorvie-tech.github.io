@@ -118,7 +118,7 @@ defaults:
       # sidebar:              # Possible values › left, right › by default there will be no sidebar
       comments: false
       author: khorvie         # Default author for posts
-      image_fullwidth: bgheader.png  # Default header image for all posts
+     
 
 
 
