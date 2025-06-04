@@ -5,6 +5,7 @@ layout: compress
 <html class="no-js" lang="{% if site.language == nil %}en{% else %}{{ site.language }}{% endif %}">
 <head>
 	{% include _head.html %}
+	<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 </head>
 <body id="top-of-page" class="{{ layout.format }} {% if page.body_class %}{{ page.body_class }}{% endif %}" style="min-height: 100vh; display: flex; flex-direction: column;">
 	{% unless page.skip_boilerplate %}
