@@ -82,15 +82,6 @@ exclude:
 # The language setting is used in /includes/header.html for html-settings
 language: 'en'
 
-# add pic in all _posts
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      image_fullwidth: bgheader.png
-
-
 # Used › default.html front-matter and compress.html
 # Options › http://jch.penibelst.de
 compress_html:
