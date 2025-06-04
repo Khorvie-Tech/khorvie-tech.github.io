@@ -1,25 +1,30 @@
 ---
 layout: post
 title: "Win 32 Priority Separation"
-date: 2024-06-02
+date: 2025-06-04
 permalink: /win32priorityseparation/
+header:
+  image_fullwidth: bgheader.png
 ---
 Win32PrioritySeparation is a Windows Registry value that controls how the system prioritizes CPU resources between foreground (active) applications and background services.
 <!--more-->
 
 This setting essentially affects how thread scheduling works, especially when the system is under load, by influencing quantum lengths and priority boosts. This can affect frames and responsiveness in video gaming scenarios.
 
-Casual Breakdown:
+# Casual Breakdown:
+
 It's a registry setting in Windows that controls how your computer splits attention between:
 The app you're using right now (foreground)
 Stuff running in the background (like updates, services)
 
-Why It Matters?
+### Why It Matters?
+
 This setting tells Windows:
 How long each app gets to use the CPU before switching
 Whether your current app gets more love (runs faster/smoother)
 
-How to change it and recommended Values:
+### How to change it and recommended Values:
+
 In your search bar type and open up the registry editor.
 The value can be located at 
 ***HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl***
@@ -34,8 +39,10 @@ Default Value for Background services is 18hex/24dec
 
 Khorvie Recommendation: 2a is generally more stable for system latency and frames but 1a has the potential on some systems to do this but much better. Try and test 2a for yourself for roughly 30 minutes then do the same with 1a, using capframex for benchmarks would be ideal but if you're unwilling then just go by feel.
 
-The Rock Zone:
-Bit Structure
+# The Rock Zone:
+
+### Bit Structure:
+
 Win32PrioritySeparation is a REG_DWORD that uses the lowest 6 bits (bits 0–5) to control CPU scheduling behavior. The most important bits are:
 
 Bits 0–1: Foreground boost level (0 = none, 1 = medium, 2 = high)
@@ -45,7 +52,7 @@ Bits 4–5: Reserved/unused by most Windows versions
 
 This means valid values range from 0 to 63 (0x00 to 0x3F in hex), and commonly used values like 0x1A, 0x2A, 0x18, and 0x26 are all valid and meaningful.
 
-Scheduling Impact:
+### Scheduling Impact:
 Short quantum = faster context switches, more responsive but more overhead
 Long quantum = less switching, better throughput but can make UIs laggy
 Foreground boost = dynamic priority boosts for active app threads
@@ -61,7 +68,7 @@ Windows uses this to modify base scheduling behavior, not override thread priori
 | 38      | 0x26 | 100110 | Short          | Fixed        | High             | ✅ **Default for Programs**; snappy UI, responsive foreground apps       |
 | 42      | 0x2A | 101010 | Short          | Fixed        | High             | 🔧 Custom; ultra-responsive, aggressive boost to frontmost app          |
 
-Deep Usage Notes:
+### Deep Usage Notes:
 Used by kernel scheduler to scale quantum ranges (e.g., 20ms vs 120ms)
 Doesn’t affect real-time classes or explicitly boosted threads
 Greatly influenced by thread priority class (e.g., NORMAL_PRIORITY_CLASS)
@@ -133,4 +140,4 @@ Greatly influenced by thread priority class (e.g., NORMAL_PRIORITY_CLASS)
 | 62      | 0x3E | 111110 | Long           | Fixed        | High             | 11            |
 | 63      | 0x3F | 111111 | Long           | Fixed        | Reserved/Unknown | 11            |
 
-End of Article; feel free to reach out if you spot any typos/errors and I will gladly fix them
+##### End of Article; feel free to reach out if you spot any typos/errors and I will gladly fix them
