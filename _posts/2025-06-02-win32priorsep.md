@@ -33,8 +33,11 @@ And should be a dword named ***Win32PrioritySeparation***
 Through the testing of many optimizers within the community, recommended values from nearly all optimizers are 1a or 2a
 (you insert these values as hexadecimal)
 
-Default Value for programs is 26hex/38dec
-Default Value for Background services is 18hex/24dec
+#### Default Value
+for programs is 26hex/38dec
+
+#### Default Value
+for Background services is 18hex/24dec
 (as of June 2025)
 
 ### Khorvie Recommendation:
@@ -64,10 +67,10 @@ Windows uses this to modify base scheduling behavior, not override thread priori
 
 | Decimal | Hex  | Binary | Quantum Length | Quantum Type | Foreground Boost | Outcome                                                                 |
 | ------- | ---- | ------ | -------------- | ------------ | ---------------- | ----------------------------------------------------------------------- |
-| 24      | 0x18 | 011000 | Long           | Fixed        | None             | ✅ **Default for Background Services**; balanced, equal CPU distribution |
-| 26      | 0x1A | 011010 | Long           | Fixed        | High             | 🔧 Custom; long slices, but boosted active apps                         |
-| 38      | 0x26 | 100110 | Short          | Fixed        | High             | ✅ **Default for Programs**; snappy UI, responsive foreground apps       |
-| 42      | 0x2A | 101010 | Short          | Fixed        | High             | 🔧 Custom; ultra-responsive, aggressive boost to frontmost app          |
+| 24      | 0x18 | 011000 | Long           | Fixed        | None             |   **Default for Background Services**; balanced, equal CPU distribution |
+| 26      | 0x1A | 011010 | Long           | Fixed        | High             |   Custom; long slices, but boosted active apps                         |
+| 38      | 0x26 | 100110 | Short          | Fixed        | High             |   **Default for Programs**; snappy UI, responsive foreground apps       |
+| 42      | 0x2A | 101010 | Short          | Fixed        | High             |   Custom; ultra-responsive, aggressive boost to frontmost app          |
 
 ### Deep Usage Notes:
 Used by kernel scheduler to scale quantum ranges (e.g., 20ms vs 120ms)
