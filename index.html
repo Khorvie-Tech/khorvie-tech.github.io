@@ -1,118 +1,64 @@
-{% if page.header == NULL and page.header.image_fullwidth == NULL and page.header.pattern == NULL and page.header.background-color == NULL and page.header.title == NULL %}
+---
+layout: default
+header:
+  image_fullwidth: bgheader.png
+show_logo: true
+---
 
-<div id="masthead-no-image-header">
-  <div class="row">
-    <div class="small-12 columns" style="text-align: center;">
-      {% if page.show_logo %}
-      <a id="logo" href="{{ site.url }}" title="{{ site.title }} – {{ site.slogan }}">
-        <img src="{{ site.url }}{{ site.baseurl }}/assets/img/{{ site.logo }}" alt="{{ site.title }} – {{ site.slogan }}" style="position: relative; top: -10px;">
-      </a>
-      {% endif %}
+<!-- Main content wrapper -->
+<main class="homepage">
+  <!-- Intro section with welcome message and button -->
+  <section class="intro">
+    <div style="padding-top: 50px; padding-bottom: 30px;">
+      <h5>Welcome to the library of knowledge provided to you by Khorvie Tech. Under <a href=/shop><b><i>Products</i></b></a> are services soon-to-be provided such as a customized iso file or a utility to easily apply optimizations. The <a href=/info><b><i>About</i></b></a> section is where you can learn more about Synergy and Khorvie. The <a href=/library><b><i>Library</i></b></a> tab contains all of my article uploads and the bulk of my optimization research. If you run into a topic that I haven't covered feel free to let me know via my <a href=https://discord.gg/QueGKynWnE><b><i>Discord</i></b></a></h5>
     </div>
-  </div>
-</div>
-{% if page.breadcrumb == true %}
-  {% include _breadcrumb.html %}
-{% endif %}
+    <!-- Button that links to a separate page showing all blog posts -->
+    <a href="{{ site.baseurl }}/library/" class="view-posts-button">View All Posts</a>
+  </section>
+</main>
 
-{% elsif page.header.title %}
+<!-- Inline styles for this page -->
+<style>
+  /* Style the site header */
+  .site-header {
+    text-align: center;
+    padding: 2rem;
+    background: #f4f4f4; /* Light grey background */
+  }
 
-<div id="masthead-with-text" style="{% if page.header.background-color %}background: {{ page.header.background-color }};{% endif %}{% if page.header.image_fullwidth %}{% elsif page.header.pattern %}background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('{{ site.urlimg }}/{{ page.header.pattern }}');{% endif %}">
-  <div class="row">
-    <div class="small-12 columns" style="text-align: center;">
-      <div class="masthead-title">{{ page.header.title }}</div>
-    </div>
-  </div>
-</div>
-{% if page.breadcrumb == true %}
-  {% include _breadcrumb.html %}
-{% endif %}
-{% if page.header.caption_url and page.header.caption %}
-  <div class="masthead-caption">
-    <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
-  </div>
-{% elsif page.header.caption %}
-  <div class="masthead-caption">
-    {{ page.header.caption }}
-  </div>
-{% endif %}
+  /* Make the site title link look nice */
+  .site-header a {
+    text-decoration: none;
+    color: #333;
+    font-size: 2rem;
+  }
 
-{% elsif page.header.image_fullwidth %}
+  /* Center the homepage content */
+  .homepage {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
 
-<div id="masthead" style="background-image: url('{{ site.baseurl }}/assets/img/{{ page.header.image_fullwidth }}'); background-size: cover; background-position: center; padding: 100px 0; position: relative;">
-  {% if page.show_logo %}
-    <a id="logo" href="{{ site.url }}" title="{{ site.title }} – {{ site.slogan }}"
-       style="position: absolute; left: 50%; top: 30px; transform: translateX(-50%); z-index: 2;">
-      <img src="{{ site.url }}{{ site.baseurl }}/assets/img/{{ site.logo }}"
-           alt="{{ site.title }} – {{ site.slogan }}"
-           style="max-width: 200px;">
-    </a>
-  {% endif %}
-  <div class="row">
-    <div class="small-12 columns">
-      <!-- Other header content here if needed -->
-    </div>
-  </div>
-</div>
-{% if page.breadcrumb == true %}
-  {% include _breadcrumb.html %}
-{% endif %}
-{% if page.header.caption_url and page.header.caption %}
-  <div class="masthead-caption">
-    <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
-  </div>
-{% elsif page.header.caption %}
-  <div class="masthead-caption">
-    {{ page.header.caption }}
-  </div>
-{% endif %}
+  /* Style for the intro content block */
+  .intro {
+    max-width: 600px;
+    text-align: center;
+  }
 
-{% elsif page.header.pattern %}
+  /* Button to view all posts */
+  .view-posts-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #007acc; /* Blue */
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+  }
 
-<div id="masthead-with-pattern" style="background: url('{{ site.urlimg }}/{{ page.header.pattern }}')">
-  <div class="row">
-    <figure class="small-12 columns" style="text-align: center;">
-      <img src="{{ site.urlimg }}/{{ page.header.image }}" alt="{{ site.title }}">
-    </figure>
-  </div>
-</div>
-{% if page.breadcrumb == true %}
-  {% include _breadcrumb.html %}
-{% endif %}
-{% if page.header.caption_url and page.header.caption %}
-  <div class="masthead-caption">
-    <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
-  </div>
-{% elsif page.header.caption %}
-  <div class="masthead-caption">
-    {{ page.header.caption }}
-  </div>
-{% endif %}
-
-{% elsif page.header.background-color %}
-
-<div id="masthead-with-background-color" style="background: {{ page.header.background-color }};">
-  <div class="row">
-    <figure class="small-12 columns" style="text-align: center;">
-      <img src="{{ site.urlimg }}/{{ page.header.image }}" alt="{{ site.title }}">
-    </figure>
-  </div>
-</div>
-{% if page.breadcrumb == true %}
-  {% include _breadcrumb.html %}
-{% endif %}
-{% if page.header.caption_url and page.header.caption %}
-  <div class="masthead-caption">
-    <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
-  </div>
-{% elsif page.header.caption %}
-  <div class="masthead-caption">
-    {{ page.header.caption }}
-  </div>
-{% endif %}
-
-{% elsif page.header == false %}
-  {% if page.breadcrumb == true %}
-    {% include _breadcrumb.html %}
-  {% endif %}
-{% endif %}
+  /* Button hover effect */
+  .view-posts-button:hover {
+    background-color: #005f99; /* Darker blue on hover */
+  }
+</style>
