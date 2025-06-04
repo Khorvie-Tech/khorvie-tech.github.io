@@ -11,33 +11,30 @@
     </div>
   </div>
 </div>
-
 {% if page.breadcrumb == true %}
-{% include _breadcrumb.html %}
+  {% include _breadcrumb.html %}
 {% endif %}
 
 {% elsif page.header.title %}
 
-<div id="masthead-with-text" style="{% if page.header.background-color %}background: {{ page.header.background-color }};{% endif %} {% if page.header.image_fullwidth %}{% elsif page.header.pattern %}background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('{{ site.urlimg }}/{{ page.header.pattern }}'){% endif %}">
+<div id="masthead-with-text" style="{% if page.header.background-color %}background: {{ page.header.background-color }};{% endif %}{% if page.header.image_fullwidth %}{% elsif page.header.pattern %}background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('{{ site.urlimg }}/{{ page.header.pattern }}');{% endif %}">
   <div class="row">
     <div class="small-12 columns" style="text-align: center;">
       <div class="masthead-title">{{ page.header.title }}</div>
     </div>
   </div>
 </div>
-
 {% if page.breadcrumb == true %}
-{% include _breadcrumb.html %}
+  {% include _breadcrumb.html %}
 {% endif %}
-
 {% if page.header.caption_url and page.header.caption %}
-<div class="masthead-caption">
-  <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
-</div>
+  <div class="masthead-caption">
+    <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
+  </div>
 {% elsif page.header.caption %}
-<div class="masthead-caption">
-  {{ page.header.caption }}
-</div>
+  <div class="masthead-caption">
+    {{ page.header.caption }}
+  </div>
 {% endif %}
 
 {% elsif page.header.image_fullwidth %}
@@ -57,19 +54,17 @@
     </div>
   </div>
 </div>
-
 {% if page.breadcrumb == true %}
-{% include _breadcrumb.html %}
+  {% include _breadcrumb.html %}
 {% endif %}
-
 {% if page.header.caption_url and page.header.caption %}
-<div class="masthead-caption">
-  <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
-</div>
+  <div class="masthead-caption">
+    <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
+  </div>
 {% elsif page.header.caption %}
-<div class="masthead-caption">
-  {{ page.header.caption }}
-</div>
+  <div class="masthead-caption">
+    {{ page.header.caption }}
+  </div>
 {% endif %}
 
 {% elsif page.header.pattern %}
@@ -81,19 +76,17 @@
     </figure>
   </div>
 </div>
-
 {% if page.breadcrumb == true %}
-{% include _breadcrumb.html %}
+  {% include _breadcrumb.html %}
 {% endif %}
-
 {% if page.header.caption_url and page.header.caption %}
-<div class="masthead-caption">
-  <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
-</div>
+  <div class="masthead-caption">
+    <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
+  </div>
 {% elsif page.header.caption %}
-<div class="masthead-caption">
-  {{ page.header.caption }}
-</div>
+  <div class="masthead-caption">
+    {{ page.header.caption }}
+  </div>
 {% endif %}
 
 {% elsif page.header.background-color %}
@@ -105,25 +98,21 @@
     </figure>
   </div>
 </div>
-
 {% if page.breadcrumb == true %}
-{% include _breadcrumb.html %}
+  {% include _breadcrumb.html %}
 {% endif %}
-
 {% if page.header.caption_url and page.header.caption %}
-<div class="masthead-caption">
-  <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
-</div>
+  <div class="masthead-caption">
+    <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
+  </div>
 {% elsif page.header.caption %}
-<div class="masthead-caption">
-  {{ page.header.caption }}
-</div>
+  <div class="masthead-caption">
+    {{ page.header.caption }}
+  </div>
 {% endif %}
 
 {% elsif page.header == false %}
-
-{% if page.breadcrumb == true %}
-{% include _breadcrumb.html %}
-{% endif %}
-
+  {% if page.breadcrumb == true %}
+    {% include _breadcrumb.html %}
+  {% endif %}
 {% endif %}
