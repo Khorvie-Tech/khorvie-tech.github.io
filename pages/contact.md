@@ -2,7 +2,6 @@
 layout: page
 title: "Contact"
 meta_title: "Reach out to Khorvie"
-subheadline: ""
 teaser: "Get in touch with me? Find me in discord"
 permalink: "/contact/"
 ---
