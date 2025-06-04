@@ -4,7 +4,6 @@ show_logo: true
 body_class: page-mylibrary
 ---
 
-
 <!-- Main content wrapper -->
 <main class="homepage">
   <!-- Intro section with welcome message and button -->
@@ -59,5 +58,11 @@ body_class: page-mylibrary
   /* Button hover effect */
   .view-posts-button:hover {
     background-color: #005f99; /* Darker blue on hover */
+  }
+
+  /* Move logo up only on this page */
+  body.page-mylibrary #logo {
+    position: relative;
+    top: -10px; /* Adjust as needed */
   }
 </style>
