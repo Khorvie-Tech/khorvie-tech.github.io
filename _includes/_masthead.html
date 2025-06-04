@@ -44,19 +44,6 @@
 </div>
 {% endif %}
 
-{% elsif page.header.pattern %}
-
-<div id="masthead-with-pattern">
-  <div class="row">
-    <figure class="small-12 columns" style="text-align: center;">
-      <img src="{{ site.urlimg }}/{{ page.header.image }}" alt="{{ site.title }}">
-    </figure>
-  </div>
-</div>
-
-{% if page.breadcrumb == true %}
-{% include _breadcrumb.html %}
-{% endif %}
 
 {% if page.header.caption_url and page.header.caption %}
 <div class="masthead-caption">
