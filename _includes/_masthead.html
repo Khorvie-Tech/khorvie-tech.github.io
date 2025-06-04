@@ -1,4 +1,3 @@
-
 <div id="masthead-no-image-header">
   <div class="row">
     <div class="small-12 columns" style="text-align: center;">
@@ -14,32 +13,6 @@
 {% if page.breadcrumb == true %}
 {% include _breadcrumb.html %}
 {% endif %}
-
-{% elsif page.header.title %}
-
-<div id="masthead-with-text">
-  <div class="row">
-    <div class="small-12 columns" style="text-align: center;">
-      <div class="masthead-title">{{ page.header.title }}</div>
-    </div>
-  </div>
-</div>
-
-{% if page.breadcrumb == true %}
-{% include _breadcrumb.html %}
-{% endif %}
-
-{% if page.header.caption_url and page.header.caption %}
-<div class="masthead-caption">
-  <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
-</div>
-{% elsif page.header.caption %}
-<div class="masthead-caption">
-  {{ page.header.caption }}
-</div>
-{% endif %}
-
-
 
 <div id="masthead">
   {% if page.show_logo %}
