@@ -29,8 +29,8 @@ The value can be located at
 ***HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl***
 And should be a dword named ***Win32PrioritySeparation***
 
-Through the testing of many optimizers within the community, recommended values from nearly all optimizers are 1a or 2a
-(you insert these values as hexadecimal)
+Through the testing of many optimizers within the community, *recommended values from nearly all good optimizers are* ***1a or 2a***
+*(you insert these values as hexadecimal)*
 
 #### Default Value
 - for programs is 26hex/38dec
