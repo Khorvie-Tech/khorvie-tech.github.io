@@ -11,4 +11,5 @@ permalink: "/info/"
 
 Synergy Library is the result of all that trial, error, and the very reoccuring “oops, I broke Windows again.” It’s a collection of everything I’ve learned; curated guides, detailed tweaks, and explanations that make sense without needing a computer science degree.
 
-If you're tired of lag, stutters, or just want to make your system feel like it had a shot of espresso, you're in the right place. I made this so you don’t have to suffer like I did.
+If you're tired of lag, stutters, or just want to make your system feel like it had a shot of espresso, you're in the right place. I made this so you don’t have to suffer like I did. 
+[Visit the Library](/library) or learn more about [Khorvie](/aboutkhorvie)
