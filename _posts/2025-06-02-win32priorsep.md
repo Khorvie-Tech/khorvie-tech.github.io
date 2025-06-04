@@ -37,7 +37,8 @@ Default Value for programs is 26hex/38dec
 Default Value for Background services is 18hex/24dec
 (as of June 2025)
 
-Khorvie Recommendation: 2a is generally more stable for system latency and frames but 1a has the potential on some systems to do this but much better. Try and test 2a for yourself for roughly 30 minutes then do the same with 1a, using capframex for benchmarks would be ideal but if you're unwilling then just go by feel.
+### Khorvie Recommendation:
+2a is generally more stable for system latency and frames but 1a has the potential on some systems to do this but much better. Try and test 2a for yourself for roughly 30 minutes then do the same with 1a, using capframex for benchmarks would be ideal but if you're unwilling then just go by feel.
 
 # The Rock Zone:
 
