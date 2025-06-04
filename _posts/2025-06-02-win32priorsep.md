@@ -73,9 +73,9 @@ Windows uses this to modify base scheduling behavior, not override thread priori
 | 42      | 0x2A | 101010 | Short          | Fixed        | High             |   Custom; ultra-responsive, aggressive boost to frontmost app          |
 
 ### Deep Usage Notes:
-Used by kernel scheduler to scale quantum ranges (e.g., 20ms vs 120ms)
-Doesn’t affect real-time classes or explicitly boosted threads
-Greatly influenced by thread priority class (e.g., NORMAL_PRIORITY_CLASS)
+- Used by kernel scheduler to scale quantum ranges (e.g., 20ms vs 120ms)
+- Doesn’t affect real-time classes or explicitly boosted threads
+- Greatly influenced by thread priority class (e.g., NORMAL_PRIORITY_CLASS)
 
 | Decimal | Hex  | Binary | Quantum Length | Quantum Type | Foreground Boost | Reserved Bits |
 | ------- | ---- | ------ | -------------- | ------------ | ---------------- | ------------- |
