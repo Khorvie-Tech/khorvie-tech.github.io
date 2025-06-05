@@ -1,8 +1,6 @@
 ---
 layout: page
 title: "About"
-header:
-  image_fullwidth: bgheader.png
 teaser: "Back in 2017, I was just a guy with a potato PC trying to play Fortnite with my friend. Spoiler Alert: it didn’t go well. My system could barely run the game at slideshow FPS, and let’s just say I spent more time staring at loading screens than actually playing. That’s when I started digging into PC optimizations—not because I wanted to, but because I had to..."
 permalink: "/info/"
 ---
