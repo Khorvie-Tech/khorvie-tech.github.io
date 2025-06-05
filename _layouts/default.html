@@ -9,17 +9,15 @@ layout: compress
 </head>
 <body id="top-of-page" class="{{ layout.format }} {% if page.body_class %}{{ page.body_class }}{% endif %}" style="min-height: 100vh; display: flex; flex-direction: column;">
 	{% unless page.skip_boilerplate %}
-	{% include _navigation.html %}
+		{% include header.html %}
 	{% endunless %}
-
-	{% include _masthead.html %}
 
 	<main style="flex: 1;">
 		{{ content }}
 	</main>
 
 	{% unless page.skip_boilerplate %}
-	{% include _footer.html %}
+		{% include _footer.html %}
 	{% endunless %}
 
 	{% include _footer_scripts.html %}
