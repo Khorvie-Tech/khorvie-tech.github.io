@@ -4,6 +4,8 @@ title: "Contact"
 meta_title: "Reach out to Khorvie"
 teaser: "Get in touch with me? Find me in discord"
 permalink: "/contact/"
+header:
+  image_fullwidth: bgheader.png
 ---
 
 <div style="padding-top: 50px; padding-bottom: 10px;">
