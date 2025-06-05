@@ -3,7 +3,7 @@ layout: page
 title: "About"
 header:
   image_fullwidth: bgheader.png
-teaser: "Back in 2017, I was just a guy with a potato PC trying to play Fortnite with my friend. *Spoiler:* it didn’t go well. My system could barely run the game at slideshow FPS, and let’s just say I spent more time staring at loading screens than actually playing. That’s when I started digging into PC optimizations—not because I wanted to, but because *I had to...*"
+teaser: "Back in 2017, I was just a guy with a potato PC trying to play Fortnite with my friend. Spoiler Alert: it didn’t go well. My system could barely run the game at slideshow FPS, and let’s just say I spent more time staring at loading screens than actually playing. That’s when I started digging into PC optimizations—not because I wanted to, but because I had to..."
 permalink: "/info/"
 ---
 ...One registry tweak led to another, and before I knew it, I was neck-deep in all things Windows related. What started as a desperate attempt to get a few extra frames turned into a full-blown obsession with making PCs run better, smoother, faster.
