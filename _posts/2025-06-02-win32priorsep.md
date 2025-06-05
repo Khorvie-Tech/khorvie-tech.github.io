@@ -28,7 +28,7 @@ The value can be located at
 And should be a dword named ***Win32PrioritySeparation***
 
 Through the testing of many optimizers within the community, *recommended values from nearly all good optimizers are* ***1a or 2a***
-*(you insert these values as hexadecimal)*
+*(you insert these values as hexadecimal)* But there have been many recorded instances in which other values will work better on some machines; it's important to test these values for yourself and to not blindly trust specific values.
 
 #### Default Value
 - for Programs is 26hex/38dec
@@ -45,7 +45,7 @@ Through the testing of many optimizers within the community, *recommended values
 | 42      | 0x2A | 101010 | Short          | Fixed        | High             |   Custom; ultra-responsive, aggressive boost to frontmost app          |
 
 ### Does it legitimately affect performance
-It does but it likely won't be anything super significant, expect results between different values within a 5-10% difference (estimation comes from benchmarks from myself, and from me looking at data by FrameSyncLabs, and AlchemyTweaks both of which you can find on youtube)
+It does but it likely won't be anything super significant, expect results between different values within a 5% difference (estimation comes from prior benchmarks from myself, and from me looking at data by FrameSyncLabs, and AlchemyTweaks both of which you can find on youtube)
 
 # The Rock Breakdown:
 
