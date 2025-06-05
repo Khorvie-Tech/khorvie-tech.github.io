@@ -3,8 +3,9 @@ layout: post
 title: "Win 32 Priority Separation"
 date: 2025-06-04
 permalink: /win32priorityseparation/
+show_background: true
 header:
- image_fullwidth: bgheader.png
+  background-color: "#1c1e52" # or your desired color
 ---
 Win32PrioritySeparation is a Windows Registry value that controls how the system prioritizes CPU resources between foreground (active) applications and background services.
 <!--more-->
