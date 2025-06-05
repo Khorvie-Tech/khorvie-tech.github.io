@@ -44,6 +44,8 @@ Through the testing of many optimizers within the community, *recommended values
 | 38      | 0x26 | 100110 | Short          | Fixed        | High             |   **Default for Programs**; snappy UI, responsive foreground apps       |
 | 42      | 0x2A | 101010 | Short          | Fixed        | High             |   Custom; ultra-responsive, aggressive boost to frontmost app          |
 
+### Does it legitimately affect performance
+It does but it likely won't be anything super significant, expect results between different values within a 5-10% difference (estimation comes from benchmarks from myself, and from me looking at data by FrameSyncLabs, and AlchemyTweaks both of which you can find on youtube)
 
 # The Rock Breakdown:
 
@@ -64,7 +66,7 @@ This means valid values range from 0 to 63 (0x00 to 0x3F in hex), and commonly u
 - Foreground boost = dynamic priority boosts for active app threads
 - Variable quantum = adjusts time slice length based on thread priority; foreground apps may get longer quanta, improving responsiveness under load
 - Fixed quantum = all threads get equal time slices regardless of priority; more consistent but less responsive to active app needs
-- 
+  
 Windows uses this to modify base scheduling behavior, not override thread priorities.
 
 ### Deep Usage Notes:
