@@ -3,6 +3,5 @@ layout: post
 title: "How to import powerplans"
 date: 2025-06-04
 permalink: /importpow/
-show_logo: false
 ---
 
