@@ -3,7 +3,6 @@ layout: post
 title: "Win 32 Priority Separation"
 date: 2025-06-04
 permalink: /win32priorityseparation/
-show_background: true
 header:
   background-color: "#1c1e52" # or your desired color
 ---
