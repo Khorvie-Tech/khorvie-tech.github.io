@@ -89,3 +89,42 @@
 
 {% if page.header.caption_url and page.header.caption %}
   <div class="masthead-caption">
+    <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
+  </div>
+{% elsif page.header.caption %}
+  <div class="masthead-caption">
+    {{ page.header.caption }}
+  </div>
+{% endif %}
+
+{% elsif page.header.background-color %}
+
+<div id="masthead-with-background-color" style="background: {{ page.header.background-color }};">
+  <div class="row">
+    <figure class="small-12 columns">
+      <img src="{{ site.urlimg }}/{{ page.header.image }}" alt="{{ site.title }}">
+    </figure>
+  </div>
+</div>
+
+{% if page.breadcrumb == true %}
+  {% include _breadcrumb.html %}
+{% endif %}
+
+{% if page.header.caption_url and page.header.caption %}
+  <div class="masthead-caption">
+    <a href="{{ page.header.caption_url }}">{{ page.header.caption }}</a>
+  </div>
+{% elsif page.header.caption %}
+  <div class="masthead-caption">
+    {{ page.header.caption }}
+  </div>
+{% endif %}
+
+{% elsif page.header == false %}
+
+{% if page.breadcrumb == true %}
+  {% include _breadcrumb.html %}
+{% endif %}
+
+{% endif %}
