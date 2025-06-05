@@ -6,7 +6,7 @@ permalink: /win32priorityseparation/
 ---
 <style>
 h1 { 
-  padding-top: 2em; /* Adjust as needed */
+  padding-top: 60px; /* Adjust as needed */
 }
 </style>
 Win32PrioritySeparation is a Windows Registry value that controls how the system prioritizes CPU resources between foreground (active) applications and background services.
