@@ -2,8 +2,6 @@
 layout: page
 title: Meet Khorvie
 permalink: /aboutkhorvie
-header:
-  image_fullwidth: bgheader.png
 ---
 
 <p>Hey! I’m Khorvie—well, that’s what most people know me as. My real name exists somewhere, but even my family doesn’t really use it. They’ve got their own nickname for me, and online I go by Khorvie (short for Khorviare, a misspelling of Khorvaire from Dungeons & Dragons Online—because I’m a dyslexic geek like that).
