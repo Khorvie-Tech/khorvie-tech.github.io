@@ -141,4 +141,4 @@ Windows uses this to modify base scheduling behavior, not override thread priori
 | 62      | 0x3E | 111110 | Long           | Fixed        | High             | 11            |
 | 63      | 0x3F | 111111 | Long           | Fixed        | Reserved/Unknown | 11            |
 
-##### End of Article; feel free to reach out if you spot any typos/errors and I will gladly fix them
+##### End of Article; feel free to reach out if you spot any typos/errors and I will gladly fix them <3 Khorvie
