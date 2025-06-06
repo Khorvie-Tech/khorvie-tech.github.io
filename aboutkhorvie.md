@@ -20,4 +20,4 @@ permalink: /aboutkhorvie
 
 <p>Thanks for checking out the site, and for getting to know the guy behind the screen. Whether you’re here to optimize your rig or just curious, I’m glad you stopped by.</p>
 
-<p> - Khorvie <3 </p>
+<p> <3 Khorvie </p>
