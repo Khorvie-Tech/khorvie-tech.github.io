@@ -53,7 +53,7 @@ Ensure when using or making a GUID that you don't copy a GUID currently in use b
 You can check this by opening your command prompt and typing the command ***powercfg -list*** then hit enter
 
 ### Should you add your own GUID?
-For the general population, you ***wouldn't have any need making a custom GUID***; but if you are an optimizer who loves automation, this would be very helpful in writing a script to import a power plan with a custom/predefined guid and then apply it with scripting too instead of sending a user to the power plan control panel and having them apply it manually.
+For the general population, you ***wouldn't have any need for making a custom GUID***; but if you are an optimizer who loves automation, this would be very helpful in writing a script to import a power plan with a custom/predefined guid and then apply it with scripting too instead of sending a user to the power plan control panel and having them apply it manually.
 
 Additionally you can also change the name of a plan while importing if you use this formatting
 powercfg -import "C:\Path\To\Plan.pow" {your-guid-here} "Your Plan Name"
