@@ -6,8 +6,9 @@ permalink: /importpow/
 ---
 *article in progress: not complete yet*
 The process to import a power plan is a simple one, 
+
 1: open command prompt as an administrator
-2: ensure that your pow file isn't inside of a zipped folder, if it is in a zipped file, right click on the zip file and extract (a common issue i see is people downloading a .pow file and it comes in a zip file and they forget to extract it which causes the import process to fail)
+2: ensure that your pow file isn't <!--more--> inside of a zipped folder, if it is in a zipped file, right click on the zip file and extract (a common issue i see is people downloading a .pow file and it comes in a zip file and they forget to extract it which causes the import process to fail)
 3: click on your pow file to highlight it in your file explorer and then perform this keyboard shortcut on your device Ctrl Shift C and this will copy the file location of the .pow file
 4: move onto the command prompt you opened at the start and type in this command to finish the import process
 powercfg -import and then paste the contents of the file location and hit enter
