@@ -8,7 +8,7 @@ permalink: /importpow/
 
 2: Ensure that your pow file **isn't** <!--more--> inside of a zipped folder, if it is in a zipped file, right click on the zip file and extract (a common issue I see often is people downloading a .pow file and it comes in a zip file and they forget to extract it which causes the import process to fail)
 
-3: Click on your .pow file to highlight it in your file explorer and then perform this keyboard shortcut on your device ***Ctrl Shift C*** and this will copy the file location of the .pow file.
+3: Click on your .pow file to highlight it in your file explorer and then perform this keyboard shortcut on your device ***Ctrl Shift C*** and this will copy the file location of the .pow file. Alternatively, you can try to right click the file and see an option for ***Copy As Path***
 
 4: Move into the command prompt you opened at the start and type in this command to finish the import process;
 
@@ -42,6 +42,15 @@ To give a custom GUID to the plan; the import command would be something like th
 **powercfg -import "C:\Path\To\Path.pow" {f0e1d2c3-b4a5-6789-0abc-def123456789}**
 
 A proper GUID formatting is used with ***ONLY HEX*** characters; which *includes numbers 0 to 9 and letters a to f*, and it *follows a character count structure of 8-4-4-4-12*; so your final length should match that count. Proper examples can look like anything given you follow these formatting rules.
+- {3f2504e0-4f89-11d3-9a0c-0305e82c3301}
+- {a4e7b6c2-1d22-4e5d-8f0a-76a71c933faa}
+- {d90f99f7-82b4-4b3f-b93a-5d6733d46c2e}
+- {11111111-1111-1111-1111-111111111111}
+- {aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa}
+
+Ensure when using or making a GUID that you don't copy a GUID currently in use by your system for another powerplan.
+
+You can check this by opening your command prompt and typing the command ***powercfg -list*** then hit enter
 
 ### Should you add your own GUID?
 For the general population, you wouldn't have any need making a custom GUID; but if you are an optimizer who loves automation, this would be very helpful in writing a script to import a power plan with a custom/predefined guid and then apply it with scripting too instead of sending a user to the power plan control panel and having them apply it manually.
