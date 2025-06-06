@@ -10,7 +10,7 @@ permalink: /aboutkhorvie
 
 <p>These games were my rotation until Fortnite dropped. I’ve been playing nearly since the beginning on Xbox One, but it didn’t take long before I upgraded(?) to my first gaming PC. I say “upgraded” loosely—this rig had a GT 730 and a 6700K. I was a goated player despite running Fortnite at sub-60 FPS. But either way, the lag and stutter? Not it.</p>
 
-<p>That’s when I went full rabbit hole into PC optimizations. I watched everyone I could find, but the one who really stood out after some time was AdamX. Back when he was on the rise, his videos were everything. If you know, you know. He had way more content than what’s left online now(most are deleted now), and I was glued to every upload.</p>
+<p>That’s when I went full rabbit hole into PC optimizations. I watched everyone I could find, but the one who really stood out after some time was AdamX. Back when he was on the rise, his videos were everything. If you know, you know. He had way more content than what’s left online as of today (most are deleted now), and I was glued to every upload.</p>
 
 <p>Eventually, I got some upgrades, locked in a stable 144 FPS, and became the go-to tech fixer among my (singular) friend. That turned into making my own videos. My original YouTube channel is long gone, but my second channel, CoreVeeAir, had my first taste of success (those videos are now unlisted). Then came Khorvie Tech—and that’s when things really clicked.</p>
 
