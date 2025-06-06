@@ -5,21 +5,27 @@ date: 2025-06-04
 permalink: /importpow/
 ---
 *article in progress: not complete yet*
-The process to import a power plan is a simple one, 
+### The process to import a power plan is a simple one, 
 
 1: open command prompt as an administrator
+
 2: ensure that your pow file isn't <!--more--> inside of a zipped folder, if it is in a zipped file, right click on the zip file and extract (a common issue i see is people downloading a .pow file and it comes in a zip file and they forget to extract it which causes the import process to fail)
+
 3: click on your pow file to highlight it in your file explorer and then perform this keyboard shortcut on your device Ctrl Shift C and this will copy the file location of the .pow file
+
 4: move onto the command prompt you opened at the start and type in this command to finish the import process
 powercfg -import and then paste the contents of the file location and hit enter
+
 A full example would look something like this
 **powercfg -import "C:\Path\To\Plan.pow"**
-5. if done correctly; close out of command prompt and hit the keyboard shortcut Windows Key and R, then type in powercfg.cpl to open up the panel to select your new power plan (make sure this panel isn't opened while importing otherwise it won't appear until you relaunch the panel anyways)
-If following this process perfectly says it is successful in command prompt, but the plan doesn't appear in the list to choose from power plans
 
-If the power plan doesn't appear in the panel after doing all of these steps properly you can try to disable something called modern standby by searching in your search bar for the registry editor and then making your way to this file path 
+5. if done correctly; close out of command prompt and hit the keyboard shortcut Windows Key and R, then type in powercfg.cpl to open up the panel to select your new power plan (make sure this panel isn't opened while importing otherwise it won't appear until you relaunch the panel anyways)
+   
+If following this process perfectly says it is successful in command prompt, but the plan doesn't appear in the list to choose from power plans you can try to disable something called modern standby by searching in your search bar for the registry editor and then making your way to this file path 
+
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power
 "PlatformAoAcOverride"=dword:00000000
+
 after setting this value to 0, restart your machine and check again for your power plan
 
 Brief rundown on modern standby: modern standby is a 'low power idle mode' typically used in laptops/tablets. It replaces the older S3 sleep state with an "always on, always connected" behavior, similar to how a smartphone can sleep but stays connected
