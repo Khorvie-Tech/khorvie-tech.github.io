@@ -34,6 +34,7 @@ pause
 - Hit the keyboard shortcut Ctrl S to save the txt
 - Close out and rename the .txt to a .bat
 - Run the batch file as admin and let it proceed with the install
+- Reboot machine
 
 ### What the code does
 
