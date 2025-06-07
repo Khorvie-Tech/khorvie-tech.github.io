@@ -37,32 +37,29 @@ pause
 
 ### What the code does
 
-@echo off
+***@echo off***
 - Stops the command window from showing each line as it's run. Which makes the output cleaner and easier to read.
 
-for /f %%i in ('dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-Client*.mum') do (
-- Finds all the necessary files needed to install Group Policy.
+***for /f %%i in ('dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-Client*.mum') do (***
+- Finds all the necessary files needed to install Group Policy. dir /b lists just the filenames (bare format). The for loop goes through each of those files one by one.
 
-dir /b lists just the filenames (bare format).
-- The for loop goes through each of those files one by one.
-
-dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
+***(dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"***
 - This line runs once for each file found. DISM is a Windows tool that installs features or updates. It adds each Group Policy-related package into the system.
 
-)
-- Ends the 'for' loop from a few lines ago in the code.
+***)***
+- Ends the 'for' loop from the first line of code.
 
-set shortcut="%USERPROFILE%\Desktop\Group Policy Editor.lnk"
+***set shortcut="%USERPROFILE%\Desktop\Group Policy Editor.lnk"***
 - Creates a variable called shortcut. It tells the script where to place the shortcut (on the current user's desktop).
 
-powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut(%shortcut%); $s.TargetPath='gpedit.msc'; $s.Save()"
+***powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut(%shortcut%); $s.TargetPath='gpedit.msc'; $s.Save()"***
 - Uses PowerShell to make the shortcut that opens gpedit.msc.
 
-echo Done! You can now launch gpedit from the desktop shortcut.
+***echo Done! You can now launch gpedit from the desktop shortcut.***
 - Shows a friendly message to the user that it’s finished.
 
-pause
-Keeps the window open so the user can read the message. Waits for them to press a key before closing.
+***pause***
+- Keeps the window open so the user can read the message. Waits for them to press a key before closing.
 
-End of Article, as always if you see typos or errors reach out to me and let me know <3 Khorvie
+*End of Article, as always if you see typos or errors reach out to me and let me know <3 Khorvie*
 
