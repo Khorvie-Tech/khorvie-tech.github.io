@@ -64,5 +64,5 @@ You'll want to start off by making sure you have file extensions shown; you can 
 ***pause***
 - Keeps the window open so the user can read the message. Waits for them to press a key before closing.
 
-*End of Article, as always if you see typos or errors reach out to me and let me know <3 Khorvie*
+##### End of Article, as always if you see typos or errors reach out to me and let me know <3 Khorvie
 
