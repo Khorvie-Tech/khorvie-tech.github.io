@@ -28,6 +28,7 @@ set shortcut="%USERPROFILE%\Desktop\Group Policy Editor.lnk"
 powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut(%shortcut%); $s.TargetPath='gpedit.msc'; $s.Save()"
 
 echo Done! You can now launch gpedit from the desktop shortcut or by searching for it.
+
 pause
 
 - Hit the keyboard shortcut Ctrl S to save the txt
