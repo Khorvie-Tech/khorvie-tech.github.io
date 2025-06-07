@@ -18,7 +18,7 @@ You'll want to start off by making sure you have file extensions shown; you can 
 - Right click on the desktop and create a txt file
 - Copy and paste this install code into the txt file from *"@echo"* all the way to *"pause"*
 
-```text
+```nohighlight
 @echo off
 
 dir /b "%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~*.mum" >List.txt
