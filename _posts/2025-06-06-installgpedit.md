@@ -40,12 +40,12 @@ pause
 
 | **Command**                                      | **Explanation**                                       |
 |--------------------------------------------------|--------------------------------------------------------|
-| `@echo off`                                      | Cleaner output (no command echoing)                   |
-| `dir ...ClientExtensions... >List.txt`           | List all Client Extensions package files              |
-| `dir ...ClientTools... >>List.txt`               | Append all Client Tools package files                 |
-| `for /f ... do (dism ...)`                       | Install each package listed in `List.txt`             |
-| `del List.txt`                                   | Remove temporary file                                 |
-| `pause`                                          | Wait for user input before closing                    |
+| @echo off                                        | Cleaner output (no command echoing)                   |
+| dir ...ClientExtensions... >List.txt             | List all Client Extensions package files              |
+| dir ...ClientTools... >>List.txt                 | Append all Client Tools package files                 |
+| for /f ... do (dism ...)                         | Install each package listed in `List.txt`             |
+| del List.txt                                     | Remove temporary file                                 |
+| pause                                            | Wait for user input before closing                    |
 
 
 ##### End of Article, as always if you see typos or errors reach out to me and let me know <3 Khorvie
