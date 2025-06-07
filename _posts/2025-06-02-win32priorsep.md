@@ -17,8 +17,7 @@ The app you're using right now (foreground); and stuff running in the background
 ### Why It Matters?
 
 This setting tells Windows:
-How long each app gets to use the CPU before switching
-Whether your current app gets more love (runs faster/smoother)
+How long each app gets to use the CPU before switching, it determines whether your current app gets more love (runs faster/smoother)
 
 ### How to change it and recommended Values:
 
