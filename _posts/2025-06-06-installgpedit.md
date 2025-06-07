@@ -5,7 +5,7 @@ date: 2025-06-06
 permalink: /installgpedit/
 ---
 You can install group policy editor to your machine using built in Windows DISM Servicing.
-
+<!--more-->
 ### Step 1: Show File Extensions
 
 You'll want to start off by making sure you have file extensions shown; you can check this by
