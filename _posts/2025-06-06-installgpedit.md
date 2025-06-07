@@ -19,14 +19,11 @@ You'll want to start off by making sure you have file extensions shown; you can 
 - Copy and paste this install code into the txt file from "@echo" all the way to "pause"
   
 @echo off
-echo Enabling Group Policy Editor... Please wait.
 
-:: Install the required Group Policy packages
 for /f %%i in ('dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-Client*.mum') do (
  dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
 )
 
-:: Create shortcut on desktop
 set shortcut="%USERPROFILE%\Desktop\Group Policy Editor.lnk"
 powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut(%shortcut%); $s.TargetPath='gpedit.msc'; $s.Save()"
 
@@ -42,12 +39,6 @@ pause
 @echo off
 - Stops the command window from showing each line as it's run. Which makes the output cleaner and easier to read.
 
-echo Enabling Group Policy Editor... Please wait.
-- Displays a message to let the user know something is happening.
-
-:: Install the required Group Policy packages
-- This is a comment — ignored by the system and is used for labeling what the next section of code is doing.
-
 for /f %%i in ('dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-Client*.mum') do (
 - Finds all the necessary files needed to install Group Policy.
 
@@ -55,13 +46,10 @@ dir /b lists just the filenames (bare format).
 - The for loop goes through each of those files one by one.
 
 dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
-This line runs once for each file found. DISM is a Windows tool that installs features or updates. It adds each Group Policy-related package into the system.
+- This line runs once for each file found. DISM is a Windows tool that installs features or updates. It adds each Group Policy-related package into the system.
 
 )
 - Ends the 'for' loop from a few lines ago in the code.
-
-:: Create shortcut on desktop
-- Another comment, just explaining the next section.
 
 set shortcut="%USERPROFILE%\Desktop\Group Policy Editor.lnk"
 - Creates a variable called shortcut. It tells the script where to place the shortcut (on the current user's desktop).
@@ -70,7 +58,7 @@ powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut(%shortcut%); $s.Ta
 - Uses PowerShell to make the shortcut that opens gpedit.msc.
 
 echo Done! You can now launch gpedit from the desktop shortcut.
-Shows a friendly message to the user that it’s finished.
+- Shows a friendly message to the user that it’s finished.
 
 pause
 Keeps the window open so the user can read the message. Waits for them to press a key before closing.
