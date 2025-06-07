@@ -63,7 +63,7 @@ paginate_path: "/library/page:num"   # Pagination path › Important for blog pa
 # Theme works best with Kramdown (using the table of contents function)
 markdown: kramdown
 permalink: /:categories/:title/
-highlight: rouge
+highlight: false
 excerpt_separator: "<!--more-->"
 include: ['.htaccess']
 # Exclude these files from your production _site
