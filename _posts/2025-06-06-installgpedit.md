@@ -39,30 +39,38 @@ pause
 ### What the code does
 
 ***@echo off***
-- Stops the command window from showing each line as it's run. Which makes the output cleaner and easier to read.
+- Turns off command echoing so that commands themselves are not printed to the command prompt, making output cleaner and easier to read.
 
-***for /f %%i in ('dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-Client*.mum') do (***
-- Finds all the necessary files needed to install Group Policy.
-- dir /b lists just the filenames (bare format).
-- The for loop goes through each of those files one by one.
+***dir /b "%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~*.mum" >List.txt***
+- Searches the Windows servicing packages directory for all files that match
+Microsoft-Windows-GroupPolicy-ClientExtensions-Package~*.mum
+and outputs just the filenames to a file called List.txt.
+These files are needed to enable the Group Policy Client Extensions feature.
 
-***(dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"***
-- This line runs once for each file found. DISM is a Windows tool that installs features or updates. It adds each Group Policy-related package into the system.
+***dir /b "%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~*.mum" >>List.txt***
+- Searches the same directory for all files matching
+Microsoft-Windows-GroupPolicy-ClientTools-Package~*.mum
+and appends the filenames to List.txt.
+These files are needed to enable the Group Policy Client Tools feature.
 
-***)***
-- Ends the 'for' loop from the first line of code.
+***for /f %%i in ('findstr /i . List.txt 2^>nul') do (
+    dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
+)***
+- Reads each line (filename) from List.txt using findstr (which simply outputs all lines). For each filename, runs the dism command to install the corresponding Windows package:
 
-***set shortcut="%USERPROFILE%\Desktop\Group Policy Editor.lnk"***
-- Creates a variable called shortcut. It tells the script where to place the shortcut (on the current user's desktop).
+- /online means it applies to the currently running Windows installation.
 
-***powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut(%shortcut%); $s.TargetPath='gpedit.msc'; $s.Save()"***
-- Uses PowerShell to make the shortcut that opens gpedit.msc.
+- /norestart prevents automatic reboot after installing the package.
 
-***echo Done! You can now launch gpedit from the desktop shortcut or by searching for it.***
-- Shows a friendly message to the user that it’s finished.
+- /add-package:"..." specifies the full path to the package file to be installed.
+
+- This loop enables all the necessary Group Policy components on your system.
+
+***del List.txt***
+- Deletes the temporary List.txt file to clean up after the script is done.
 
 ***pause***
-- Keeps the window open so the user can read the message. Waits for them to press a key before closing.
+- Pauses the script and displays "Press any key to continue . . ." This gives you a chance to review any messages or errors before the window closes.
 
 ##### End of Article, as always if you see typos or errors reach out to me and let me know <3 Khorvie
 
