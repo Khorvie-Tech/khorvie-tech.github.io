@@ -18,17 +18,7 @@ You'll want to start off by making sure you have file extensions shown; you can 
 - Right click on the desktop and create a txt file
 - Copy and paste this install code into the txt file from *"@echo"* all the way to *"pause"*
   
-*@echo off*
-
-*dir /b "%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~*.mum" >List.txt*
-
-*dir /b "%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~*.mum" >>List.txt*
-
-*for /f %%i in ('findstr /i . List.txt 2^>nul') do (*
-    *dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"*
-*)*
-*del List.txt*
-*pause*
+<pre> ``` @echo off dir /b "%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~*.mum" >List.txt dir /b "%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~*.mum" >>List.txt for /f %%i in ('findstr /i . List.txt 2^>nul') do ( dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i" ) del List.txt pause ``` </pre>
 
 
 - Hit the keyboard shortcut Ctrl S to save the txt
