@@ -15,7 +15,7 @@ You'll want to start off by making sure you have file extensions shown; you can 
 
 ### Step 2: The Install
 
-- Create a txt file
+- Right click on the desktop and create a txt file
 - Copy and paste this install code into the txt file from "@echo" all the way to "pause"
   
 @echo off
