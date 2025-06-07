@@ -58,7 +58,7 @@ You'll want to start off by making sure you have file extensions shown; you can 
 ***powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut(%shortcut%); $s.TargetPath='gpedit.msc'; $s.Save()"***
 - Uses PowerShell to make the shortcut that opens gpedit.msc.
 
-***echo Done! You can now launch gpedit from the desktop shortcut.***
+***echo Done! You can now launch gpedit from the desktop shortcut or by searching for it.***
 - Shows a friendly message to the user that it’s finished.
 
 ***pause***
