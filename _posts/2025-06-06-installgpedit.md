@@ -18,20 +18,20 @@ You'll want to start off by making sure you have file extensions shown; you can 
 - Create a txt file
 - Copy and paste this install code into the txt file from "@echo" all the way to "pause"
   
-***@echo off
-*echo Enabling Group Policy Editor... Please wait.
-*
+@echo off
+echo Enabling Group Policy Editor... Please wait.
+
 :: Install the required Group Policy packages
 for /f %%i in ('dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-Client*.mum') do (
  dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
 )
-*
+
 :: Create shortcut on desktop
 set shortcut="%USERPROFILE%\Desktop\Group Policy Editor.lnk"
 powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut(%shortcut%); $s.TargetPath='gpedit.msc'; $s.Save()"
-*
+
 echo Done! You can now launch gpedit from the desktop shortcut or by searching for it.
-pause***
+pause
 
 - Hit the keyboard shortcut Ctrl S to save the txt
 - Close out and rename the .txt to a .bat
