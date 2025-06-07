@@ -41,7 +41,9 @@ pause
 - Stops the command window from showing each line as it's run. Which makes the output cleaner and easier to read.
 
 ***for /f %%i in ('dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-Client*.mum') do (***
-- Finds all the necessary files needed to install Group Policy. dir /b lists just the filenames (bare format). The for loop goes through each of those files one by one.
+- Finds all the necessary files needed to install Group Policy.
+- dir /b lists just the filenames (bare format).
+- The for loop goes through each of those files one by one.
 
 ***(dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"***
 - This line runs once for each file found. DISM is a Windows tool that installs features or updates. It adds each Group Policy-related package into the system.
