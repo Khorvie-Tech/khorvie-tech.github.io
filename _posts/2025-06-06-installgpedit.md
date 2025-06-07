@@ -43,7 +43,7 @@ pause
 | @echo off                                        | Cleaner output (no command echoing)                   |
 | dir ...ClientExtensions... >List.txt             | List all Client Extensions package files              |
 | dir ...ClientTools... >>List.txt                 | Append all Client Tools package files                 |
-| for /f ... do (dism ...)                         | Install each package listed in `List.txt`             |
+| for /f ... do (dism ...)                         | Install each package listed in List.txt               |
 | del List.txt                                     | Remove temporary file                                 |
 | pause                                            | Wait for user input before closing                    |
 
