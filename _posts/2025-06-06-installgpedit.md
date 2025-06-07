@@ -20,16 +20,16 @@ You'll want to start off by making sure you have file extensions shown; you can 
   
 *@echo off*
 
-*for /f %%i in ('dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-Client*.mum') do (*
-*dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"*
+*dir /b "%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~*.mum" >List.txt*
+
+*dir /b "%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~*.mum" >>List.txt*
+
+*for /f %%i in ('findstr /i . List.txt 2^>nul') do (*
+    *dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"*
 *)*
-
-*set shortcut="%USERPROFILE%\Desktop\Group Policy Editor.lnk"*
-*powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut(%shortcut%); $s.TargetPath='gpedit.msc'; $s.Save()"*
-
-*echo Done! You can now launch gpedit from the desktop shortcut or by searching for it.*
-
+*del List.txt*
 *pause*
+
 
 - Hit the keyboard shortcut Ctrl S to save the txt
 - Close out and rename the .txt to a .bat
