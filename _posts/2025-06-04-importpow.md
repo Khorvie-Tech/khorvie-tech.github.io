@@ -60,5 +60,5 @@ powercfg -import "C:\Path\To\Plan.pow" {your-guid-here} "Your Plan Name"
 
 For it to work properly ***you need to specify the guid*** otherwise the Name parameter gets ignored.
 
-End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. 
-<3 Khorvie
+*End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. 
+<3 Khorvie*
