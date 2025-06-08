@@ -15,7 +15,7 @@ permalink: /importpow/
 ```nohighlight
 powercfg -import
 ```
-and then paste the contents of the file location and then hit enter
+make sure there is a space after *-import* and then paste the contents of the file location and then hit enter
 
 A full example would look something like this
 **powercfg -import "C:\Path\To\Plan.pow"**
