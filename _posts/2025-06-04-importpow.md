@@ -25,8 +25,10 @@ If this was done correctly; close out of command prompt and hit the keyboard sho
 ### But if the plan doesn't appear in the list to choose from.. 
 You can try to disable something called *modern standby* by searching in your search bar for the registry editor and then making your way to this file path 
 
-*HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power
+```nohighlight
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power
 "PlatformAoAcOverride"=dword:00000000*
+```
 
 After setting this value to 0, restart your machine and check again for your power plan
 
