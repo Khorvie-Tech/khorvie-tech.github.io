@@ -12,7 +12,10 @@ permalink: /importpow/
 
 4: Move into the command prompt you opened at the start and type in this command to finish the import process;
 
-*powercfg -import* and then paste the contents of the file location and then hit enter
+```nohighlight
+powercfg -import
+```
+and then paste the contents of the file location and then hit enter
 
 A full example would look something like this
 **powercfg -import "C:\Path\To\Plan.pow"**
