@@ -69,6 +69,25 @@ powershell -NoProfile Expand-Archive '%temp%\Stix Free.zip' -DestinationPath 'C:
 <div style="height: 24px;"></div>
 	
 <h4>Option 1: Windows Settings</h4>
+<section>
+  <h5>What This Optimization Script Does</h5>
+  <ul>
+    <li><strong>Boot Config:</strong> Tweaks timers and disables dynamic ticking.</li>
+    <li><strong>Thread & Heap:</strong> Disables Thread DPC and Fault Tolerant Heap.</li>
+    <li><strong>CSRSS:</strong> Boosts IO and CPU priority for csrss.exe.</li>
+    <li><strong>Multimedia:</strong> Tunes thread scheduling and responsiveness.</li>
+    <li><strong>Game Mode:</strong> Enables automatic game optimizations.</li>
+    <li><strong>Latency:</strong> Removes IoLatencyCaps from services.</li>
+    <li><strong>Power:</strong> Disables power throttling, hibernation, sleep study, and storage sense.</li>
+    <li><strong>GPU:</strong> Enables Hardware-Accelerated GPU Scheduling (HAGS).</li>
+    <li><strong>Privacy:</strong> Disables telemetry, tracking, location, and transparency.</li>
+    <li><strong>VBS:</strong> Disables Virtualization-Based Security.</li>
+    <li><strong>MMCSS:</strong> Fully disables the multimedia scheduler service.</li>
+    <li><strong>Priority Tuning:</strong> Sets Win32PrioritySeparation to 42.</li>
+    <li><strong>DMA:</strong> Disables DMA remapping for all services.</li>
+    <li><strong>Windows Update:</strong> Uses Wub.exe to disable updates.</li>
+  </ul>
+</section>
 
 <details>
   <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
