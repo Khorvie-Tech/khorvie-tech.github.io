@@ -142,6 +142,6 @@ echo - Disabling Windows Updates
 </details>
 
 ### Where can you try the utility?
-At the time of this article's creation, I have full faith in the legitimacy and product safety of Stix and his free utility. But with anyone, I must urge you to do your own research to ensure the current state of safety for your own system. To try this software for yourself, you can find it within his [discord server](https://discord.gg/UXjTVqJHB3) found under the channel #free-tweaks.
+At the time of this article's creation, I have full faith in the legitimacy and product safety of Stix and his free utility. But with anyone, I must urge you to do your own research to ensure the current state of safety for your own system. To try this software for yourself, you can find it within his [Discord Server](https://discord.gg/UXjTVqJHB3) found under the channel #free-tweaks.
 
 ##### End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie
