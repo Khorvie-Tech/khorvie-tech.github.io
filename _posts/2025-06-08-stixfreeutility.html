@@ -468,13 +468,6 @@ set shortcutPath=%startupFolder%\SetTimerResolution - Shortcut.lnk
 
 powershell -Command "(New-Object System.Net.WebClient).DownloadFile('%exeUrl%', '%exeFilePath%')"
 
-echo Set oShell = CreateObject("WScript.Shell") > "%startupFolder%\CreateShortcut.vbs"
-echo Set oLink = oShell.CreateShortcut("%shortcutPath%") >> "%startupFolder%\CreateShortcut.vbs"
-echo oLink.TargetPath = "%exeFilePath%" >> "%startupFolder%\CreateShortcut.vbs"
-echo oLink.Arguments = "--resolution 5040 --no-console" >> "%startupFolder%\CreateShortcut.vbs"
-echo oLink.WorkingDirectory = "%exeFilePath%\.." >> "%startupFolder%\CreateShortcut.vbs"
-echo oLink.Save >> "%startupFolder%\CreateShortcut.vbs"
-
 cscript //nologo "%startupFolder%\CreateShortcut.vbs"
 del "%startupFolder%\CreateShortcut.vbs"
   </code></pre>
