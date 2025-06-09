@@ -70,7 +70,7 @@ powershell -NoProfile Expand-Archive '%temp%\Stix Free.zip' -DestinationPath 'C:
 	
 <h4>Option 1: Windows Settings</h4>
 <section>
-  <h5>What This Optimization Script Does</h5>
+  <h5>Changes Made</h5>
   <ul>
     <li><strong>Boot Config:</strong> Tweaks timers and disables dynamic ticking.</li>
     <li><strong>Thread & Heap:</strong> Disables Thread DPC and Fault Tolerant Heap.</li>
@@ -189,6 +189,14 @@ echo - Disabling Windows Updates
 </details>
 
 <h4>Option 2: Power Gating</h4>
+<section>
+  <h5>Changes Made</h5>
+  <ul>
+    <li><strong>DisableDynamicPstate:</strong> Disables dynamic P-state scaling for GPU or display adapters (registry path under class {4d36e968...}).</li>
+    <li><strong>Force D0 State:</strong> Iterates through all Plug and Play devices and sets their default power state to D0 (fully on), ensuring devices don't downclock or sleep unnecessarily.</li>
+  </ul>
+</section>
+
 <details>
   <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
   <pre><code>
@@ -206,6 +214,18 @@ for /f "tokens=1,2 delims==" %%a in ('wmic path Win32_PnPEntity get DeviceID /va
 </details>
 
 <h4>Option 3: Telemetry Removal</h4>
+<section>
+  <h5>Changes Made</h5>
+  <ul>
+    <li><strong>Ran O&O ShutUp10:</strong> Executes with predefined config if present.</li>
+    <li><strong>Disabled Preinstalled Apps:</strong> Stops Microsoft from reinstalling or silently enabling built-in apps.</li>
+    <li><strong>Disabled Tracking & Telemetry:</strong> Blocks diagnostics, advertising ID, activity history, Cortana, CDP, and experiment features.</li>
+    <li><strong>Hardened Search Settings:</strong> Disables Bing integration, Cortana features, and web search results.</li>
+    <li><strong>Disabled Scheduled Tasks:</strong> Turns off various diagnostics and efficiency analysis background tasks.</li>
+    <li><strong>Disabled Autologgers:</strong> Prevents logging of system events like ReadyBoot, Defender logs, and RDP graphics traces.</li>
+  </ul>
+</section>
+
 <details>
   <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
   <pre><code>
@@ -301,6 +321,15 @@ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\WdiC
 </details>
 
 <h4>Option 4: CPU</h4>
+<section>
+  <h5>Changes Made</h5>
+  <ul>
+    <li><strong>Adjusted CPU Power Settings:</strong> Set <code>InitialUnparkCount</code>, disabled event-based processor power states, and C-States.</li>
+    <li><strong>Imported Custom Power Plan:</strong> Applied the “Stix Free Powerplan”.</li>
+    <li><strong>Opened Power Options:</strong> Launches Control Panel’s power settings UI.</li>
+  </ul>
+</section>
+
 <details>
   <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
   <pre><code>
@@ -313,6 +342,26 @@ start control powercfg.cpl
 </details>
 
 <h4>Option 5: Memory Optimizations</h4>
+<section>
+  <h5>Changes Made</h5>
+  <ul>
+    <li><strong>Memory Optimization Tweaks:</strong> Disabled page file clearing at shutdown, enabled LargeSystemCache, and set NonPagedPool limits.</li>
+    <li><strong>Enabled Physical Address Extension (PAE):</strong> Improves memory addressing support.</li>
+    <li><strong>Performance Enhancements:</strong> Enabled video energy policy and set timer resolutions for better responsiveness.</li>
+    <li><strong>Disabled Memory Compression:</strong> Turned off Windows memory compression via PowerShell.</li>
+  </ul>
+</section>
+
+<section>
+  <h5>Changes Made</h5>
+  <ul>
+    <li><strong>Memory Optimization Tweaks:</strong> Disabled page file clearing at shutdown, enabled LargeSystemCache, and set NonPagedPool limits.</li>
+    <li><strong>Enabled Physical Address Extension (PAE):</strong> Improves memory addressing support.</li>
+    <li><strong>Performance Enhancements:</strong> Enabled video energy policy and set timer resolutions for better responsiveness.</li>
+    <li><strong>Disabled Memory Compression:</strong> Turned off Windows memory compression via PowerShell.</li>
+  </ul>
+</section>
+
 <details>
   <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
   <pre><code>
@@ -329,6 +378,16 @@ powershell "Disable-MMAgent -MemoryCompression" >nul 2>&1
 </details>
 
 <h4>Option 6: Nvidia GPU</h4>
+<section>
+  <h5>Changes Made</h5>
+  <ul>
+    <li><strong>Telemetry Disabled:</strong> Disabled NVIDIA telemetry and background crash report tasks.</li>
+    <li><strong>Preemption Tweaks:</strong> Disabled various forms of GPU thread/context preemption for lower latency and improved consistency.</li>
+    <li><strong>Power Saving Disabled:</strong> Disabled DisplayPowerSaving features through both registry and NVTweak.</li>
+    <li><strong>Profile Optimization:</strong> Applied a custom NVIDIA Profile Inspector configuration for additional performance tuning.</li>
+  </ul>
+</section>
+
 <details>
   <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
   <pre><code>
