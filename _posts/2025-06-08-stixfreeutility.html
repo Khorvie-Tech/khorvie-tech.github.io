@@ -417,6 +417,17 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08
 </details>
 
 <h4>Option 7: AMD GPU</h4>
+<section>
+  <h5>Changes Made</h5>
+  <ul>
+    <li><strong>Power Gating Disabled:</strong> Disabled UVD, VCE, DRMDMA, and general power gating for more consistent GPU performance.</li>
+    <li><strong>ULPS Disabled:</strong> Prevents ultra-low power state when multiple GPUs are present, avoiding wake delays.</li>
+    <li><strong>Overlay & Skins Disabled:</strong> Turned off Radeon overlays and skins to reduce UI overhead and background processes.</li>
+    <li><strong>Snapshot & Subscription Settings:</strong> Disabled snapshot and subscription features that can use extra system resources.</li>
+    <li><strong>Other Tweaks:</strong> Adjusted color depth, DMA copy, stutter mode, and block write behaviors for performance tuning.</li>
+  </ul>
+</section>
+
 <details>
   <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
   <pre><code>
@@ -439,6 +450,15 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08
 </details>
 
 <h4>Option 8: Timer Res</h4>
+<section>
+  <h5>Changes Made</h5>
+  <ul>
+    <li><strong>Timer Resolution Registry:</strong> Enabled `GlobalTimerResolutionRequests` to allow custom system-wide timer adjustments.</li>
+    <li><strong>SetTimerResolution Utility:</strong> Downloaded and placed in startup folder for persistent 0.5ms timer resolution.</li>
+    <li><strong>Auto-Launch Setup:</strong> Created a shortcut with required arguments to run silently at boot.</li>
+  </ul>
+</section>
+
 <details>
   <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
   <pre><code>
@@ -463,6 +483,15 @@ del "%startupFolder%\CreateShortcut.vbs"
 </details>
 
 <h4>Option 9: Network</h4>
+<section>
+  <h5>Changes Made</h5>
+  <ul>
+    <li>Added QoS policies for Fortnite, Valorant, CSGO, and Apex Legends to prioritize their network traffic (DSCP value 46).</li>
+    <li>Disabled unnecessary network adapter bindings (MS Client, Server, LLDP, IPv6) via PowerShell for network optimization.</li>
+    <li>Disabled LMHOSTS and adjusted NDIS DefaultPnPCapabilities for improved network performance and reduced overhead.</li>
+  </ul>
+</section>
+
 <details>
   <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
   <pre><code>
@@ -527,6 +556,19 @@ reg add "HKLM\System\CurrentControlSet\Services\NDIS\Parameters" /v DefaultPnPCa
 </details>
 
 <h4>Option 10: Disk/Storage</h4>
+<section>
+  <h5>Changes Made</h5>
+  <ul>
+    <li>Disabled NTFS encryption to improve performance.</li>
+    <li>Enabled 8.3 filename creation only on the system volume.</li>
+    <li>Set system cache usage to high for better memory performance.</li>
+    <li>Disabled Last Access timestamp updates to reduce disk writes.</li>
+    <li>Enabled automatic reset of Resource Manager state on C: drive.</li>
+    <li>Set Resource Manager consistency on C: drive.</li>
+    <li>Configured Resource Manager log to shrink to 10MB on C: drive.</li>
+  </ul>
+</section>
+
 <details>
   <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
   <pre><code>
@@ -541,6 +583,19 @@ fsutil resource setlog shrink 10 C:\ >nul 2>&1
 </details>
 
 <h4>Option 11: Debloat</h4>
+<section>
+  <h5>Changes Made</h5>
+  <ul>
+    <li>Deleted contents of user Temp, Windows Temp, Windows Prefetch, and Windows Error Reporting folders.</li>
+    <li>Cleared Windows logs.</li>
+    <li>Removed various Windows optional packages and apps (QuickAssist, Disney, Bing apps, Microsoft Paint, OneDrive, Skype, Spotify, Teams, and more).</li>
+    <li>Uninstalled OneDrive from multiple locations.</li>
+    <li>Disabled services: RemoteRegistry, RemoteAccess, WinRM, RmSvc, PrintNotify, and Spooler.</li>
+    <li>Disabled scheduled printing tasks (EduPrintProv, PrinterCleanupTask).</li>
+    <li>Ran Autoruns utility from "C:\Stix Free\autoruns.exe".</li>
+  </ul>
+</section>
+
 <details>
   <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
   <pre><code>
