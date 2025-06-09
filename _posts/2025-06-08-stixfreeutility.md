@@ -28,10 +28,13 @@ is required for the utility to work for its maximum potential; the code for 0 is
 
 <details>
   <summary>Show batch code</summary>
-:resources
-curl -g -k -L -# -o "%temp%\Stix Free.zip" "https://www.dropbox.com/scl/fi/qdgw7wcn7oesd3rbfu883/Stix-Free.zip?rlkey=6ed88ulyityakfpyv7f0que9d&st=6eeunx33&dl=1" &gt;nul 2&gt;&amp;1
-powershell -NoProfile Expand-Archive '%temp%\Stix Free.zip' -DestinationPath 'C:\' &gt;nul 2&gt;&amp;1
+
+  ```bat
+  :resources
+  curl -g -k -L -# -o "%temp%\Stix Free.zip" "https://www.dropbox.com/scl/fi/qdgw7wcn7oesd3rbfu883/Stix-Free.zip?rlkey=6ed88ulyityakfpyv7f0que9d&st=6eeunx33&dl=1" >nul 2>&1
+  powershell -NoProfile Expand-Archive '%temp%\Stix Free.zip' -DestinationPath 'C:\' >nul 2>&1
 </details>
+```
 
 
 and the result is the downloading of this file which allows other options to use these programs and resources later on.
