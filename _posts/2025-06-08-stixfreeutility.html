@@ -51,7 +51,7 @@ permalink: /stixfreeutility/
 <p>Here is the utility in its entirety as of version 2.7</p>
 <p><img src="/images/stixfree/stixfreeutil.png" alt="stix free utility" style="max-width:70%; height:auto;"></p>
 
-<h4>Option 0:</h4>
+<h4>Option 0: Download Resources</h4>
 <p>is required for the utility to work for its maximum potential; the code for 0 is</p>
 
 <details>
@@ -68,7 +68,7 @@ powershell -NoProfile Expand-Archive '%temp%\Stix Free.zip' -DestinationPath 'C:
 </details>
 <div style="height: 24px;"></div>
 	
-<h4>Option 1</h4>
+<h4>Option 1: Windows Settings</h4>
 
 <details>
   <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
@@ -169,9 +169,381 @@ echo - Disabling Windows Updates
   </code></pre>
 </details>
 
+<h4>Option 2: Power Gating</h4>
+<details>
+  <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
+  <pre><code>
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0001" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f >nul 2>&1
+timeout 2 >nul 2>&1
+echo - Forcing D0 State
+for /f "tokens=1,2 delims==" %%a in ('wmic path Win32_PnPEntity get DeviceID /value') do (
+    if not "%%a"=="" (
+        set dev=%%a
+        set dev=!dev:~0,-1!
+        reg add "HKLM\SYSTEM\CurrentControlSet\Enum\!dev!\Device Parameters\Power" /v DefaultPowerState /t REG_DWORD /d 0 /f >nul 2>&1
+    )
+)
+  </code></pre>
+</details>
+
+<h4>Option 3: Telemetry Removal</h4>
+<details>
+  <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
+  <pre><code>
+set OOSUPath="C:\Stix Free\OOSU10.exe"
+set ConfigPath="C:\Stix Free\Stix-OOSU.cfg"
+
+if exist %OOSUPath% (
+    if exist %ConfigPath% (
+        %OOSUPath% %ConfigPath%
+    )
+)
+echo - Stop Reinstalling Preinstalled Apps 
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "PreInstalledAppsEnabled" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SilentInstalledAppsEnabled" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "OemPreInstalledAppsEnabled" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "ContentDeliveryAllowed" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContentEnabled" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "PreInstalledAppsEverEnabled" /t REG_DWORD /d "0" /f>nul 2>&1
+timeout 2 >nul 2>&1
+echo - Disabling Windows Tracking
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CDP" /v "CdpSessionUserAuthzPolicy" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CDP" /v "NearShareChannelUserAuthzPolicy" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance" /v "MaintenanceDisabled" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\System" /v "AllowExperimentation" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\System\AllowExperimentation" /v "value" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" /v "EnableFeeds" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft" /v "AllowNewsAndInterests" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "EnableActivityFeed" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKCU\Control Panel\International\User Profile" /v "HttpAcceptLanguageOptOut" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Enabled" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\System" /v "EnableActivityFeed" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "BingSearchEnabled" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "CortanaCapabilities" /t REG_SZ /d "" /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "IsAssignedAccess" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "IsWindowsHelloActive" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowSearchToUseLocation" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchPrivacy" /t REG_DWORD /d 3 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchSafeSearch" /t REG_DWORD /d 3 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchUseWeb" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchUseWebOverMeteredConnections" /t >nul 2>&1
+reg add "HKLM\Software\Microsoft\PolicyManager\default\Experience\AllowCortana" /v "value" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\SearchCompanion" /v "DisableContentFileUpdates" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\Windows Search" /v "AllowCloudSearch" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\Windows Search" /v "AllowCortanaAboveLock" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\Windows Search" /v "AllowSearchToUseLocation" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchPrivacy" /t REG_DWORD /d "3" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchUseWeb" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchUseWebOverMeteredConnections" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\Windows Search" /v "DisableWebSearch" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\Windows Search" /v "DoNotUseWebResults" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\AppCompat" /v "AITEnable" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\AppCompat" /v "AllowTelemetry" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\AppCompat" /v "DisableInventory" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\AppCompat" /v "DisableUAR" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\AppCompat" /v "DisableEngine" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\AppCompat" /v "DisablePCA" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy" /v "TailoredExperiencesWithDiagnosticDataEnabled" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack" /v "ShowedToastAtLevel" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Input\TIPC" /v "Enabled" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\System" /v "UploadUserActivities" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\System" /v "PublishUserActivities" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKEY_CURRENT_USER\Control Panel\International\User Profile" /v "HttpAcceptLanguageOptOut" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" /v "SaveZoneInformation" /t REG_DWORD /d "1" /f >nul 2>&1
+reg add "HKLM\System\CurrentControlSet\Control\Diagnostics\Performance" /v "DisablediagnosticTracing" /t REG_DWORD /d "1" /f >nul 2>&1 >nul 2>&1
+reg add "HKLM\Software\Policies\Microsoft\Windows\WDI\{9c5a40da-b965-4fc3-8781-88dd50a6299d}" /v "ScenarioExecutionEnabled" /t REG_DWORD /d "0" /f >nul 2>&1
+schtasks /change /tn "\Microsoft\Windows\Application Experience\StartupAppTask" /Disable >nul 2>&1
+schtasks /end /tn "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" >nul 2>&1
+schtasks /change /tn "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" /Disable >nul 2>&1
+schtasks /end /tn "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticResolver" >nul 2>&1
+schtasks /change /tn "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticResolver" /Disable >nul 2>&1
+schtasks /end /tn "\Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem" >nul 2>&1
+schtasks /change /tn "\Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem" /Disable >nul 2>&1
+timeout 2 >nul 2>&1
+echo - Disabling Autologgers
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\ReadyBoot" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\SpoolerLogger" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\UBPM" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\WiFiSession" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Circular Kernel Context Logger" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Diagtrack-Listener" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\LwtNetLog" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Microsoft-Windows-Rdp-Graphics-RdpIdd-Trace" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\NetCore" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\NtfsLog" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\CloudExperienceHostOobe" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\DefenderApiLogger" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\DefenderAuditLogger" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\RadioMgr" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\RdrLog" /v Start /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\DiagLog" /v Start /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\WdiContextLog" /v Start /t REG_DWORD /d 1 /f >nul 2>&1
+  </code></pre>
+</details>
+
+<h4>Option 4: CPU</h4>
+<details>
+  <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
+  <pre><code>
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v InitialUnparkCount/t REG_DWORD /d 100 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v EventProcessorEnabled /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "CStates" /t REG_DWORD /d 0 /f >nul 2>&1
+powercfg -import "C:\Stix Free\Stix Free Powerplan" >nul 2>&1
+start control powercfg.cpl
+  </code></pre>
+</details>
+
+<h4>Option 5: Memory Optimizations</h4>
+<details>
+  <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
+  <pre><code>
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "ClearPageFileAtShutdown" /t REG_DWORD /d 0x00000000 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "LargeSystemCache" /t REG_DWORD /d 0x00000001 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "NonPagedPoolQuota" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "NonPagedPoolSize" /t REG_DWORD /d 0x00000000 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "PhysicalAddressExtension" /t REG_DWORD /d 0x00000001 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "EnergyDriverPolicyVideo" /t REG_DWORD /d 0x00000001 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "TimerBResolution" /t REG_DWORD /d 0x00000001 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "TimerMinResolution" /t REG_DWORD /d 0x00000001 /f >nul 2>&1
+powershell "Disable-MMAgent -MemoryCompression" >nul 2>&1
+  </code></pre>
+</details>
+
+<h4>Option 6: Nvidia GPU</h4>
+<details>
+  <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
+  <pre><code>
+reg add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d "0" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d "0" /f >nul 2>&1
+schtasks /change /disable /tn "NvTmRep_CrashReport2_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" >nul 2>&1
+schtasks /change /disable /tn "NvTmRep_CrashReport3_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" >nul 2>&1
+schtasks /change /disable /tn "NvTmRep_CrashReport4_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "DisablePreemption" /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "DisableCudaContextPreemption" /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "EnableCEPreemption" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "DisablePreemptionOnS3S4" /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "ComputePreemption" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "EnableMidGfxPreemption" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "EnableMidGfxPreemptionVGPU" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "EnableMidBufferPreemptionForHighTdrTimeout" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "EnableMidBufferPreemption" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "EnableAsyncMidBufferPreemption" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "DisableCudaContextPreemption" /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm\Global\NVTweak" /v "DisplayPowerSaving" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\Global\NVTweak" /v "DisplayPowerSaving" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\GraphicsDrivers\Scheduler" /v "EnablePreemption" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0001" /v "RMPowerFeature" /t REG_DWORD /d "4" /f >nul 2>&1
+"C:\Stix Free\nvidiaProfileInspector.exe" -import "C:\Stix Free\Stix Free NIP.nip"
+  </code></pre>
+</details>
+
+<h4>Option 7: AMD GPU</h4>
+<details>
+  <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
+  <pre><code>
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableUVDPowerGatingDynamic" /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "AllowSnapshot" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDrmdmaPowerGating" /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "EnableUlps" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "AllowRSOverlay" /t REG_SZ /d "false" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "AutoColorDepthReduction_NA" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "AllowSubscription" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableUVDPowerGatingDynamic" /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableVCEPowerGating" /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableDMACopy" /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "AllowSkins" /t REG_SZ /d "false" /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "PP_GPUPowerDownEnabled" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisableBlockWrite" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "StutterMode" /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000" /v "DisablePowerGating" /t REG_DWORD /d 1 /f >nul 2>&1
+  </code></pre>
+</details>
+
+<h4>Option 8: Timer Res</h4>
+<details>
+  <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
+  <pre><code>
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "GlobalTimerResolutionRequests" /t REG_DWORD /d 1 /f >nul 2>&1
+set exeUrl=https://www.dropbox.com/scl/fi/uv869o0oo544t1gbgle55/SetTimerResolution.exe?rlkey=edatyvmqbgyh35l45rtiz8m10&st=o72mxwrm&dl=1
+set exeFilePath=C:\SetTimerResolution.exe
+set startupFolder=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup
+set shortcutPath=%startupFolder%\SetTimerResolution - Shortcut.lnk
+
+powershell -Command "(New-Object System.Net.WebClient).DownloadFile('%exeUrl%', '%exeFilePath%')"
+
+echo Set oShell = CreateObject("WScript.Shell") > "%startupFolder%\CreateShortcut.vbs"
+echo Set oLink = oShell.CreateShortcut("%shortcutPath%") >> "%startupFolder%\CreateShortcut.vbs"
+echo oLink.TargetPath = "%exeFilePath%" >> "%startupFolder%\CreateShortcut.vbs"
+echo oLink.Arguments = "--resolution 5040 --no-console" >> "%startupFolder%\CreateShortcut.vbs"
+echo oLink.WorkingDirectory = "%exeFilePath%\.." >> "%startupFolder%\CreateShortcut.vbs"
+echo oLink.Save >> "%startupFolder%\CreateShortcut.vbs"
+
+cscript //nologo "%startupFolder%\CreateShortcut.vbs"
+del "%startupFolder%\CreateShortcut.vbs"
+  </code></pre>
+</details>
+
+<h4>Option 9: Network</h4>
+<details>
+  <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
+  <pre><code>
+::QoS For Fortnite
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\FortnitePolicy" /v "Version" /t REG_SZ /d "1.0" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\FortnitePolicy" /v "Application Name" /t REG_SZ /d "FortniteClient-Win64-Shipping.exe" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\FortnitePolicy" /v "Protocol" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\FortnitePolicy" /v "Local Port" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\FortnitePolicy" /v "Local IP" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\FortnitePolicy" /v "Local IP Prefix Length" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\FortnitePolicy" /v "Remote Port" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\FortnitePolicy" /v "Remote IP" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\FortnitePolicy" /v "Remote IP Prefix Length" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\FortnitePolicy" /v "DSCP Value" /t REG_DWORD /d 46 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\FortnitePolicy" /v "Throttle Rate" /t REG_DWORD /d -1 /f >nul 2>&1
+
+::QoS For Valorant
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ValorantPolicy" /v "Version" /t REG_SZ /d "1.0" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ValorantPolicy" /v "Application Name" /t REG_SZ /d "VALORANT.exe" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ValorantPolicy" /v "Protocol" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ValorantPolicy" /v "Local Port" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ValorantPolicy" /v "Local IP" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ValorantPolicy" /v "Local IP Prefix Length" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ValorantPolicy" /v "Remote Port" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ValorantPolicy" /v "Remote IP" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ValorantPolicy" /v "Remote IP Prefix Length" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ValorantPolicy" /v "DSCP Value" /t REG_DWORD /d 46 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ValorantPolicy" /v "Throttle Rate" /t REG_DWORD /d -1 /f >nul 2>&1
+
+::QoS For CSGO
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\CSGOPolicy" /v "Version" /t REG_SZ /d "1.0" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\CSGOPolicy" /v "Application Name" /t REG_SZ /d "csgo.exe" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\CSGOPolicy" /v "Protocol" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\CSGOPolicy" /v "Local Port" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\CSGOPolicy" /v "Local IP" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\CSGOPolicy" /v "Local IP Prefix Length" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\CSGOPolicy" /v "Remote Port" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\CSGOPolicy" /v "Remote IP" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\CSGOPolicy" /v "Remote IP Prefix Length" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\CSGOPolicy" /v "DSCP Value" /t REG_DWORD /d 46 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\CSGOPolicy" /v "Throttle Rate" /t REG_DWORD /d -1 /f >nul 2>&1
+
+::QoS For Apex
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ApexPolicy" /v "Version" /t REG_SZ /d "1.0" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ApexPolicy" /v "Application Name" /t REG_SZ /d "r5apex.exe" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ApexPolicy" /v "Protocol" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ApexPolicy" /v "Local Port" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ApexPolicy" /v "Local IP" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ApexPolicy" /v "Local IP Prefix Length" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ApexPolicy" /v "Remote Port" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ApexPolicy" /v "Remote IP" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ApexPolicy" /v "Remote IP Prefix Length" /t REG_SZ /d "*" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ApexPolicy" /v "DSCP Value" /t REG_DWORD /d 46 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\ApexPolicy" /v "Throttle Rate" /t REG_DWORD /d -1 /f >nul 2>&1
+PowerShell -Command "Get-NetAdapter | ForEach-Object { Set-NetAdapterBinding -Name $_.Name -ComponentID ms_msclient -Enabled $false }" >nul 2>&1
+PowerShell -Command "Get-NetAdapter | ForEach-Object { Set-NetAdapterBinding -Name $_.Name -ComponentID ms_server -Enabled $false }" >nul 2>&1
+PowerShell -Command "Get-NetAdapter | ForEach-Object { Set-NetAdapterBinding -Name $_.Name -ComponentID ms_lldp -Enabled $false }" >nul 2>&1
+PowerShell -Command "Get-NetAdapter | ForEach-Object { Set-NetAdapterBinding -Name $_.Name -ComponentID ms_tcpip6 -Enabled $false }" >nul 2>&1
+reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters" /v EnableLmhosts /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\System\CurrentControlSet\Services\NDIS\Parameters" /v DefaultPnPCapabilities /t REG_DWORD /d 24 /f >nul 2>&1
+  </code></pre>
+</details>
+
+<h4>Option 10: Disk/Storage</h4>
+<details>
+  <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
+  <pre><code>
+fsutil behavior set disableEncryption 1 >nul 2>&1
+fsutil 8dot3name set 1 >nul 2>&1
+fsutil behavior set memoryusage 2 >nul 2>&1
+fsutil behavior set disablelastaccess 1 >nul 2>&1
+fsutil resource setautoreset true C:\ >nul 2>&1
+fsutil resource setconsistent C:\ >nul 2>&1
+fsutil resource setlog shrink 10 C:\ >nul 2>&1
+  </code></pre>
+</details>
+
+<h4>Option 11: Debloat</h4>
+<details>
+  <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
+  <pre><code>
+set "tempFolder=%LOCALAPPDATA%\Temp"
+if exist "%tempFolder%" (
+    del /q /s "%tempFolder%\*.*"
+    echo Contents of Temp folder have been deleted.
+) else (
+    echo Temp folder not found.
+)
+
+echo Cleaning C:\Windows\Temp folder...
+del /q /s "C:\Windows\Temp\*.*"
+echo Contents of C:\Windows\Temp folder have been deleted.
+
+echo Cleaning C:\Windows\Prefetch folder...
+del /q /s "C:\Windows\Prefetch\*.*"
+echo Contents of C:\Windows\Prefetch folder have been deleted.
+
+echo Cleaning Windows Error Reporting files...
+del /q /s "%LOCALAPPDATA%\Microsoft\Windows\WER\ReportQueue\*"
+echo Windows Error Reporting files have been deleted.
+
+echo Cleaning Windows temporary files...
+del /q /s "%windir%\Temp\*"
+echo Windows temporary files have been deleted.
+)
+echo Windows logs have been cleared.
+Powershell.exe -command "Get-WindowsPackage -Online | Where PackageName -like *Hello-Face* | Remove-WindowsPackage -Online -NoRestart
+Powershell.exe -command "Get-WindowsPackage -Online | Where PackageName -like *QuickAssist* | Remove-WindowsPackage -Online -NoRestart
+Powershell.exe -command "Get-AppxPackage -allusers Disney.37853FC22B2CE | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.549981C3F5F10 | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.BingNews | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.BingWeather | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.GetHelp | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.Getstarted | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.MSPaint | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.Microsoft3DViewer | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.MicrosoftOfficeHub | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.MicrosoftSolitaireCollection | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.MicrosoftStickyNotes | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.Office.OneNote | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.OneDriveSync | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.People | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.PowerAutomateDesktop | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.SkypeApp | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.Todos | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.Wallet | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.WindowsAlarms | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.WindowsCamera | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.WindowsFeedbackHub | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.WindowsMaps | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.WindowsSoundRecorder | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.YourPhone | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.ZuneMusic | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.ZuneVideo | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers MicrosoftCorporationII.QuickAssist | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers MicrosoftTeams | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers MicrosoftWindows.Client.WebExperience | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers SpotifyAB.SpotifyMusic | Remove-AppxPackage
+Powershell.exe -command "Get-AppxPackage -allusers Microsoft.WindowsCommunicationsApps | Remove-AppxPackage
+
+C:\Windows\SysWOW64\OneDriveSetup.exe -uninstall
+C:\Users\Administrator\AppData\Local\Microsoft\OneDrive\22.012.0117.0003\OneDriveSetup.exe /uninstall
+C:\Users\Administrator\AppData\Local\Microsoft\OneDrive\23.194.0917.0001\OneDriveSetup.exe /uninstall
+sc config RemoteRegistry start= disabled >nul 2>&1
+sc config RemoteAccess start= disabled >nul 2>&1
+sc config WinRM start= disabled >nul 2>&1
+sc config RmSvc start= disabled >nul 2>&1
+sc config PrintNotify start= disabled >nul 2>&1
+sc config Spooler start= disabled >nul 2>&1
+schtasks /Change /TN "Microsoft\Windows\Printing\EduPrintProv" /Disable >nul 2>&1
+schtasks /Change /TN "Microsoft\Windows\Printing\PrinterCleanupTask" /Disable >nul 2>&1
+"C:\Stix Free\autoruns.exe"
+  </code></pre>
+</details>
+
 <h3>Where can you try the utility?</h3>
+
 <p>
-  At the time of this article's creation, I have full faith in the legitimacy and product safety of Stix and his free utility. But with anyone, I must urge you to do your own research to ensure the current state of safety for your own system. To try this software for yourself, you can find it within his 
+  At the time of this article's creation, I have full faith in the legitimacy and product safety of Stix and his free utility. But as with anyone, I must urge you to do your own research to ensure the current state of safety for your own system. To try this software for yourself, you can find it within his 
   <a href="https://discord.gg/UXjTVqJHB3">Discord Server</a> found under the channel #free-tweaks.
 </p>
 
