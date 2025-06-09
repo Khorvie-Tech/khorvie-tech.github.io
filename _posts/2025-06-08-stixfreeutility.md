@@ -6,7 +6,7 @@ permalink: /stixfreeutility/
 ---
 This page is currently being built out; not all content is complete
 
-Stix is a youtuber and optimizer(over 1yr+). All information regarding the free utility comes as of June 3rd, 2025; information is bound to change as he updates his tools. 
+Stix is a YouTuber and optimizer (over 1yr+). All information regarding the free utility comes as of June 3rd, 2025; information is bound to change as he updates his tools. 
 <!--more-->
 [Youtube Video Summary](https://www.youtube.com/watch?v=LRijhBlQDG4)
 
