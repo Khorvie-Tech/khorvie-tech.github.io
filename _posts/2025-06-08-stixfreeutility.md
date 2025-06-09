@@ -26,6 +26,7 @@ Here is the utility in its entirety as of version 2.7
 #### Option 0:
 is required for the utility to work for its maximum potential; the code for 0 is 
 
+{% raw %}
 <details>
   <summary>Show batch code</summary>
   
@@ -34,6 +35,7 @@ is required for the utility to work for its maximum potential; the code for 0 is
   powershell -NoProfile Expand-Archive '%temp%\Stix Free.zip' -DestinationPath 'C:\' >nul 2>&1
   
 </details>
+{% endraw %}
 
 and the result is the downloading of this file which allows other options to use these programs and resources later on.
 ### pic here
