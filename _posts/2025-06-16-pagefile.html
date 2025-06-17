@@ -1,0 +1,127 @@
+---
+layout: post
+title: "Virtual Memory | Page File"
+date: 2025-06-16
+permalink: /pagefile/
+---
+<h1>Article is still being built out, content and formatting will change before completion</h1>
+
+<p>The Windows page file (pagefile.sys) is a critical component of the operating system’s memory management system, acting as virtual memory to supplement physical RAM. </p>
+<!--more-->
+<h3>What Is the Page File?</h3>
+<p>The page file is a hidden system file (typically C:\pagefile.sys) that serves as an extension of physical RAM. When RAM becomes full, Windows moves less frequently used data to this file, freeing up space for active processes. Key functions include:</p>
+<li>Expanding usable memory: Allows systems to run more applications than physical RAM alone could support.</li>
+<li>Crash dumps: Required to generate system crash logs (e.g., BSOD diagnostics).</li>
+<li>Application compatibility: Some programs (e.g., database servers, virtual machines) rely on the page file for stability.</li>
+
+<h3>Key Windows Memory Terms</h3>
+<p>placeholder for picture</p>
+<p><b>In Use:</b> The total physical memory actively used by all running processes, including the operating system, drivers, and applications.</p>
+
+<p><b>Committed:</b> The total amount of virtual memory that all processes have reserved, which includes both RAM and page file usage. It represents the maximum potential memory demand.</p>
+
+<p><b>Paged Pool:</b> The portion of physical memory used by the kernel for objects that can be written to disk (paged) when not needed in RAM.</p>
+
+<p><b>Non-paged Pool:</b> The portion of physical memory used by the kernel for objects that must always remain in RAM and cannot be written to disk.</p>
+
+<p><b>Cached:</b> Memory containing data or code that has been fetched into RAM and is not currently in use. This includes Standby and Modified memory, which can be quickly repurposed if needed.</p>
+
+<p><b>Available:</b> The amount of physical memory that is immediately available for use by new or existing processes, including both Free and Standby memory.</p>
+
+<p><b>Hardware Reserved:</b> Memory set aside by hardware components (such as BIOS or graphics cards) that is not available to Windows or applications.</p>
+
+<h3>Pros and Cons of Disabling the Page File</h3>
+<h4>Pros of Disabling</h4>
+<li><b>Frees disk space:</b> Reclaims 2–32+ GB of storage.</li>
+<li><b>Avoids disk latency:</b> Eliminates slowdowns from paging if RAM is never exceeded.</li>
+
+<h4>Cons of Disabling</h4>
+<li><b>System instability:</b> Risk of crashes or "Out of Memory" errors when RAM fills.</li>
+<li><b>Broken applications:</b> Certain software (e.g., Adobe apps, Hyper-V) may fail to run.</li>
+<li><b>No crash dumps:</b> Disables critical diagnostics for troubleshooting system failures.</li>
+<li><b>Disabled memory features:</b> Windows memory compression and ballooning in virtualized environments may malfunction.</li>
+
+<h3>Windows-Managed vs. Manual Configuration</h3>
+<h4>Letting Windows Manage It</h4>
+<h4>Pros</h4>
+<li><b>Automatic optimization:</b> Dynamically adjusts size based on workload.</li>
+<li><b>Guaranteed stability:</b> Prevents application compatibility issues.</li>
+<li><b>Supports diagnostics:</b> Ensures crash dumps are always available.</li>
+
+<h4>Cons</h4>
+<li><b>Over-allocation:</b> May reserve excessive disk space, especially on large drives.</li>
+<li><b>Fragmentation risks:</b> Frequent resizing can fragment the file on HDDs, slowing access.</li>
+
+<h3>Manual Configuration</h3>
+
+<h4>When to Use</h4>
+<li><b>High-RAM systems:</b> Systems with 32+ GB RAM may benefit from a fixed 4–8 GB page file to ensure crash dump support.</li>
+ Systems with 32+ GB RAM may benefit from a fixed 4–8 GB page file to ensure crash dump support.
+<li><b>Specific workloads:</b> Applications like video editing or virtual machines with predictable memory demands.</li>
+<li><b>SSD optimization:</b> Fixed sizes reduce fragmentation and wear on SSDs.</li>
+<li><b>Troubleshooting:</b> Resolving "pagefile.sys too large" warnings or storage constraints.</li>
+
+
+<h3>Terminology to know when setting a manual page file</h3>
+<p>>placeholder text for a picture</p>
+<li><b>Initial Size (Minimum Size):</b> This is the amount of disk space (in MB) that Windows will allocate for the page file at system startup. The page file will not shrink below this value during operation and will always be reserved on disk.</li>
+<li><b>Maximum Size:</b> This is the largest size (in MB) the page file is allowed to grow to if the system needs more virtual memory.</li>
+
+<p>Recommended to typically to set these both to the same value</p>
+
+<h3>Recommended Sizes When Choosing Manual</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>RAM Installed</th>
+      <th>Manual Page File Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&le; 8 GB</td>
+      <td>1.5x&ndash;3x RAM</td>
+    </tr>
+    <tr>
+      <td>8&ndash;32 GB</td>
+      <td>1x&ndash;1.5x RAM</td>
+    </tr>
+    <tr>
+      <td>&ge; 32 GB</td>
+      <td>4&ndash;8 GB fixed</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Risks of an Oversized Page File</h3>
+<li><b>Storage bloat:</b> Consumes disk space unnecessarily, limiting room for files/apps.</li>
+<li><b>Performance degradation:</b> Heavy paging to slow HDDs causes noticeable lag.</li>
+<li><b>Fragmentation:</b> Large files on HDDs fragment over time, slowing access speeds.</li>
+
+
+<h3>What Should You Use?</h3>
+<p><b>Default to Windows-managed:</b> Ideal for most users, ensuring stability and compatibility. <u>Only set to a manual value if your system can benefit from more than what is currently allotted. </u></p>
+
+<h3>Benchmarks on a 32gb DDR4 System</h3>
+<p>placeholder text; benchmarks coming soon</p>
+
+<h3>Sources for documentation:</h3>
+<ul>
+  <li>
+    <a href="https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/how-to-determine-the-appropriate-page-file-size-for-64-bit-versions-of-windows">
+      Microsoft: How to determine the appropriate page file size for 64-bit versions of Windows
+    </a>
+  </li>
+  <li>
+    <a href="https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/introduction-to-the-page-file">
+      Microsoft: Introduction to the page file
+    </a>
+  </li>
+  <li>
+    <a href="https://answers.microsoft.com/en-us/windows/forum/all/physical-and-virtual-memory-in-windows-10/e36fb5bc-9ac8-49af-951c-e7d39b979938">
+      Microsoft Forums: Physical and virtual memory in Windows 10 (Microsoft Answers)
+    </a>
+  </li>
+</ul>
+<h5>End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie</h5>
