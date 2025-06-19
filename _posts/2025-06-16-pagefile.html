@@ -60,6 +60,10 @@ permalink: /pagefile/
 <li><b>SSD optimization:</b> Fixed sizes reduce fragmentation and wear on SSDs.</li>
 <li><b>Troubleshooting:</b> Resolving "pagefile.sys too large" warnings or storage constraints.</li>
 
+<h3>How to Change This setting</h3>
+<li>Use the windows shortcut <b>windows key + r</b> to open Run</li>
+<li>Paste this <b>SystemPropertiesAdvanced</b> and enter</li>
+<li>Under "Performance" click 'Settings' then go to the Advanced Tab where you should see the option to change 'Virtual Memory'</li>
 
 <h3>Terminology to know when setting a manual page file</h3>
 <p><img src="/images/pagefile/apply.png" alt="picture of settings"</p>
@@ -104,7 +108,7 @@ permalink: /pagefile/
 <p><b>Windows-managed:</b> should be ideal for most users, ensuring stability and compatibility. <u>Only set to a manual value if your system can benefit from more than what is currently allotted. </u></p>
 
 <h3>Benchmarks: W.11 23h2 Stock: 32gb DDR4 System</h3>
-<p>Driver latencies were captured with the Windows Performance Toolkit and recorded in microseconds 5 minutes post boot. 4864mb was the default system managed applied setting for me and I paired it off against 32gb equal to 32768mb</p>
+<p>Driver latencies were captured with the Windows Performance Toolkit and recorded in microseconds 5 minutes post boot. 4864mb was the default system managed applied setting for me and I paired it off against 32gb equal to 32768mb along with testing no page file.</p>
 <p>
 <table border="1" cellpadding="6" cellspacing="0">
   <thead>
@@ -114,6 +118,8 @@ permalink: /pagefile/
       <th>4864 Avg</th>
       <th>32768 Max</th>
       <th>32768 Avg</th>
+      <th>0 Max</th>
+      <th>0 Avg</th>
     </tr>
   </thead>
   <tbody>
