@@ -129,6 +129,8 @@ permalink: /pagefile/
       <td>17.094</td>
       <td>156.200</td>
       <td>18.739</td>
+      <td>174.900</td>
+      <td>20.335</td>
     </tr>
     <tr>
       <td>storport.sys</td>
@@ -136,6 +138,8 @@ permalink: /pagefile/
       <td>5.867</td>
       <td>42.300</td>
       <td>5.850</td>
+      <td>52.600</td>
+      <td>5.939</td>
     </tr>
     <tr>
       <td>stornvme.sys</td>
@@ -143,6 +147,8 @@ permalink: /pagefile/
       <td>1.090</td>
       <td>6.600</td>
       <td>1.003</td>
+      <td>6.900</td>
+      <td>1.125</td>
     </tr>
     <tr>
       <td>CLASSPNP.SYS</td>
@@ -150,6 +156,8 @@ permalink: /pagefile/
       <td>1.057</td>
       <td>8.000</td>
       <td>1.009</td>
+      <td>64.700</td>
+      <td>3.190</td>
     </tr>
     <tr>
       <td>Ntfs.sys</td>
@@ -157,6 +165,8 @@ permalink: /pagefile/
       <td>1.077</td>
       <td>7.500</td>
       <td>1.003</td>
+      <td>6.700</td>
+      <td>6.437</td>
     </tr>
   </tbody>
 </table>
@@ -180,9 +190,9 @@ permalink: /pagefile/
   </li>
 </ul>
 
-<p><b>Conclusion:</b> Most storage related drivers showed improved maximum and average latency with a larger page file for my system configuration. The system kernel does show an increase in both max and average latency, but not enough to be concerning in my opinion</p>
+<p><b>Conclusion:</b> Most storage related drivers showed improved maximum and average latency with a larger page file for my system configuration. Having no page file increased driver latencies on many occasions. It's safe to conclude that you should not disable your pagefile</p>
 
-<p>FPS was captured using a repeatable test in Fortnite</p>
+<p>FPS was captured with capframex using a repeatable test in Fortnite</p>
 <p><img src="/images/pagefile/fps.png" alt="picture of fps"></p>
 <p>I would honestly have to say it all seems like it's in the margin of error between the two different page file sizes, but when it comes down to comparing with no page file we did see a tank to the fps. The only time I personally believe you might run into <b>major</b> performance differences with different page file sizes is when you're actively reaching your max ram usage.</p>
 
