@@ -103,8 +103,65 @@ permalink: /pagefile/
 <h3>What Should You Use?</h3>
 <p><b>Windows-managed:</b> should be ideal for most users, ensuring stability and compatibility. <u>Only set to a manual value if your system can benefit from more than what is currently allotted. </u></p>
 
-<h3>Benchmarks on a 32gb DDR4 System</h3>
-<p>placeholder text; benchmarks coming soon</p>
+<h3>Benchmarks: W.11 23h2 Stock: 32gb DDR4 System</h3>
+<p>Driver latencies were captured with the windows performance toolkit and recorded in microseconds 5 minutes after post boot</p>
+<p>
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Module</th>
+      <th>4k Max</th>
+      <th>4k Avg</th>
+      <th>32k Max</th>
+      <th>32k Avg</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ntoskrnl.exe</td>
+      <td>141.100</td>
+      <td>17.094</td>
+      <td>156.200</td>
+      <td>18.739</td>
+    </tr>
+    <tr>
+      <td>storport.sys</td>
+      <td>51.400</td>
+      <td>5.867</td>
+      <td>42.300</td>
+      <td>5.850</td>
+    </tr>
+    <tr>
+      <td>stornvme.sys</td>
+      <td>17.000</td>
+      <td>1.090</td>
+      <td>6.600</td>
+      <td>1.003</td>
+    </tr>
+    <tr>
+      <td>CLASSPNP.SYS</td>
+      <td>9.600</td>
+      <td>1.057</td>
+      <td>8.000</td>
+      <td>1.009</td>
+    </tr>
+    <tr>
+      <td>Ntfs.sys</td>
+      <td>9.100</td>
+      <td>1.077</td>
+      <td>7.500</td>
+      <td>1.003</td>
+    </tr>
+    <tr>
+      <td>rdyboost.sys</td>
+      <td>0.900</td>
+      <td>0.900</td>
+      <td>0.700</td>
+      <td>0.700</td>
+    </tr>
+  </tbody>
+</table>
+</p>
 
 <h3>Sources for documentation:</h3>
 <ul>
