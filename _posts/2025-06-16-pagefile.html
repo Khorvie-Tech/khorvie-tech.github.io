@@ -156,7 +156,30 @@ permalink: /pagefile/
 </table>
 </p>
 
+<ul>
+  <li>
+    ntoskrnl.exe (Windows kernel)
+  </li>
+  <li>
+    storport.sys (storage port driver)
+  </li>
+  <li>
+    stornvme.sys (NVMe storage driver)
+  </li>
+  <li>
+    classpnp.sys (storage class driver)
+  </li>
+  <li>
+    ntfs.sys (filesystem driver)
+  </li>
+</ul>
+
+<p><b>Conclusion:</b> Most storage related drivers showed improved maximum and average latency with a larger page file for my system configuration. The system kernel does show an increase in both max and average latency, but not enough to be concerning in my opinion</p>
+
 <p>FPS was captured using a repeatable test in Fortnite</p>
+<p><img src="/images/pagefile/fps.png" alt="picture of fps"></p>
+<p>I would honestly have to say it all seems like it's in the margin of error, the average and 0.2 percentile lows remained the same. The only time I personally believe you might run into <b>major</b> performance differences is when you're actively reaching your max ram usage.</p>
+
 <h3>Sources for documentation:</h3>
 <ul>
   <li>
