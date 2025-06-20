@@ -44,7 +44,7 @@ Through the testing of many optimizers within the community, *recommended values
 | 42      | 0x2A | 101010 | Short          | Fixed        | High             |   Custom; ultra-responsive, aggressive boost to frontmost app          |
 
 ### Does it legitimately affect performance
-It does but it likely won't be anything super significant, expect results between different values within a 5% difference (estimation comes from prior benchmarks from myself, and from me looking at data by FrameSyncLabs, and AlchemyTweaks both of which you can find on youtube)
+It does but it likely won't be anything super significant, expect results between different values within a 5-10% difference (estimation comes from prior benchmarks from myself, and from me looking at data by FrameSyncLabs, and AlchemyTweaks both of which you can find on youtube)
 
 # The Rock Breakdown:
 
