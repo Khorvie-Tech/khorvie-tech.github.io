@@ -10,6 +10,10 @@
   url: "/library/"
   side: left
 #
+- title: Contribute
+  url: "/contribute/"
+  side: left
+#
 - title: "About"
   url: "/info/"
   side: left
