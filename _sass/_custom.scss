@@ -1,13 +1,13 @@
 .nav-button {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
+  all: unset;
+  cursor: pointer;
   color: inherit;
   font: inherit;
-  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
 
-  &:hover {
-    text-decoration: underline;
-  }
+.nav-button:hover,
+.nav-button:focus {
+  text-decoration: underline;
 }
