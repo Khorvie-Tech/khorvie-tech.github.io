@@ -3347,3 +3347,22 @@ $(document).foundation({
   animation_speed: 250
   }
 });
+
+// dark mode
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.getElementById('theme-toggle');
+  const darkClass = 'dark-mode';
+
+  if (!toggle) return; // Exit if toggle button isn't on the page
+
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add(darkClass);
+    toggle.textContent = 'Light Mode';
+  }
+
+  toggle.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle(darkClass);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    toggle.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+  });
+});
