@@ -11,3 +11,23 @@
 .nav-button:focus {
   text-decoration: underline;
 }
+
+.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-mode a {
+  color: #9ab;
+}
+
+.dark-mode nav,
+.dark-mode .top-bar,
+.dark-mode #navigation {
+  background-color: #1a1a1a;
+  border-color: #333;
+}
+
+.dark-mode .nav-button {
+  color: #e0e0e0;
+}
