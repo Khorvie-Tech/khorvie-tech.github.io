@@ -18,46 +18,35 @@ show_logo: true
 
 <!-- Inline styles for this page -->
 <style>
-  /* Style the site header */
   .site-header {
     text-align: center;
     padding: 2rem;
-    background: #f4f4f4; /* Light grey background */
+    background: var(--body-bg);
   }
-
-  /* Make the site title link look nice */
   .site-header a {
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
     font-size: 2rem;
   }
-
-  /* Center the homepage content */
   .homepage {
     display: flex;
     justify-content: center;
     padding: 2rem;
   }
-
-  /* Style for the intro content block */
   .intro {
     max-width: 600px;
     text-align: center;
   }
-
-  /* Button to view all posts */
   .view-posts-button {
     display: inline-block;
     margin-top: 1.5rem;
     padding: 0.75rem 1.5rem;
-    background-color: #007acc; /* Blue */
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--text-color);
     text-decoration: none;
     border-radius: 6px;
   }
-
-  /* Button hover effect */
   .view-posts-button:hover {
-    background-color: #005f99; /* Darker blue on hover */
+    background-color: var(--secondary-color);
   }
 </style>
