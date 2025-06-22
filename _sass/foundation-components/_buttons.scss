@@ -257,33 +257,3 @@ $button-disabled-cursor: $cursor-default-value !default;
     }
   }
 }
-
-
-// used for dark mode toggle hopefully
-
-.button,
-button {
-  background-color: var(--primary-color) !important;
-  color: var(--text-color) !important;
-  border-color: var(--primary-color) !important;
-  transition: background-color 0.2s;
-
-  &:hover,
-  &:focus {
-    background-color: var(--secondary-color) !important;
-    color: var(--text-color) !important;
-    border-color: var(--secondary-color) !important;
-  }
-}
-
-.button.secondary,
-button.secondary {
-  background-color: var(--secondary-color) !important;
-  border-color: var(--secondary-color) !important;
-
-  &:hover,
-  &:focus {
-    background-color: var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
-  }
-}
