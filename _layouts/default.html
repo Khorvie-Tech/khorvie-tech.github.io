@@ -21,29 +21,5 @@ layout: compress
 	{% endunless %}
 
 	{% include _footer_scripts.html %}
-
-	<!-- Dark mode toggle script -->
-	<script>
- 	 document.addEventListener('DOMContentLoaded', function() {
- 	   // Set theme from localStorage or system preference
-	    const userPref = localStorage.getItem('theme');
-	    if (userPref) {
-	      document.documentElement.setAttribute('data-theme', userPref);
-	    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-	      document.documentElement.setAttribute('data-theme', 'dark');
-	    }
-
-	    // Toggle theme on button click
-	    var toggle = document.getElementById('dark-mode-toggle');
-	    if (toggle) {
-	      toggle.addEventListener('click', function() {
- 	       const current = document.documentElement.getAttribute('data-theme');
-	        const next = current === 'dark' ? 'light' : 'dark';
-	        document.documentElement.setAttribute('data-theme', next);
-	        localStorage.setItem('theme', next);
- 	     });
-	    }
-	  });
-	</script>
 </body>
 </html>
