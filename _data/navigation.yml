@@ -17,6 +17,13 @@
 - title: "About"
   url: "/info/"
   side: left
+#
+- title: Dark Mode
+  url: '#'
+  side: right
+  is_button: true
+
+
 
 #- title: "Search"
 #  url: "/search/"
