@@ -15,19 +15,52 @@
 .dark-mode {
   background-color: #121212;
   color: #e0e0e0;
-}
 
-.dark-mode a {
-  color: #9ab;
-}
+  a {
+    color: #9ab;
+  }
 
-.dark-mode nav,
-.dark-mode .top-bar,
-.dark-mode #navigation {
-  background-color: #1a1a1a;
-  border-color: #333;
-}
+  nav,
+  .top-bar,
+  #navigation {
+    background-color: #1a1a1a;
+    border-color: #333;
+  }
 
-.dark-mode .nav-button {
-  color: #e0e0e0;
+  .nav-button {
+    color: #e0e0e0;
+  }
+
+  body {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  header,
+  footer {
+    background-color: #1a1a1a;
+  }
+
+  .post,
+  .page,
+  .content,
+  .teaser {
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+  }
+
+  code,
+  pre {
+    background-color: #2a2a2a;
+    color: #c7ffd8;
+  }
+
+  .button,
+  input,
+  textarea,
+  select {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #555;
+  }
 }
