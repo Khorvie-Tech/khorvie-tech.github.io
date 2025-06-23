@@ -52,6 +52,12 @@
     border: 1px solid #555;
   }
 
+  .view-posts-button {
+    color: #e0e0e0; // light grey text
+    background-color: #333; // optional: match dark buttons
+    border: 1px solid #555; // optional: for visible button edge
+  }
+
   // Force all common text elements to light gray
   p, li, span, div, h1, h2, h3, h4, h5, h6 {
     color: #e0e0e0;
