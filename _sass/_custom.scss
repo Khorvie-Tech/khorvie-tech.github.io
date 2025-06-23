@@ -19,7 +19,13 @@
   a {
     color: #9ab;
   }
+.dark-mode {
+  color: #d0d0d0; // or #ccc or #e0e0e0 depending on your preference
 
+  p, li, span, div, h1, h2, h3, h4, h5, h6 {
+    color: #d0d0d0;
+  }
+  
   nav,
   .top-bar,
   #navigation {
