@@ -72,6 +72,12 @@
       color: #9ab; // optional: make links distinct in dark mode
     }
   }
+
+  #subfooter {
+    background-color: #0f0f0f;
+  }
+
+  
   // Force all common text elements to light gray
   p, li, span, div, h1, h2, h3, h4, h5, h6 {
     color: #e0e0e0;
