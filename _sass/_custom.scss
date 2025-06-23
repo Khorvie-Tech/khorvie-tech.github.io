@@ -63,11 +63,15 @@
     background-color: #333;
     border: 1px solid #555;
   }
+  
+  #footer {
+    background-color: #1a1a1a; // matches nav/top-bar
+    color: #e0e0e0;
 
-  .bg-grau {
-    background-color: #333; // or another dark tone to replace light grey
+    a {
+      color: #9ab; // optional: make links distinct in dark mode
+    }
   }
-
   // Force all common text elements to light gray
   p, li, span, div, h1, h2, h3, h4, h5, h6 {
     color: #e0e0e0;
