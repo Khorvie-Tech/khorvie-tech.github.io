@@ -4,15 +4,44 @@ title: "Mouse and Keyboard Data Queue Size"
 date: 2025-06-20
 permalink: /mnkdataqueuesize/
 ---
-<h5>Coming Soon</h5>
+<p>The mouse data queue size along with keyboard data queue size have been a popular discussion on whether or
+ not the setting truly has an effect on your peripheral latency.</p>
 <!--more-->
-
-
-
-
-
+<p>These data queue size values can be found at these locations</p>
+<p>
+<ul>
+  <li>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\kbdclass\Parameters\KeyboardDataQueueSize</li>
+  <li>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\mouclass\Parameters\MouseDataQueueSize</li>
+</ul>
+</p>
+<p>MouseDataQueueSize is not present in the registry editor by default, the key for Parameters would need to be made along with the dword value inside of Parameters. Both options have a default value of 100 dec; and the gist of reducing this value to something like 30 for example, is that you reduce the buffer size with in hopes that it will reduce latency and process inputs faster; but is that actually what happens?</p>
+<p><b>In short, no.</b> But why do so many (myself previously included) claim that is does have an effect on peripheral latency?</p>
+<h4>The flawed Math</h4>
+<p>I would have to say that, at least in my case, was not having a true understanding of the buffer type or the way it worked. The math that I used as proof is as follows: when using a 1000hz polling rate mouse, the mouse sends data every 1ms, right?</p>
+<p>The default buffer value of 100 would have a maximum potential latency equal to 100 events x 1ms/event = 100ms while with a reduced value like 40, the maximum potential latency would be equal to 40 events x 1ms/event = 40ms. So a max potential improvement of 60ms, but what about average latency?</p>
+<p>In practice, the buffer is rarely full. Most of the time, input events are processed almost immediately. If we assume a uniform distribution of buffer usage, the average buffer-induced latency is about half of the maximum, taking our max potential 60ms down to a max improvement of 30ms. However, real world conditions would drop these even further, nearing down to a change of 10-15ms.</p>
+<h3>The Truth</h3>
+<p>The reason why that line of reasoning is wrong is because of what kind of buffer the data queue sizes truly are.</p>
+<p>
+  <img src="images/mnkdataqueue/images.png" alt="picture of ring buffer">
+</p>
+<p>Both kbdclass.sys and mousclass.sys drivers in Windows are something called ring buffers; they use a queue to temporarily store raw input events before they are processed by the operating system.</p>
+<p>The size of these queue sizes are set by KeyboardDataQueueSize and MouseDataQueueSize, but since they are Ring Buffers, that means that they use a fixed-size buffer that wraps around when it reaches the end, effectively managing input in a first-in, first-out manner. A 1000hz mouse sends data every 1ms, that doesn't change. A queue size of 100dec can hold 100ms of data, any lower value only reduces how much can be held.</p>
+<p>That means the registry setting doesn't affect the latency of your peripheral events, but it does control how much data can be stored which is why lowering the value too far can cause missed inputs and why an extremely high number has no effect on latency.</p>
+<h4>TL/DR</h4>
+<p>The queue sizes registry value affect how much input data can be stored, it does not affect how much faster the inputs/data will be processed; the ring buffer is a fixed size so when you set the value lower... you only risk losing input data which may make it 'feel more responsive'.</p>
+<h5>Optional/Extra Information</h5>
+<p>How the KBM Stack Works</p>
+<p>
+  <img src="images/mnkdataqueue/keyboard-driver-stack.png" alt="picture of stack">
+</p>
 <h3>Sources for Documentation:</h3>
 <ul>
+   <li>
+     <a href="https://discord.gg/9uf2tEM7" target="_blank" rel="noopener noreferrer">
+      Tweak Zone Discord 
+    </a> (thanks to Jonathan from hone.gg for the recommendation)
+  </li>
   <li>
     <a href="https://www.overclock.net/threads/mousedataqueuesize-registry-tweak-to-reduce-input-delay-fact-or-fiction.1794122/?post_id=28881476&nested_view=1&sortby=oldest#post-28881476" target="_blank" rel="noopener noreferrer">
       overclock.net
@@ -45,3 +74,4 @@ permalink: /mnkdataqueuesize/
   </li>
 </ul>
 <h5>End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie</h5>
+                                            
