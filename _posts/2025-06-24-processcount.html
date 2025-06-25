@@ -13,12 +13,14 @@ permalink: /processcount/
 
 
 <h3>What are these measurements indicative of?</h3>
-<p style="margin-bottom:30px;>Cycles Delta:
+<p>Cycles Delta:
   <li>The number of CPU clock cycles used between two sampling points. Helps track how much "work" the CPU did during that time</li>
 </p>
-<p style="margin-bottom:30px;>Context Switching Delta:
+<br>
+<p>Context Switching Delta:
   <li>The change in the number of context switches (task/process swaps) between samples. High deltas can indicate task-switching overhead or multitasking pressure.</li>
 </p>
+<br>
 <p>In simple terms; it generally can tell you what's eating at your cpu, which usually means lesser performance on your system</p>
 <p>When using <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer" target="_blank" rel="noopener noreferrer">Process Explorer</a>, you can see these values by right clicking the 'Process' column (or any other) and hitting 'Select Column', afterwards go into the 'Process Performance' tab and check both 'CPU Cycles Delta' and 'Context Switch Delta'</p>
 
