@@ -23,7 +23,7 @@ permalink: /mnkdataqueuesize/
 <h3>The Truth</h3>
 <p>The reason why that line of reasoning is wrong is because of what kind of buffer the data queue sizes truly are.</p>
 <p>
-  <img src="images/mnkdataqueue/images.png" alt="picture of ring buffer">
+  <img src="/images/mnkdataqueue/images.png" alt="picture of ring buffer">
 </p>
 <p>Both kbdclass.sys and mousclass.sys drivers in Windows are something called ring buffers; they use a queue to temporarily store raw input events before they are processed by the operating system.</p>
 <p>The size of these queue sizes are set by KeyboardDataQueueSize and MouseDataQueueSize, but since they are Ring Buffers, that means that they use a fixed-size buffer that wraps around when it reaches the end, effectively managing input in a first-in, first-out manner. A 1000hz mouse sends data every 1ms, that doesn't change. A queue size of 100dec can hold 100ms of data, any lower value only reduces how much can be held.</p>
@@ -33,7 +33,7 @@ permalink: /mnkdataqueuesize/
 <h5>Optional/Extra Information</h5>
 <p>How the KBM Stack Works</p>
 <p>
-  <img src="images/mnkdataqueue/keyboard-driver-stack.png" alt="picture of stack">
+  <img src="/images/mnkdataqueue/keyboard-driver-stack.png" alt="picture of stack">
 </p>
 <h3>Sources for Documentation:</h3>
 <ul>
