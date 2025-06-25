@@ -10,8 +10,8 @@ permalink: /mnkdataqueuesize/
 <p>These data queue size values can be found at these locations</p>
 <p>
 <ul>
-  <li>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\kbdclass\Parameters\KeyboardDataQueueSize</li>
-  <li>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\mouclass\Parameters\MouseDataQueueSize</li>
+  <li>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters\KeyboardDataQueueSize</li>
+  <li>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mouclass\Parameters\MouseDataQueueSize</li>
 </ul>
 </p>
 <p>MouseDataQueueSize is not present in the registry editor by default, the key for Parameters would need to be made along with the dword value inside of Parameters. Both options have a default value of 100 dec; and the gist of reducing this value to something like 30 for example, is that you reduce the buffer size with in hopes that it will reduce latency and process inputs faster; but is that actually what happens?</p>
