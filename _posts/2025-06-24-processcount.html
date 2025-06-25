@@ -11,12 +11,10 @@ permalink: /processcount/
 <p>Then Zusier did the opposite as well, he made over 3000 process counts that were programmed to only sleep; lo and behold he could play games perfectly fine without any issue.</p>
 <p>The conclusion that he wants everyone to see is that the number itself is not a problem with your machine's performance; it is that certain processes on your machine are the cause and that to truly know what is slowing down your machine, you need to look at alternative stats like 'cycles delta' and 'context switch delta' (can be viewed with <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer" target="_blank" rel="noopener noreferrer">Process Explorer</a>). Both of which are much better measurements for what could be bogging down your system.</p>
 <h4>What are these measurements indicative of?</h4>
-<p>Cycles Delta:</p>
-<p>
+<p>Cycles Delta:
   <li>The number of CPU clock cycles used between two sampling points. Helps track how much "work" the CPU did during that time</li>
 </p>
-<p>Context Switching Delta:</p>
-<p>
+<p>Context Switching Delta:
   <li>The change in the number of context switches (task/process swaps) between samples. High deltas can indicate task-switching overhead or multitasking pressure.</li>
 </p>
 <p>In simple terms; it generally can tell you what's eating at your cpu, which usually means lesser performance on your system</p>
@@ -31,6 +29,11 @@ permalink: /processcount/
 <h4>Conclusion</h4>
 <p>Don't chase a low number just for your own ego; target specific apps running on your machine with <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer" target="_blank" rel="noopener noreferrer">Process Explorer</a>, disable all startup apps, and ensure you have no background apps running by checking the tray icons (won't always show everything running, but most apps have a tray icon). And remember that disabling Windows Services in bulk is a sure-fire way to brick your device, the benefits don't outweigh the risk.</p>
 <h4>Source for Documentation</h4>
-<a href="https://zusier.xyz/blog/posts/process-count-doesnt-matter/" target="_blank" rel="noopener noreferrer">Zusier's Blog</a>
-<a href="https://learn.microsoft.com/en-us/windows/win32/procthread/context-switches" target="_blank" rel="noopener noreferrer">Learn Microsoft</a>
+<p>
+  <ul>
+    <li><a href="https://zusier.xyz/blog/posts/process-count-doesnt-matter/" target="_blank" rel="noopener noreferrer">Zusier's Blog</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/windows/win32/procthread/context-switches" target="_blank" rel="noopener noreferrer">Learn Microsoft</a></li>
+  </ul>
+</p>
+
 <h5> End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie </h5>
