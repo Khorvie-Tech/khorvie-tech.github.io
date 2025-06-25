@@ -1,0 +1,36 @@
+---
+layout: post
+title: "Does Process Count Matter?"
+date: 2025-06-24
+permalink: /processcount/
+---
+<p>This article will go over process counts and whether or not you need to concern yourself with lowering them.</p>
+<!--more-->
+<p>Let's start off with the key source of information people turn to when arguing against the process counter, <a href="https://zusier.xyz/blog/posts/process-count-doesnt-matter/" target="_blank" rel="noopener noreferrer">Zusier's Blog</a></p>
+<p>I highly recommend you check out the blog for yourself, but to summarize the key point... is that he ran a test in which he made a singular process to run as heavy as he possibly could make it; and turned out to be comparable to over 1,000 discord instances, causing his system to completely lock up over just the 1 process.</p>
+<p>Then Zusier did the opposite as well, he made over 3000 process counts that were programmed to only sleep; lo and behold he could play games perfectly fine without any issue.</p>
+<p>The conclusion that he wants everyone to see is that the number itself is not a problem with your machine's performance; it is that certain processes on your machine are the cause and that to truly know what is slowing down your machine, you need to look at alternative stats like 'cycles delta' and 'context switch delta' (can be viewed with <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer" target="_blank" rel="noopener noreferrer">Process Explorer</a>). Both of which are much better measurements for what could be bogging down your system.</p>
+<h4>What are these measurements indicative of?</h4>
+<p>Cycles Delta:</p>
+<p>
+  <li>The number of CPU clock cycles used between two sampling points. Helps track how much "work" the CPU did during that time</li>
+</p>
+<p>Context Switching Delta:</p>
+<p>
+  <li>The change in the number of context switches (task/process swaps) between samples. High deltas can indicate task-switching overhead or multitasking pressure.</li>
+</p>
+<p>In simple terms; it generally can tell you what's eating at your cpu, which usually means lesser performance on your system</p>
+<p>When using <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer" target="_blank" rel="noopener noreferrer">Process Explorer</a>, you can see these values by right clicking the 'Process' column (or any other) and hitting 'Select Column', afterwards go into the 'Process Performance' tab and check both 'CPU Cycles Delta' and 'Context Switch Delta'</p>
+<h4>What should you disable</h4>
+<p>A great place to start would be disabling all of your startup applications; after that, you can close out applications like spotify, discord, browsers, or any other software that is running in your background. You can double check what may potentially be running in the background by visiting your tray icons in the bottom corner of your screen.</p>
+<p><img src="/images/processcount/tray.png" alt="pic of tray icon"></p>
+<h4>What about disabling Windows Services?</h4>
+<p>Disabling Windows Services just for frame benefit will not notable in any sense.</p>
+<p><img src="/images/processcount/frames.png" alt="pic of frames in fortnite"></p>
+<p>The most that disabling Windows services does for you is reducing the amount of RAM usage; but you must ask yourself if it's really worth risking the chance at bricking your machine beyond fixing and needing to reinstall windows.</p>
+<h4>Conclusion</h4>
+<p>Don't chase a low number just for your own ego; target specific apps running on your machine with <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer" target="_blank" rel="noopener noreferrer">Process Explorer</a>, disable all startup apps, and ensure you have no background apps running by checking the tray icons (won't always show everything running, but most apps have a tray icon). And remember that disabling Windows Services in bulk is a sure-fire way to brick your device, the benefits don't outweigh the risk.</p>
+<h4>Source for Documentation</h4>
+<a href="https://zusier.xyz/blog/posts/process-count-doesnt-matter/" target="_blank" rel="noopener noreferrer">Zusier's Blog</a>
+<a href="https://learn.microsoft.com/en-us/windows/win32/procthread/context-switches" target="_blank" rel="noopener noreferrer">Learn Microsoft</a>
+<h5> End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie </h5>
