@@ -14,7 +14,7 @@ permalink: /BIOS/
 <p>Controls whether certain parts of your processor—specifically, the Accelerated Co-Processor (ACP) or similar helper blocks—can be completely powered off when not in use. This helps save energy and reduce heat by shutting down parts of the chip that aren’t needed at the moment.</p> 
 <p>A <a href="https://s3-us-west-1.amazonaws.com/ptab-filings%2FIPR2023-00920%2F1004" target="_blank" rel="noopener noreferrer">research study</a> supported by the Semiconductor Research Corporation (SRC) and MICRO through IBM, with equipment provided by Intel, states that it is possible to achieve a 47% reduction in
  leakage power all while maintaining the same performance. It does acknowledge that power gating is not free: it introduces some area
- and power overhead (for sleep transistors and extrea decoupling capacitance), if not carefully designed can have more performance 
+ and power overhead (for sleep transistors and extra decoupling capacitance), if not carefully designed can have more performance 
 penalty than benefit. Though when properly designed they state it does not come with any significant performance loss and that the power saving benefits from power-gating are much greater than any minor performance cost given the technique is properly implemented</p>
 <p><b>Should you disable this setting?</b> Generally speaking, no—leaving power gating enabled saves power and reduces heat without hurting performance in most cases. However, as we learned, there are rare situations where testing it disabled may provide some benefit, especially if power-gating is not properly implemented for your CPU.</p>
 
