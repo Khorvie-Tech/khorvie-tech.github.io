@@ -9,18 +9,23 @@ permalink: /processcount/
 <p>Let's start off with the key source of information people turn to when arguing against the process counter, <a href="https://zusier.xyz/blog/posts/process-count-doesnt-matter/" target="_blank" rel="noopener noreferrer">Zusier's Blog</a></p>
 <p>I highly recommend you check out the blog for yourself, but to summarize the key point... is that he ran a test in which he made a singular process to run as heavy as he possibly could make it; and turned out to be comparable to over 1,000 discord instances, causing his system to completely lock up over just the 1 process.</p>
 <p>Then Zusier did the opposite as well, he made over 3000 process counts that were programmed to only sleep; lo and behold he could play games perfectly fine without any issue.</p>
-<p>The conclusion that he wants everyone to see is that the number itself is not a problem with your machine's performance; it is that certain processes on your machine are the cause and that to truly know what is slowing down your machine, you need to look at alternative stats like 'cycles delta' and 'context switch delta' (can be viewed with <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer" target="_blank" rel="noopener noreferrer">Process Explorer</a>). Both of which are much better measurements for what could be bogging down your system.</p>
+<p>The conclusion that he wants everyone to see is that <u>the number itself is not a problem</u> with your machine's performance; it is that <u>certain processes on your machine are the cause</u> and that to truly know what is slowing down your machine, you need to look at alternative stats like 'cycles delta' and 'context switch delta' (can be viewed with <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer" target="_blank" rel="noopener noreferrer">Process Explorer</a>). Both of which are much better measurements for what could be bogging down your system.</p>
 
 
 <h3>What are these measurements indicative of?</h3>
-<p>Cycles Delta:
-  <li>The number of CPU clock cycles used between two sampling points. Helps track how much "work" the CPU did during that time</li>
+<p><b>Cycles Delta:</b></p>
+<p>
+  <ul>
+    <li>The number of CPU clock cycles used between two sampling points. Helps track how much "work" the CPU did during that time</li>
+  </ul>
 </p>
-<br>
-<p>Context Switching Delta:
-  <li>The change in the number of context switches (task/process swaps) between samples. High deltas can indicate task-switching overhead or multitasking pressure.</li>
+<p><b>Context Switching Delta:</b></p>
+<p>
+  <ul>
+    <li>The change in the number of context switches (task/process swaps) between samples. High deltas can indicate task-switching overhead or multitasking pressure.</li>
+  </ul>
 </p>
-<br>
+  
 <p>In simple terms; it generally can tell you what's eating at your cpu, which usually means lesser performance on your system</p>
 <p>When using <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer" target="_blank" rel="noopener noreferrer">Process Explorer</a>, you can see these values by right clicking the 'Process' column (or any other) and hitting 'Select Column', afterwards go into the 'Process Performance' tab and check both 'CPU Cycles Delta' and 'Context Switch Delta'</p>
 
