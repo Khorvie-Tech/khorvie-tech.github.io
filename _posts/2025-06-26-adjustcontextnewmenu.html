@@ -1,0 +1,55 @@
+---
+layout: post
+title: "Add to 'New' in the Context Menu"
+date: 2025-06-26
+permalink: /adjustnewcontextmenu/
+---
+<h5>This article is still being built out, content will be added and arranged before completion.</h5>
+<p>Add more options inside of your context menu under 'New'; want to easily make a .bat or .reg file without needing to go through the process of renaming? Now you can...</p>
+<!--more-->
+<p><img src="/images/newcontextmenu/desktop.png" alt="context menu"></p>
+<p>To get started on the process of adding these files to the context menu, you need to open up the registry editor and make your way to <i><b>HKEY_CLASSES_ROOT</b></i></p>
+<p><img src="/images/newcontextmenu/1.png" alt="hkey classes root"></p>
+<p>Once you do, you can right click on <i><b>HKEY_CLASSES_ROOT</b></i> and select <i>'new'</i> and then choose <i>'Key'</i> from that list and then name an extension of your choosing such as .reg, .cmd, .bat. However, with these being common extensions it is likely created already so scroll down until you find them.</p>
+<h3>Setting up .bat</h3>
+<p>I'll be choosing .bat for demonstration purposes. But ideally you can do this with any sort of file extension.</p>
+<p><img src="/images/newcontextmenu/2.png" alt="new key for .bat"></p>
+<p>Once you get to the desired location, right click on the folder and select <i>'new'</i> then <i>'Key'</i> (see above picture) and name it exactly as shown <i>ShellNew</i> (see picture below)</p>
+<p><img src="/images/newcontextmenu/3.png" alt="new key for .bat"></p>
+<p>After <i>ShellNew</i> is created, you want to right click while having it selected and create a 'String Value' and then name it <i>NullFile</i></p>
+<p><img src="/images/newcontextmenu/5.png" alt="new string for ShellNew"></p>
+<p>This tells Windows to create the file completely empty; if this is all you need, it should show immediately in your context menu under 'new' (if not restart pc or reset file explorer through task manager)</p>
+<p>But if you would like to customize this files even further you can below</p>
+<h3>Advanced/Optional</h3>
+<h4>Steps to do so (showcasing .bat and .reg only)</h4>
+<h5>.reg</h5>
+<p>
+  <ul>
+    <li>Right Click on desktop, and create a .reg file named <i>template.reg</i> and paste this text inside-> <i>Windows Registry Editor Version 5.00</i> then hit 'ctrl s' to save and open your file explorer</li>
+    <li>Once File Explorer is open, navigate to the root of your C drive ('C:\'), then go into <i>Windows</i> and create a file called <i>ShellNew</i> (will likely prompt for admin)</li>
+    <li>You'll use this location for all template files that you use; grab the template.reg that you made earlier and put it in here.</li>
+    <li>Now open the registry editor and navigate to this location, <i>HKEY_CLASSES_ROOT\.reg\ShellNew</i> where you want to right click and make a string value called <i>FileName</i></li>
+    <li>Once created, paste this value <i>C:\Windows\ShellNew\template.reg</i> (this should be the proper value given instructions were properly followed)</li>
+    <li>Lastly, if you have another string key in there called <i>NullFile</i> it needs to be deleted, that string is only used when you want a completely blank document.</li>
+    <li>Reboot your machine and everything should work properly.</li>
+  </ul>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5> End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie </h5>
