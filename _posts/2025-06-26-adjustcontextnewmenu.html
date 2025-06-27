@@ -26,10 +26,13 @@ permalink: /adjustnewcontextmenu/
 <p>
   <ul>
     <li>Right Click on desktop, and create a .reg file named <i>template.reg</i> and paste this text inside-> <i>Windows Registry Editor Version 5.00</i> then hit 'ctrl s' to save and open your file explorer</li>
+    <p><img src="/images/newcontextmenu/b.png" alt="pic of reg file"></p>
     <li>Once File Explorer is open, navigate to the root of your C drive ('C:\'), then go into <i>Windows</i> and create (or enter) a file called <i>ShellNew</i> (will likely prompt for admin if creating)</li>
     <li>You'll use this location for all template files that you use; grab the template.reg that you made earlier and put it in here.</li>
+    <p><img src="/images/newcontextmenu/d.png" alt="pic of file location"></p>
     <li>Now open the registry editor and navigate to this location, <i>HKEY_CLASSES_ROOT\.reg\ShellNew</i> where you want to right click and make a string value called <i>FileName</i></li>
     <li>Once created, paste this value <i>C:\Windows\ShellNew\template.reg</i> (this should be the proper value given instructions were properly followed)</li>
+    <p><img src="/images/newcontextmenu/a.png" alt="pic of reg file"></p>
     <li>Lastly, if you have another string key in there called <i>NullFile</i> it needs to be deleted, that string is only used when you want a completely blank document.</li>
     <li>Reboot isn't required but always nice to do.</li>
   </ul>
@@ -38,12 +41,15 @@ permalink: /adjustnewcontextmenu/
 <p>
   <ul>
     <li>Right Click on desktop, and create a .bat file named <i>template.bat</i> and paste this text inside-> <i>@echo off</i> then hit 'ctrl s' to save and open your file explorer</li>
+    <p><img src="/images/newcontextmenu/c.png" alt="pic of bat file"></p>
     <li>Once File Explorer is open, navigate to the root of your C drive ('C:\'), then go into <i>Windows</i> and create (or enter) a file called <i>ShellNew</i> (will likely prompt for admin if creating)</li>
     <li>You'll use this location for all template files that you use; grab the template.bat that you made earlier and put it in here.</li>
+    <p><img src="/images/newcontextmenu/d.png" alt="pic of file location"></p>
     <li>Now open the registry editor and navigate to this location, <i>HKEY_CLASSES_ROOT\.bat\ShellNew</i> where you want to right click and make a string value called <i>FileName</i></li>
     <li>Once created, paste this value <i>C:\Windows\ShellNew\template.bat</i> (this should be the proper value given instructions were properly followed)</li>
+    <p><img src="/images/newcontextmenu/e.png" alt="pic of bat file"></p>
     <li>Lastly, if you have another string key in there called <i>NullFile</i> it needs to be deleted, that string is only used when you want a completely blank document.</li>
     <li>Reboot isn't required but always nice to do.</li>
   </ul>
-
+<p>You should in theory be able to follow this same sort of formatting for most code related file extensions.</p>
 <h5> End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie </h5>
