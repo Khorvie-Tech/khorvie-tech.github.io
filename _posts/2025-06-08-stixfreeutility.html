@@ -389,12 +389,11 @@ powershell "Disable-MMAgent -MemoryCompression" >nul 2>&1
 <details>
   <summary><u><b><i>Click to See Batch Code</i></b></u></summary>
   <pre><code>
+schtasks /change /disable /tn "NvTmRepCrashReport2{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" >nul 2>&1
+schtasks /change /disable /tn "NvTmRepCrashReport3{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" >nul 2>&1
+schtasks /change /disable /tn "NvTmRepCrashReport4{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" >nul 2>&1
 reg add "HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client" /v "OptInOrOutPreference" /t REG_DWORD /d "0" /f >nul 2>&1
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d "0" /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup" /v "SendTelemetryData" /t REG_DWORD /d "0" /f >nul 2>&1
-schtasks /change /disable /tn "NvTmRep_CrashReport2_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" >nul 2>&1
-schtasks /change /disable /tn "NvTmRep_CrashReport3_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" >nul 2>&1
-schtasks /change /disable /tn "NvTmRep_CrashReport4_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "DisablePreemption" /t REG_DWORD /d 1 /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "DisableCudaContextPreemption" /t REG_DWORD /d 1 /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "EnableCEPreemption" /t REG_DWORD /d 0 /f >nul 2>&1
@@ -406,11 +405,24 @@ reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "EnableMi
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "EnableMidBufferPreemption" /t REG_DWORD /d 0 /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "EnableAsyncMidBufferPreemption" /t REG_DWORD /d 0 /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm" /v "DisableCudaContextPreemption" /t REG_DWORD /d 1 /f >nul 2>&1
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\nvlddmkm\Global\NVTweak" /v "DisplayPowerSaving" /t REG_DWORD /d 0 /f >nul 2>&1
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\Global\NVTweak" /v "DisplayPowerSaving" /t REG_DWORD /d 0 /f >nul 2>&1
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\GraphicsDrivers\Scheduler" /v "EnablePreemption" /t REG_DWORD /d 0 /f >nul 2>&1
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0001" /v "RMPowerFeature" /t REG_DWORD /d "4" /f >nul 2>&1
 "C:\Stix Free\nvidiaProfileInspector.exe" -import "C:\Stix Free\Stix Free NIP.nip"
+for /f "delims=" %%i in ('powershell -command "Get-WmiObject Win32VideoController | Select-Object -ExpandProperty PNPDeviceID | findstr /L "PCI\VEN""') do (
+    for /f "tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Enum%%i" /v "Driver"') do (
+        for /f %%i in ('echo %%a ^| findstr "{"') do (
+             Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class%%i" /v "RMPowerFeature" /t REG_DWORD /d "0x55455555" /f > nul 2>&1
+             Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class%%i" /v "RMPowerFeature2" /t REG_DWORD /d "0x05555554" /f > nul 2>&1
+             Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class%%i" /v "RMElcg" /t REG_DWORD /d "0x55555555" /f > nul 2>&1
+             Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class%%i" /v "RMBlcg" /t REG_DWORD /d "0x1111111" /f > nul 2>&1
+             Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class%%i" /v "RMElpg" /t REG_DWORD /d "0x00000fff" /f > nul 2>&1
+             Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class%%i" /v "RMFspg" /t REG_DWORD /d "0x0000000f" /f > nul 2>&1
+             Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class%%i" /v "RMSlcg" /t REG_DWORD /d "0x0003ffff" /f > nul 2>&1
+             Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class%%i" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f > nul 2>&1
+             Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Class%%i" /v "DisableAsyncPstates" /t REG_DWORD /d "1" /f > nul 2>&1
+
+                   )
+                )
+             )
   </code></pre>
 </details>
 
