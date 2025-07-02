@@ -1,0 +1,16 @@
+---
+layout: post
+title: "Fix Missing Compatibility Tab"
+date: 2025-07-01
+permalink: /fixcompattab/
+---
+<p>Use this registry value to fix the missing compatibility tab.</p>
+<!--more-->
+<p>Open up your registry editor and find this location</p>
+<p><u>HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat</u></p>
+<p>If you do not have AppCompat then while having Windows selected, right click and make a new key and name it AppCompat</p>
+<p>Next, look for a value or right click and create a new dword 32 bit value and name it <u>DisablePropPage</u></p>
+<p>A value of 1 should disable the compatibility tab while a value of 0 should show the compatibility tab again</p>
+<p>A system restart should not be needed, you should only need to close out of your compatibility settings if you have them open, and then attempt to open them again and it should work</p>
+
+<h5> End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie </h5>
