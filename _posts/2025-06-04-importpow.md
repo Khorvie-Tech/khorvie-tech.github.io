@@ -30,7 +30,7 @@ You can try to disable something called *modern standby* by searching in your se
 
 ```nohighlight
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power
-"PlatformAoAcOverride"=dword:00000000*
+"PlatformAoAcOverride"=dword:00000000
 ```
 
 After setting this value to 0, restart your machine and check again for your power plan
