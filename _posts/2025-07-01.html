@@ -1,0 +1,15 @@
+---
+layout: post
+title: "Get an app to open MS-Gamingoverlay popup removal"
+date: 2025-07-01
+permalink: /msgamingoverlay/
+---
+<p>Remove the ms gaming overlay popup in these easy steps</p>
+<!--more-->
+<h5>Step 1: open registry editor</h5>
+<p>Once you have the registry editor opened, navigate to this location inside</p>
+<p><i><u>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR</u></i></p>
+<p>Look for a dword value in there called <u>AppCaptureEnabled</u> and set the value to 0</p>
+<p>If this value does not exist, you need to still make sure you are within <i><u>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR</u></i> then right click and create a new dword 32 bit value and name it <u>AppCaptureEnabled</u></p>
+<h5>Step 2: reboot and it should be fixed</h5>
+<h5> End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie </h5>
