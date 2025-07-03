@@ -25,8 +25,19 @@ permalink: /missingpow/
 <h3>Option 3</h3>
 <p>If you've disabled any services in relation to power, it may also cause issues. Ensure services like the Power service aren't disabled</p>
 
-<h3>Lastly</h3>
+<h3>Option 4</h3>
 <p>Ensure you are importing plans <a href="https://khorvie.tech/importpow/" target="_blank" rel="noopener noreferrer">properly</a> (if adding custom plans)</p>
+
+<h3>Last Option</h3>
+<p>You can check if the plans are actually importing and just not showing by typing this command into command prompt</p>
+<p><u>powercfg -list</u></p>
+<p>Doing this should show you a list of all powerplans imported onto your system (thanks to kye in my discord for the picture example)</p>
+<p><img src="/images/missing pow/image.png" alt="image"></p>
+<p>If you happen to see that you have multiple power schemes without any names then take note of how many are in your list and then try to import your plan again; after another import type in <u>powercfg -list</u> again and see if a new scheme appears without a name</p>
+<p>If you do happen to see a new scheme added without a name, copy the guid and then perform this command</p>
+<p>powercfg -changename pasteguidhere "useanynamehere"</p>
+<p>Once a name has been given to the previously unnamed scheme it should appear within your control panel now for choosing.</p>
+
 <h5> End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie </h5>
 
 
