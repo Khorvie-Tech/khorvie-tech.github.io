@@ -44,6 +44,7 @@ The reason why disabling modern standby can fix hidden power plans is because mo
 
 If after all of this if it still doesn't appear, ensure there are no errors in the way you are importing your plan, as these methods should work for anyone in importing a power plan.
 
+Also check [Missing Power Plans](https://khorvie.tech/missingpow/) if this does somehow not work.
 
 ### (Optional/advanced) Making a Custom GUID
 To give a custom GUID to the plan; the import command would be something like this
@@ -67,5 +68,8 @@ Additionally you can also change the name of a plan while importing if you use t
 powercfg -import "C:\Path\To\Plan.pow" {your-guid-here} "Your Plan Name"
 
 For it to work properly ***you need to specify the guid*** otherwise the Name parameter gets ignored.
+
+
+
 
 ##### End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie
