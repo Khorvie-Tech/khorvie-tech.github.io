@@ -13,5 +13,6 @@ If you need to reach out to me, I suggest you use the following email
 
 <div style="padding-top: 20px; padding-bottom: 30px;">
 Business: contact@khorvie.tech
+
 Everything Else: support@khorvie.tech
 </div>
