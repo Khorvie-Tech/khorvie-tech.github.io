@@ -11,6 +11,10 @@
  - name: "About"
    url: "/info"
    title: "About"
+   
+ - name: "Hall of Fame"
+   url: "/halloffame/"
+   title: "Hall of Fame"
 
  - name: "YouTube"
    url: https://www.youtube.com/@khorvietech
