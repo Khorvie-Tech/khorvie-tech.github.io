@@ -18,6 +18,11 @@
   url: "/info/"
   side: left
 #
+- title: "Contact"
+  url: '/contact/'
+  side: right
+
+  
 - title: "☀️/🌙 Soon"
   url: '#'
   side: right
