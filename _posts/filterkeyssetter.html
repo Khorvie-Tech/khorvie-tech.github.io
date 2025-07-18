@@ -4,79 +4,26 @@ title: "Filter Keys Setter"
 date: 2025-07-17
 permalink: /filterkeyssetter/
 ---
-<p>Still being built out</p>
 <p>This article will cover filter keys setter and why it doesn't reduce input delay in games.</p>
+<p>Video Version coming soon</p>
 <!--more-->
-<h2>What is filter keys setter</h2>
+<h2>What is Filter Keys Setter</h2>
 pic
-<p>This program is used to adjust filter keys, which is primarily an accessibility feature for users with motor difficulties. It's designed 
-to adjust the key repeat rate and delay beyond normal values allowed in windows</p>
+<p>FilterKeys is an accessibility feature in Windows designed to manage how the system processes keyboard input, primarily for users with motor impairments. Its purpose is to introduce intentional delays (e.g., ignoring repeated or accidental key presses) and does not optimize input for speed or performance.</p>
 
+<p>Now you may ask; Khorvie, you just said that Filter Keys manages how the system processes keyboard input, that sounds like it should have an effect: which is true, it has an effect on the operating system level, however when it comes to gaming specifically; most modern games use low-level APIs (such as DirectInput, XInput, or Raw Input) to interact directly with input devices like keyboards or controllers. These APIs are already optimized for minimal latency and do not rely on the Windows’ high-level keyboard processing, which FilterKeys modifies. As a result, changes in FilterKeys has no effect on how games receive or handle input.</p>
 
+<p>Peripheral input delay in games is typically influenced by other elements, such as:
+  <ul>
+    <li>Wired or wireless connection</li>
+    <li>Quality of firmware or drivers for that hardware</li>
+    <li>Polling rates</li>
+  </ul>
+</p>
+<p>And in keyboards specifically, actuation point and other input centric settings (like shown in some wooting keyboards) such as rapid trigger which allows for input to be detected at any point of travel, not just when keys return to the top.</p>
 
+<p>In short, Filter Keys Setter doesn't affect how the game uses your keypresses, its literally just an accessibility feature for the operating system level only</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<p>If anyone of you in the past has turned on Filter Keys, you can turn it off by opening your windows settings and going to accessibility, then keyboard, and then disabling filter keys here</p>
 
 <h5> End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie </h5>
