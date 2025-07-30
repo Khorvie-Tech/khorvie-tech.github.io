@@ -1,0 +1,176 @@
+---
+layout: post
+title: "WiFi Adapter Settings"
+date: 2025-07-29
+permalink: /ethernetnic/
+---
+<p>Get recommended settings and information on common WiFi adapter NIC settings.</p>
+<!--more-->
+
+
+<h3>20/40 Coexistence</h3>
+<p>Ensures the wireless adapter switches automatically between 20 MHz and 40 MHz channel width depending on interference and coexistence with other devices, minimizing disruption.</p>
+<p>Recommended setting: Enabled for compatibility with nearby networks.</p>
+
+<h3>40 MHz Intolerant / Fat channel Intolerant</h3>
+<p>Signals to other Wi-Fi devices that this adapter cannot tolerate 40 MHz channels, forcing 20 MHz operation to reduce interference.</p>
+<p>Recommended setting: Disabled unless you experience Wi-Fi interference issues.</p>
+
+<h3>802.11n Preamble</h3>
+<p>Sets the preamble type for 802.11n transmission, impacting compatibility and performance between legacy and modern devices. Long Preamble is needed for older 802.11b/g adapters, for weaker signals (lower RSSI),  while strong signals and 802.11n/ac devices generally work well with short preamble. The short preamble will yield slightly better performance if the signal is strong and there is no packet loss, however, it needs to be set the same on all devices (routers/access points/repeaters). In noisy wireless environments, for better compatibility, and in low-signal distant connections it is best to use long preamble.</p>
+<p>Recommended setting: Mixed Mode; or short preamble with strong connections/no packet loss</p>
+
+<h3>Afterburner</h3>
+<p>A Broadcom-specific speed boost technology (125 High-Speed Mode) for older 802.11g adapters.</p>
+<p>Recommended setting: Disabled unless using only compatible Broadcom devices.</p>
+
+<h3>Antenna Diversity</h3>
+<p>Allows the adapter to use the best signal from multiple antennas, improving reliability and reception.</p>
+<p>Recommended setting: Auto or Enabled for most environments.</p>
+
+<h3>Assoc Listen Interval</h3>
+<p>How long a client device can doze between listening for beacon frames from the AP without being disconnected.</p>
+<p>Recommended setting: Default unless you need to save more power (for battery-operated devices).</p>
+
+<h3>Association Roam Preference</h3>
+<p>Controls preference for staying connected to a current access point or aggressively seeking a better signal.</p>
+<p>Recommended setting: Default or Balanced for most users.</p>
+
+<h3>Bandwidth Capability</h3>
+<p>Specifies the supported channel widths (20 MHz, 40 MHz, or both) for Wi-Fi operation.</p>
+<p>Recommended setting: Auto/20/40 MHz for best throughput unless compatibility issues arise.</p>
+
+<h3>Beamforming</h3>
+<p>A wireless technology that focuses Wi-Fi signals toward devices to improve range and throughput.</p>
+<p>Recommended setting: Enabled, if both router and client support it.</p>
+
+<h3>Bluetooth Collaboration</h3>
+<p>Enhances coexistence between Wi-Fi and Bluetooth in the same device to reduce interference.</p>
+<p>Recommended setting: Enabled if your device uses Bluetooth and Wi-Fi simultaneously.</p>
+
+<h3>Channel Width</h3>
+<p>Sets the frequency bandwidth (20 MHz or 40 MHz) for the wireless connection, impacting speed and compatibility.</p>
+<p>Recommended setting: Auto or 20/40 MHz; use 20 MHz if experiencing interference.</p>
+
+<h3>D2 Listen Interval</h3>
+<p>A power-saving feature that determines how often a device wakes up to receive data from the AP in certain power states.</p>
+<p>Recommended setting: Default, 3 for performance, 7 for battery life</p>
+
+<h3>Fat Channel Intolerant</h3>
+<p>Forces 20 MHz channel use and signals intolerance to 40 MHz “fat” channels to the access point.</p>
+<p>Recommended setting: Disabled unless nearby devices are having Wi-Fi issues.</p>
+
+<h3>Fragmentation Threshold</h3>
+<p>Specifies maximum packet size before data is fragmented; smaller values can reduce collisions in busy networks but may reduce throughput.</p>
+<p>Recommended setting: Default; only adjust for troubleshooting.</p>
+
+<h3>Global BG scan blocking</h3>
+<p>Prevents background scans while connected to an access point for a more stable connection.</p>
+<p>Recommended setting: On Good RSSI</p>
+
+<h3>GTK rekeying for WoWLAN</h3>
+<p>Enables Group Temporal Key (GTK) rekeying during Wake on Wireless LAN for security.</p>
+<p>Recommended setting: Enabled to maintain secure connections during sleep.</p>
+
+<h3>HT Mode</h3>
+<p>Controls "High Throughput" 802.11n features (such as MIMO and wide channel support).</p>
+<p>Recommended setting: Enabled unless legacy device compatibility issues occur.</p>
+
+<h3>Intel Throughput Enhancement</h3>
+<p>An Intel-specific setting to optimize throughput for small packets over wireless networks.</p>
+<p>Recommended setting: Enabled for improved throughput where supported.</p>
+
+<h3>LTR Enable/Disable</h3>
+<p>Latency Tolerance Reporting allows the Wi-Fi card and system platform to optimize for power saving during idle periods.</p>
+<p>Recommended setting: Disable</p>
+
+<h3>LTR Active Value</h3>
+<p>Defines the LTR value, controlling how long the adapter can remain idle before entering low power mode.</p>
+<p>Recommended setting: Disable</p>
+
+<h3>MIMO Power Save Mode</h3>
+<p>Optimizes MIMO (Multiple In Multiple Out) power consumption, trading off performance for battery savings.</p>
+<p>Recommended setting: No SMPS</p>
+
+<h3>Minimum Power Consumption</h3>
+<p>Puts the adapter into its lowest possible power consumption mode at the cost of performance.</p>
+<p>Recommended setting: Disabled</p>
+
+<h3>Mixed mode protection</h3>
+<p>Adds extra signal protection for legacy devices on modern networks to prevent interference.</p>
+<p>Recommended setting: Default should be fine, but CTS-to-self may provide more throughput where clients are closer</p>
+
+<h3>NS Offload</h3>
+<p>Offloads Neighbor Solicitation responses to the adapter for improved sleep performance.</p>
+<p>Recommended setting: Disabled</p>
+
+<h3>Packet Coalescing</h3>
+<p>Combines small packets together in low power states for efficient network communication.</p>
+<p>Recommended setting: Disabled</p>
+
+<h3>PLCP Header (BSS PLCP Header)</h3>
+<p>Specifies the header format for communication between devices within a Basic Service Set.</p>
+<p>Recommended setting: Default should be fine</p>
+
+<h3>Power Output</h3>
+<p>Controls the transmission power level of the Wi-Fi card, impacting range and battery use.</p>
+<p>Recommended setting: 100% or highest, unless reducing interference is necessary.</p>
+
+<h3>Preferred band</h3>
+<p>Selects a preference for connecting to 2.4 GHz or 5 GHz band when both are available.</p>
+<p>Recommended setting: 5 GHz for less interference and potentially higher speeds; use Auto if unsure.</p>
+
+<h3>Priority & VLAN</h3>
+<p>Enables packet prioritization (QoS) and Virtual LAN tagging on Wi-Fi traffic.</p>
+<p>Recommended setting: Disabled unless your network uses QoS or VLANs.</p>
+
+<h3>Rate</h3>
+<p>Manually sets the data rate for Wi-Fi transmission; most should leave it to auto-adjust dynamically.</p>
+<p>Recommended setting: Auto (default); only specify for particular legacy network requirements.</p>
+
+<h3>Roaming Decision</h3>
+<p>Controls the threshold for the adapter to switch to a better access point when roaming.</p>
+<p>Recommended setting: Default or Balanced; tweak only if experiencing roaming problems.</p>
+
+<h3>Roam Tendency</h3>
+<p>Adjusts how actively the adapter roams to stronger access points.</p>
+<p>Recommended setting: Default; lower values can make the adapter switch faster</p>
+
+<h3>RTS Threshold</h3>
+<p>Defines the minimum packet size that triggers the RTS/CTS (Ready to Send/Clear to Send) handshake, reducing collisions in busy networks.</p>
+<p>Recommended setting: Default; lower it only in environments with heavy interference. (lower values can add overhead)</p>
+
+<h3>Short GI</h3>
+<p>Enables Short Guard Interval (400ns vs. 800ns), which can increase data throughput at the expense of increased error risk in noisy environments.</p>
+<p>Recommended setting: Auto/Enabled unless experiencing connection problems.</p>
+
+<h3>Transmit Power</h3>
+<p>Sets how strongly the Wi-Fi card transmits signals, affecting range and interference.</p>
+<p>Recommended setting: Highest or 100%; decrease only to minimize interference.</p>
+
+<h3>Throughput Booster/Enhancement</h3>
+<p>Enhance the transmit throughput by allowing the client Wi-Fi adapter to hold longer possession of the connection than normally to send data to the AP. This only improves upload throughput (from client to the AP) and only useful for uploading large files. It may negatively impact other Wi-Fi clients since only one client can transmit at a time.</p>
+<p>Recommended setting: Enabled, except when stability issues are observed.</p>
+
+<h3>WMM Power Save / U-APSD</h3>
+<p>Wi-Fi Multimedia (WMM) Power Save (Unscheduled Automatic Power Save Delivery) reduces power consumption of Wi-Fi for voice/video applications.</p>
+<p>Recommended setting: Disable</p>
+
+<h3>WFD Channel Number</h3>
+<p>Sets the channel used by Wi-Fi Direct (Wi-Fi Display) functionalities.</p>
+<p>Recommended setting: Auto or Default unless using Wi-Fi Direct with known requirements.</p>
+
+<h3>WiFi Rekeying Offload (GTK rekeying)</h3>
+<p>Allows the adapter to handle rekeying of group encryption keys, improving energy efficiency.</p>
+<p>Recommended setting: Enabled for best security and power performance.</p>
+
+<h3>WMM / WME</h3>
+<p>Wireless Multimedia Extensions allow for Quality of Service, prioritizing voice/video traffic over standard data.</p>
+<p>Recommended setting: Disable, only enable for power savings</p>
+
+<h3>Xpress Technology</h3>
+<p>A Broadcom feature for accelerating Wi-Fi throughput on crowded 802.11g networks (frame burst).</p>
+<p>Recommended setting: Disabled unless you have only Broadcom 802.11g devices on your network.</p>
+
+
+<h5> End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie</h5>
