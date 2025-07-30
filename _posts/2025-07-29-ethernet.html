@@ -1,0 +1,151 @@
+---
+layout: post
+title: "Ethernet Adapter Settings"
+date: 2025-07-29
+permalink: /ethernetnic/
+---
+<p>Get recommended settings and information on common ethernet adapter nic settings.</p>
+<!--more-->
+
+<h3>Flow Control</h3>
+<p>Allows the network adapter to manage traffic congestion by pausing data transmission when buffers are full, helping to prevent dropped packets during high traffic.</p>
+<p>Recommended setting: Disabled</p>
+
+<h3>Jumbo Frames</h3>
+<p>Increases the Ethernet frame size beyond the standard 1518 bytes, potentially improving throughput for large data transfers, but requires support from all network devices.</p>
+<p>Recommended setting: Disabled (majority of the time for compatibility issues)</p>
+
+<h3>Energy Efficient Ethernet (EEE)</h3>
+<p>Reduces power consumption during periods of low network activity by placing the network interface in a low power idle state.</p>
+<p>Recommended setting: Disabled</p>
+
+<h3>Power Saving Mode</h3>
+<p>Allows the adapter to enter a low-power state when the system is idle, saving energy but potentially delaying network connectivity on wake-up.</p>
+<p>Recommended setting: Disabled</p>
+
+<h3>Auto Disable Gigabit</h3>
+<p>Automatically disables Gigabit speeds when connecting to devices that do not support it to ensure compatibility or reduce power.</p>
+<p>Recommended setting: Disabled; leave Gigabit enabled unless compatibility problems arise.</p>
+
+<h3>Wake on Magic Packet</h3>
+<p>Allows the system to wake from a low-power state when a specially formatted network packet ("magic packet") is received.</p>
+<p>Recommended setting: Disabled unless if you use Wake-On-LAN features</p>
+
+<h3>Wake on pattern match</h3>
+<p>Wakes the PC from a low-power state when network traffic matches specific patterns, such as ARP requests or network logins.</p>
+<p>Recommended setting: Disabled, unless remote wake functionality is needed.</p>
+
+<h3>Shutdown Wake-On-LAN</h3>
+<p>Enables the network adapter to respond to Wake-On-LAN packets when the computer is fully shut down (S5 state).</p>
+<p>Recommended setting: Disabled for security; enable only if you need to power up machines remotely from shutdown.</p>
+
+<h3>NS Offload</h3>
+<p>Offloads Network Solicitation (NS) responses to the network card, reducing CPU usage and improving energy efficiency during sleep.</p>
+<p>Recommended setting: Disabled, Enabled for efficient power saving</p>
+
+<h3>ARP Offload</h3>
+<p>Enables the network adapter to answer ARP requests while the system is sleeping, maintaining network presence.</p>
+<p>Recommended setting: Disabled</p>
+
+<h3>Receive/Transmit Buffers</h3>
+<p>Controls the number of memory buffers for received and transmitted data for the network adapter.</p>
+<p>Recommended setting: 1024 for both, or 1024 R and 2048 T, or 2048 for both</p>
+
+<h3>Large Send Offload / Large Receive Offload</h3>
+<p>Allows the network adapter to handle the segmentation and reassembly of large packets, reducing CPU load.</p>
+<p>Recommended setting: Disabled (usually for compatibility issues)</p>
+
+<h3>Offload TCP Segmentation</h3>
+<p>Enables the network adapter to segment TCP data into packets, offloading the task from the CPU.</p>
+<p>Recommended setting: Disabled (setting often has buggy implemenation when enabled)</p>
+
+<h3>IPv4/TCP/UDP Checksum Offload</h3>
+<p>Allows the network card to calculate and verify checksums in packet headers, reducing CPU burden.</p>
+<p>Recommended setting: Test both ways (some CPUs can handle the load better than the NIC)</p>
+
+<h3>Gigabit Lite</h3>
+<p>A reduced-feature Gigabit mode that may increase compatibility with certain devices at the cost of full performance.</p>
+<p>Recommended setting: Disabled unless compatibility issues demand enabling it.</p>
+
+<h3>Receive/Transmit Descriptors</h3>
+<p>Sets the number of descriptors for receive and transmit frames in the network adapter's buffer.</p>
+<p>Recommended setting: Default; increase only if you experience network bottlenecks and have enough system RAM.</p>
+
+<h3>Interrupt Moderation Rate</h3>
+<p>Controls how often the network adapter interrupts the CPU to process packets, reducing CPU load at the cost of slightly increased latency.</p>
+<p>Recommended setting: Default for most uses; can be fine-tuned for low-latency applications.</p>
+
+<h3>Interrupt Moderation</h3>
+<p>Allows the network adapter to group packets before interrupting the CPU, reducing overhead.</p>
+<p>Recommended setting: Enabled for general use; disable for low-latency needs (like gaming or real-time apps).</p>
+<p>Side note: Disabling can potentially cause more interrupts on the network driver which can also potentially raise latency on that driver</p>
+
+<h3>Adaptive Inter-Frame Spacing</h3>
+<p>Dynamically adjusts the spacing between frames sent to help with network congestion or performance issues.</p>
+<p>Recommended setting: Disabled</p>
+
+<h3>Receive Side Scaling</h3>
+<p>Enables simultaneous packet processing across multiple CPU cores to improve network throughput.</p>
+<p>Recommended setting: Test both ways (can cause performance issues when enabled)</p>
+
+<h3>Log Link State Event</h3>
+<p>Records link state changes (e.g., link up/down) in the system log for diagnostic purposes.</p>
+<p>Recommended setting: (optional) Disabled unless needed</p>
+
+<h3>Gigabit Master Slave Mode</h3>
+<p>Sets whether the network adapter operates as a master or slave during Ethernet negotiation.</p>
+<p>Recommended setting: Auto (default); specify Master or Slave only to resolve network connectivity issues.</p>
+
+<h3>MAC Address / Locally Administered Address</h3>
+<p>Allows you to manually set a custom MAC address for the network interface.</p>
+<p>Recommended setting: Leave blank (default) unless a custom MAC is required.</p>
+
+<h3>Speed and Duplex</h3>
+<p>Sets the speed and duplex mode (half/full) of the adapter.</p>
+<p>Recommended setting: Auto-Negotiation; only force a specific value for compatibility or when not receiving your full link speeds.</p>
+
+<h3>Green Ethernet (Short Reach Mode)</h3>
+<p>Reduces power use if the cable is short and full Gigabit speeds are not required.</p>
+<p>Recommended setting: Disabled</p>
+
+<h3>Wake-On-LAN and Shutdown Link speed</h3>
+<p>Determines the link speed the adapter uses in low-power/Wake-on-LAN modes.</p>
+<p>Recommended setting: Auto/Default; adjust only if Wake-on-LAN does not function as expected.</p>
+
+<h3>DMA Coalescing</h3>
+<p>Lowers power consumption by aggregating multiple DMA (Direct Memory Access) operations into fewer events during low traffic.</p>
+<p>Recommended setting: Disabled, or Enabled to save power.</p>
+
+<h3>Enable PME</h3>
+<p>Enables Power Management Events (PME) to allow the device to wake the computer from sleep on network activity.</p>
+<p>Recommended setting: Disabled unless you need Wake-on-LAN or remote wake functions; otherwise .</p>
+
+<h3>Gigabit Phy Mode</h3>
+<p>Option to configure PHY (Physical Layer) settings for Gigabit Ethernet for certain compatibility situations.</p>
+<p>Recommended setting: Default/Auto; modify only to resolve compatibility issues.</p>
+
+<h3>Priority Packet & VLAN</h3>
+<p>Enables support for IEEE 802.1p QoS tagging and VLANs, letting traffic be prioritized or separated.</p>
+<p>Recommended setting: Disabled unless network environment supports and uses VLAN/QoS features.</p>
+
+<h3>PTP Hardware timestamp</h3>
+<p>Adds timestamping to packets for IEEE 1588 Precision Time Protocol synchronization over Ethernet.</p>
+<p>Recommended setting: Disabled unless using PTP synchronization (rare outside enterprise or specialized setups).</p>
+
+<h3>Reduce Speed on Power Down</h3>
+<p>Lowers the connection speed when the system enters a low-power state to save energy.</p>
+<p>Recommended setting: Disabled</p>
+
+<h3>Software Timestamp</h3>
+<p>Adds timestamping to packets for synchronization at the software level.</p>
+<p>Recommended setting: Disabled unless specifically required for diagnostics or time-sensitive applications.</p>
+
+<h3>Wait for link</h3>
+<p>Determines whether the system waits for a network link before finishing startup processes.</p>
+<p>Recommended setting: Disabled</p>
+
+<h3>Wake on Link settings</h3>
+<p>Wakes the system when a network link becomes active, not just by wake-on-LAN packets.</p>
+<p>Recommended setting: Disabled unless needed for your remote wake scenario.</p>
+
+<h5> End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie</h5>
