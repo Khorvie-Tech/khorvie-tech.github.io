@@ -1,0 +1,68 @@
+---
+layout: post
+title: "DX 11 vs DX 12"
+date: 2025-08-12
+permalink: /dxversions/
+---
+<p>Explore the key technical differences between DirectX 11 and DirectX 12 rendering modes.</p>
+<p>Benchmark showcase (Fortnite) can be found here upon video release</p>
+<!--more-->
+
+<h3>Rundown Version</h3>
+
+<h5>DX11: Stable & Simple</h5>
+<ul>
+  <li>Easier for developers to work with.</li>
+  <li>Great compatibility with older hardware.</li>
+  <li>Usually more stable, but can’t fully use modern CPUs with many cores.</li>
+  <li>Less room for fine-tuned performance tweaks.</li>
+</ul>
+
+<h5>DX12: Powerful but Demanding</h5>
+<ul>
+  <li>Gives developers direct access to the GPU for maximum performance.</li>
+  <li>Better at using multi-core CPUs for faster rendering.</li>
+  <li>Can improve frame rates and smoothness in games that are well-optimized.</li>
+  <li>More complex—poorly optimized DX12 games may actually run worse.</li>
+</ul>
+
+<p>DX12 on paper should be the better rendering mode when the game and engine is developed by a competent team; however this often isn't the case which results in DX11 usually being the better option.</p>
+
+<h3>Technical Version</h3>
+
+<h5>1. API Level & Hardware Interaction</h5>
+<p>DX11 is a high-level API, meaning it abstracts much of the hardware complexity away from developers. The graphics driver handles memory management, state transitions, and synchronization automatically. This makes DX11 easier to work with and generally more stable, but it limits fine-tuned optimizations and can introduce CPU overhead.</p>
+
+<p>DX12 is a low-level API—often described as "closer to the metal." Developers get direct access to the GPU, allowing highly specific optimizations that can push hardware to its limits. However, this control comes with added responsibility: developers must handle memory allocation, resource state transitions, and synchronization themselves. Done right, this means lower CPU overhead and better performance; done wrong, it can cause instability or crashes.</p>
+
+<h5>2. CPU Usage & Multi-threading</h5>
+<p>DX11’s architecture is largely single-threaded at the API level. While it supports some multi-threading through Deferred Contexts, the driver ultimately serializes commands, creating a bottleneck on multi-core CPUs.</p>
+
+<p>DX12 was built for modern multi-core systems. It allows multiple CPU threads to record command lists in parallel, which are then submitted to different queues—graphics, compute, or copy. This enables true parallel processing, significantly reducing draw call overhead and improving performance on CPUs with many cores.</p>
+
+<h5>3. Resource Management</h5>
+<p>DX11 automates resource handling. Textures, buffers, and pipeline states are managed by the driver, with automatic transitions between read/write states. This is simpler for developers, but it can waste CPU cycles through redundant checks.</p>
+
+<p>DX12 requires explicit resource management. Developers must manually define resource state changes (e.g., via D3D12_RESOURCE_BARRIER), allocate descriptor heaps, and manage shader resource views (SRVs). This offers precise control, but mistakes can lead to undefined behavior or crashes.</p>
+
+<h5>4. Pipeline State Handling</h5>
+<p>DX11 uses separate state objects (rasterizer, blend, depth-stencil) that are set individually. Switching states during runtime incurs CPU cost.</p>
+
+<p>DX12 introduces Pipeline State Objects (PSOs)—precompiled bundles of all required pipeline states. This reduces runtime state changes and improves CPU efficiency, though it requires compiling and storing multiple PSOs in advance.</p>
+
+<h5>5. Synchronization & Execution</h5>
+<p>DX11 handles GPU synchronization automatically. While this prevents errors, it can cause unnecessary waits, reducing efficiency.</p>
+
+<p>DX12 puts synchronization in the developer’s hands. By managing fences, barriers, and command queues manually, developers can overlap compute, graphics, and copy operations for better hardware utilization. The trade-off is higher complexity and more room for error.</p>
+
+<h5>6. Performance Impact</h5>
+<p>When optimized properly, DX12 can:
+  <ul>
+    <li>Reduce API overhead</li>
+    <li>Improve 1% low FPS and frame pacing</li>
+    <li>Enable advanced features like ray tracing and Variable Rate Shading (VRS)</li>
+  </ul>
+</p>
+<p>However, benefits depend heavily on game optimization and hardware. Some older systems may see better stability and performance sticking with DX11.</p>
+
+<h5> End of Article, feel free to reach out to me if you notice any errors or typos and I will gladly adjust. <3 Khorvie</h5>
