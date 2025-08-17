@@ -41,11 +41,11 @@ permalink: /ethernetnic/
 
 <h3>NS Offload</h3>
 <p>Allows the NIC to respond to network neighbor discovery requests while the computer is in a low-power or sleep state.</p>
-<p>Recommended setting: Disabled</p>
+<p>Recommended setting: Enabled is generally fine if you don't actively utilize the feature, however with buggy implementation on the adapter, disabled may prove better.</p>
 
 <h3>ARP Offload</h3>
 <p>Lets the NIC answer ARP (Address Resolution Protocol) requests for the system’s IP while the computer is asleep, helping other devices maintain connectivity information.</p>
-<p>Recommended setting: Disabled</p>
+<p>Recommended setting: Enabled is generally fine, but if you wake your system and notice connectivity is bugged, try Disabled</p>
 
 <h3>Receive/Transmit Buffers</h3>
 <p>Controls the number of memory buffers for received and transmitted data for the network adapter.</p>
