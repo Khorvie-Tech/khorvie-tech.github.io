@@ -40,11 +40,11 @@ permalink: /ethernetnic/
 <p>Recommended setting: Disabled for security; enable only if you need to power up machines remotely from shutdown.</p>
 
 <h3>NS Offload</h3>
-<p>Offloads Network Solicitation (NS) responses to the network card, reducing CPU usage and improving energy efficiency during sleep.</p>
-<p>Recommended setting: Disabled, Enabled for efficient power saving</p>
+<p>Allows the NIC to respond to network neighbor discovery requests while the computer is in a low-power or sleep state.</p>
+<p>Recommended setting: Disabled</p>
 
 <h3>ARP Offload</h3>
-<p>Enables the network adapter to answer ARP requests while the system is sleeping, maintaining network presence.</p>
+<p>Lets the NIC answer ARP (Address Resolution Protocol) requests for the system’s IP while the computer is asleep, helping other devices maintain connectivity information.</p>
 <p>Recommended setting: Disabled</p>
 
 <h3>Receive/Transmit Buffers</h3>
@@ -52,8 +52,8 @@ permalink: /ethernetnic/
 <p>Recommended setting: 1024 for both, or 1024 R and 2048 T, or 2048 for both</p>
 
 <h3>Large Send Offload / Large Receive Offload</h3>
-<p>Allows the network adapter to handle the segmentation and reassembly of large packets, reducing CPU load.</p>
-<p>Recommended setting: Disabled (usually for compatibility issues)</p>
+<p>Allows the TCP stack to pass very large segments (up to 64KB) to the NIC, which then segments them into smaller packets matching the network’s MTU</p>
+<p>Recommended setting: Disabled (usually for compatibility issues when enabled)</p>
 
 <h3>Offload TCP Segmentation</h3>
 <p>Enables the network adapter to segment TCP data into packets, offloading the task from the CPU.</p>
@@ -61,7 +61,7 @@ permalink: /ethernetnic/
 
 <h3>IPv4/TCP/UDP Checksum Offload</h3>
 <p>Allows the network card to calculate and verify checksums in packet headers, reducing CPU burden.</p>
-<p>Recommended setting: Test both ways (some CPUs can handle the load better than the NIC)</p>
+<p>Recommended setting: Enabled usually, but test both ways as there can be compatibility errors with it enabled</p>
 
 <h3>Gigabit Lite</h3>
 <p>A reduced-feature Gigabit mode that may increase compatibility with certain devices at the cost of full performance.</p>
