@@ -25,7 +25,7 @@ permalink: /ethernetnic/
 
 <h3>Auto Disable Gigabit</h3>
 <p>Automatically disables Gigabit speeds when connecting to devices that do not support it to ensure compatibility or reduce power.</p>
-<p>Recommended setting: Disabled; leave Gigabit enabled unless compatibility problems arise.</p>
+<p>Recommended setting: Disabled</p>
 
 <h3>Wake on Magic Packet</h3>
 <p>Allows the system to wake from a low-power state when a specially formatted network packet ("magic packet") is received.</p>
@@ -49,11 +49,11 @@ permalink: /ethernetnic/
 
 <h3>Receive/Transmit Buffers</h3>
 <p>Controls the number of memory buffers for received and transmitted data for the network adapter.</p>
-<p>Recommended setting: 1024 for both, or 1024 R and 2048 T, or 2048 for both</p>
+<p>Recommended setting: 1024 for both, or 1024 for Receive and 2048 for Transmit, or 2048 for both</p>
 
 <h3>Large Send Offload / Large Receive Offload</h3>
 <p>Allows the TCP stack to pass very large segments (up to 64KB) to the NIC, which then segments them into smaller packets matching the network’s MTU</p>
-<p>Recommended setting: Disabled (usually for compatibility issues when enabled)</p>
+<p>Recommended setting: Disabled (adapters usually aren't powerful enough for enabled or have compatibility issues when enabled)</p>
 
 <h3>Offload TCP Segmentation</h3>
 <p>Enables the network adapter to segment TCP data into packets, offloading the task from the CPU.</p>
@@ -61,24 +61,24 @@ permalink: /ethernetnic/
 
 <h3>IPv4/TCP/UDP Checksum Offload</h3>
 <p>Allows the network card to calculate and verify checksums in packet headers, reducing CPU burden.</p>
-<p>Recommended setting: Enabled usually, but test both ways as there can be compatibility errors with it enabled</p>
+<p>Recommended setting: Enabled usually, but test both ways as there can be compatibility issues with it enabled</p>
 
 <h3>Gigabit Lite</h3>
 <p>A reduced-feature Gigabit mode that may increase compatibility with certain devices at the cost of full performance.</p>
-<p>Recommended setting: Disabled unless compatibility issues demand enabling it.</p>
+<p>Recommended setting: Disabled</p>
 
 <h3>Receive/Transmit Descriptors</h3>
 <p>Sets the number of descriptors for receive and transmit frames in the network adapter's buffer.</p>
 <p>Recommended setting: Default; increase only if you experience network bottlenecks and have enough system RAM.</p>
 
-<h3>Interrupt Moderation Rate</h3>
-<p>Controls how often the network adapter interrupts the CPU to process packets, reducing CPU load at the cost of slightly increased latency.</p>
-<p>Recommended setting: Default for most uses; can be fine-tuned for low-latency applications.</p>
-
 <h3>Interrupt Moderation</h3>
 <p>Allows the network adapter to group packets before interrupting the CPU, reducing overhead.</p>
-<p>Recommended setting: Enabled for general use; disable for low-latency needs (like gaming or real-time apps).</p>
-<p>Side note: Disabling can potentially cause more interrupts on the network driver which can also potentially raise latency on that driver</p>
+<p>Recommended setting: Enabled for general use; disable for low-latency (like gaming or real-time apps).</p>
+<p>Side note: Disabling will cause more interrupts on the network driver which can give the appearance of higher latency</p>
+
+<h3>Interrupt Moderation Rate</h3>
+<p>Controls how often the network adapter interrupts the CPU to process packets, reducing CPU load at the cost of slightly increased latency.</p>
+<p>Recommended setting: Default for most cases is fine</p>
 
 <h3>Adaptive Inter-Frame Spacing</h3>
 <p>Dynamically adjusts the spacing between frames sent to help with network congestion or performance issues.</p>
