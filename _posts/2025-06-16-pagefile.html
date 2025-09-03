@@ -32,21 +32,36 @@ permalink: /pagefile/
 
 <h3>Pros and Cons of Disabling the Page File</h3>
 <h4>Pros of Disabling</h4>
-<li><b>Frees disk space:</b> Reclaims 2–32+ GB of storage.</li>
-<li><b>Avoids disk latency:</b> Eliminates slowdowns from paging if RAM is never exceeded.</li>
+
+<p>
+  <ul>
+    <li><b>Frees disk space:</b> Reclaims 2–32+ GB of storage.</li>
+    <li><b>Avoids disk latency:</b> Eliminates slowdowns from paging if RAM is never exceeded.</li>
+  </ul>
+</p>
+
 
 <h4>Cons of Disabling</h4>
-<li><b>System instability:</b> Risk of crashes or "Out of Memory" errors when RAM fills.</li>
-<li><b>Broken applications:</b> Certain software (e.g., Adobe apps, Hyper-V) may fail to run.</li>
-<li><b>No crash dumps:</b> Disables critical diagnostics for troubleshooting system failures.</li>
-<li><b>Disabled memory features:</b> Windows memory compression and ballooning in virtualized environments may malfunction.</li>
+<p>
+  <ul>
+    <li><b>System instability:</b> Risk of crashes or "Out of Memory" errors when RAM fills.</li>
+    <li><b>Broken applications:</b> Certain software (e.g., Adobe apps, Hyper-V) may fail to run.</li>
+    <li><b>No crash dumps:</b> Disables critical diagnostics for troubleshooting system failures.</li>
+    <li><b>Disabled memory features:</b> Windows memory compression and ballooning in virtualized environments may malfunction.</li>
+  </ul>
+</p>
 
 <h3>Windows-Managed vs. Manual Configuration</h3>
 <h4>Letting Windows Manage It</h4>
 <h4>Pros</h4>
-<li><b>Automatic optimization:</b> Dynamically adjusts size based on workload.</li>
-<li><b>Guaranteed stability:</b> Prevents application compatibility issues.</li>
-<li><b>Supports diagnostics:</b> Ensures crash dumps are always available.</li>
+<p>
+  <ul>
+    <li><b>Automatic optimization:</b> Dynamically adjusts size based on workload.</li>
+    <li><b>Guaranteed stability:</b> Prevents application compatibility issues.</li>
+    <li><b>Supports diagnostics:</b> Ensures crash dumps are always available.</li>
+  </ul>
+</p>
+
 
 <h4>Cons</h4>
 <li><b>Over-allocation:</b> May reserve excessive disk space, especially on large drives.</li>
