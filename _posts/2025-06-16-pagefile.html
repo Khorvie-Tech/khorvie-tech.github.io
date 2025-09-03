@@ -97,8 +97,10 @@ permalink: /pagefile/
 <h3>Terminology to know when setting a manual page file</h3>
 <p><img src="/images/pagefile/apply.png" alt="picture of settings"</p>
 <p>
-  <li><b>Initial Size (Minimum Size):</b> This is the amount of disk space (in MB) that Windows will allocate for the page file at system startup. The page file will not shrink below this value during operation and will always be reserved on disk.</li>
-  <li><b>Maximum Size:</b> This is the largest size (in MB) the page file is allowed to grow to if the system needs more virtual memory.</li>
+  <ul>
+    <li><b>Initial Size (Minimum Size):</b> This is the amount of disk space (in MB) that Windows will allocate for the page file at system startup. The page file will not shrink below this value during operation and will always be reserved on disk.</li>
+    <li><b>Maximum Size:</b> This is the largest size (in MB) the page file is allowed to grow to if the system needs more virtual memory.</li>
+  </ul>
 </p>
 <p>Recommended to typically to set these both to the same value</p>
 
@@ -128,9 +130,14 @@ permalink: /pagefile/
 </table>
 
 <h3>Risks of an Oversized Page File</h3>
-<li><b>Storage bloat:</b> Consumes disk space unnecessarily, limiting room for files/apps.</li>
-<li><b>Performance degradation:</b> Heavy paging to slow HDDs causes noticeable lag.</li>
-<li><b>Fragmentation:</b> Large files on HDDs fragment over time, slowing access speeds.</li>
+<p>
+  <ul>
+    <li><b>Storage bloat:</b> Consumes disk space unnecessarily, limiting room for files/apps.</li>
+    <li><b>Performance degradation:</b> Heavy paging to slow HDDs causes noticeable lag.</li>
+    <li><b>Fragmentation:</b> Large files on HDDs fragment over time, slowing access speeds.</li>
+  </ul>
+</p>
+
 
 
 <h3>What Should You Use?</h3>
